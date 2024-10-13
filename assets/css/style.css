@@ -34,21 +34,22 @@ p {
 .social-icons {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    /* Add space below social icons */
 }
 
 .social-icon {
     background-color: #ffffff;
     color: #121212;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -67,9 +68,16 @@ p {
     }
 
     .social-icon {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    .contact-button {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.75rem;
+        min-width: 90px;
+        height: 28px;
     }
 }
 
@@ -83,8 +91,36 @@ p {
     }
 
     .social-icon {
-        width: 30px;
-        height: 30px;
-        font-size: 0.9rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
     }
+
+    .contact-button {
+        padding: 0.2rem 0.7rem;
+        font-size: 0.7rem;
+        min-width: 80px;
+        height: 26px;
+    }
+}
+
+.contact-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.4rem 1rem;
+    background-color: #bb86fc;
+    color: #121212;
+    text-decoration: none;
+    border-radius: 18px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: background-color 0.3s, color 0.3s;
+    min-width: 100px;
+    height: 32px;
+}
+
+.contact-button:hover {
+    background-color: #ffffff;
+    color: #121212;
 }
