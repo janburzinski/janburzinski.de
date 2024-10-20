@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jan Burzinski - Softwareentwickler</title>
+
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/scrollbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -28,7 +33,14 @@
 </head>
 
 <body>
-    <div class="content">
+    <div class="sidebar">
+        <div class="icon active" data-section="start"><i class="fas fa-home"></i></div>
+        <div class="icon" data-section="about"><i class="fas fa-user"></i></div>
+        <div class="icon" data-section="projects"><i class="fas fa-code"></i></div>
+        <div class="icon" data-section="contact"><i class="fas fa-envelope"></i></div>
+    </div>
+
+    <div id="start" class="section active">
         <h1>Jan Burzinski</h1>
         <p>Studium: B.Sc. Informatik an der TU Berlin</p>
         <div class="social-icons">
@@ -39,6 +51,23 @@
         </div>
         <a href="mailto:hey@janburzinski.de" class="contact-button">KONTAKTIEREN</a>
     </div>
+
+    <div id="about" class="section">
+        <h2>About Me</h2>
+        <!-- Add your about content here -->
+    </div>
+
+    <div id="projects" class="section">
+        <h2>Projects</h2>
+        <!-- Add your projects content here -->
+    </div>
+
+    <div id="contact" class="section">
+        <h2>Contact</h2>
+        <!-- Add your contact content here -->
+    </div>
+
+    <script src="assets/js/sidebar.js"></script>
 </body>
 
 </html>
