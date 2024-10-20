@@ -1,17 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+html {
+    scroll-snap-type: y mandatory;
+}
+
 body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
     background-color: #121212;
     color: #ffffff;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
+    overflow-y: scroll;
 }
 
 .content {
@@ -78,6 +77,79 @@ p {
     color: #121212;
 }
 
+.sidebar {
+    position: fixed;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    z-index: 1000;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.3s, color 0.3s;
+}
+
+.icon i {
+    font-size: 18px;
+}
+
+.icon:hover,
+.icon.active {
+    border-color: #bb86fc;
+    color: #bb86fc;
+}
+
+.icon::after {
+    content: attr(data-section);
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    color: #121212;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    text-transform: capitalize;
+}
+
+.icon:hover::after {
+    opacity: 1;
+}
+
+.section {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.section.active {
+    display: flex;
+}
+
 @media (max-width: 768px) {
     h1 {
         font-size: 2.5rem;
@@ -98,6 +170,27 @@ p {
         font-size: 0.95rem;
         min-width: 120px;
         height: 38px;
+    }
+
+    .sidebar {
+        right: 20px;
+        gap: 30px;
+    }
+
+    .icon {
+        width: 35px;
+        height: 35px;
+        border-width: 1.5px;
+    }
+
+    .icon i {
+        font-size: 16px;
+    }
+
+    .icon::after {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+        right: 45px;
     }
 }
 
