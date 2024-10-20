@@ -3,7 +3,7 @@ $(document).ready(function () {
   const icons = $(".icon");
   let isScrolling = false;
   let lastScrollTop = 0;
-  const scrollThreshold = 50; // Adjust this value to change sensitivity
+  const scrollThreshold = 50;
 
   function highlightSection(index) {
     icons.removeClass("active");
