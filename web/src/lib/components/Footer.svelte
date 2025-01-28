@@ -1,7 +1,3 @@
-<svelte:head>
-	<title>impressum - jan burzinski</title>
-</svelte:head>
-
 <footer class="footer">
 	<p>&copy; 2025 jan burzinski</p>
 </footer>
