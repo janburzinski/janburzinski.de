@@ -65,7 +65,7 @@
 		width: 220px;
 		height: 220px;
 		object-fit: cover;
-		border-radius: 10%; /* Optional: smooth edges */
+		border-radius: 50%;
 		box-shadow:
 			0px 0px 5px 2px rgba(94, 230, 161, 0.2),
 			0px 0px 8px 3px rgba(58, 167, 241, 0.2),
