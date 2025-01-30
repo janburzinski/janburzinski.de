@@ -64,13 +64,16 @@
 	.profile-picture {
 		width: 220px;
 		height: 220px;
-		border-radius: 50%;
 		object-fit: cover;
-		border: 0.2ch solid #fff;
+		border-radius: 10%; /* Optional: smooth edges */
+		box-shadow:
+			0px 0px 5px 2px rgba(94, 230, 161, 0.2),
+			0px 0px 8px 3px rgba(58, 167, 241, 0.2),
+			0px 0px 10px 4px rgba(153, 153, 164, 0.2),
+			0px 0px 12px 5px rgba(230, 138, 117, 0.2);
 	}
 
 	.title-name {
-		font-family: 'Rubik', 'Inter', sans-serif;
 		letter-spacing: 2px;
 		font-weight: bold;
 		font-size: 60px;
