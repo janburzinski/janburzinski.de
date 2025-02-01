@@ -71,6 +71,18 @@
 			0px 0px 8px 3px rgba(58, 167, 241, 0.2),
 			0px 0px 10px 4px rgba(153, 153, 164, 0.2),
 			0px 0px 12px 5px rgba(230, 138, 117, 0.2);
+		animation: slideFromTop 1s ease-out forwards;
+	}
+
+	@keyframes slideFromTop {
+		0% {
+			transform: translateY(-30px);
+			opacity: 20%;
+		}
+		100% {
+			transform: translateY(0);
+			opacity: 100%;
+		}
 	}
 
 	.title-name {
@@ -79,6 +91,7 @@
 		font-size: 60px;
 		margin-bottom: 0.5rm;
 		text-align: center;
+		animation: slideFromBottom 1s ease-out forwards;
 	}
 
 	.title-color-gradient {
@@ -92,6 +105,18 @@
 		font-size: 25px;
 		color: #bbbbbb;
 		margin: 0;
+		animation: slideFromBottom 1s ease-out forwards;
+	}
+
+	@keyframes slideFromBottom {
+		0% {
+			transform: translateY(20px);
+			opacity: 0;
+		}
+		100% {
+			transform: translateY(0);
+			opacity: 1;
+		}
 	}
 
 	.scroll-down-icon {
@@ -99,7 +124,7 @@
 		font-size: 2rem;
 		color: #bbbbbb;
 		text-decoration: none;
-		animation: bounce 1.5s infinite;
+		animation: bounce 2s infinite;
 	}
 
 	.scroll-down-icon:hover {
