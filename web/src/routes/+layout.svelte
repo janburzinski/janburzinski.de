@@ -2,6 +2,7 @@
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Sidebar from '$lib/components/Sidebar.svelte';
+	import BackgroundEffect from '$lib/components/BackgroundEffect.svelte';
 </script>
 
 <svelte:head>
@@ -24,6 +25,8 @@
 <svelte:body />
 
 <Navbar />
+
+<BackgroundEffect />
 
 <Sidebar />
 
