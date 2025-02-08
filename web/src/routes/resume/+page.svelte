@@ -1,7 +1,7 @@
 <script>
 	export let skills = {
-		Programmiersprachen: ['HTML', 'CSS', 'JavaScript', 'GLSL', 'VueJS', 'PHP'],
-		Webtechnologien: ['HTML, CSS, JavaScript', 'ReactJS, NextJS, AngularJS', 'Node.js', 'Svelte'],
+		Programmiersprachen: ['Go', 'C', 'Java', 'Python', 'JavaScript'],
+		Webtechnologien: ['HTML, CSS', 'ReactJS, NextJS, AngularJS', 'Node.js', 'Svelte'],
 		Applications: ['SQL [MySQL, PostgreSQL]', 'NoSQL [MongoDB, Redis, DynamoDB]'],
 		Tools: ['Git', 'Docker'],
 		'Cloud-Plattformen': [
@@ -38,7 +38,7 @@
 		>
 		<p>
 			Ein kreativer Informatik-Student mit Leidenschaft für Softwareentwicklung, Problemlösung und
-			moderne Technologien.
+			Technologien.
 		</p>
 	</div>
 
