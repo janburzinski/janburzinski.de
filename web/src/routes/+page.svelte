@@ -58,7 +58,7 @@
 		flex-direction: column;
 		align-items: center;
 		/*		gap: 0.5rem;*/
-		margin-top: 15vh;
+		margin-top: 5vh;
 	}
 
 	.profile-picture {
