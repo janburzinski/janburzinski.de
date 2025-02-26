@@ -1,5 +1,5 @@
 <footer class="footer">
-	<p>&copy; 2025 jan burzinski</p>
+	<p>&copy; 2025 jan burzinski | <a href="/impressum" class="footer-link">Impressum</a></p>
 </footer>
 
 <style>
@@ -7,18 +7,17 @@
 		width: 100%;
 		text-align: center;
 		padding: 1rem 0;
-		font-size: 1rem;
-		background-color: #121212;
-		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		font-size: 0.9rem;
+		color: #7d8590;
 	}
 
-	/*.footer a {
-		color: rgb(214, 2, 214);
+	.footer-link {
+		color: #3fa7d6;
 		text-decoration: none;
-		transition: color 0.3s ease;
+		transition: color 0.2s ease;
 	}
 
-	.footer a:hover {
-		color: rgb(255, 0, 255);
-	}*/
+	.footer-link:hover {
+		color: #60d394;
+	}
 </style>
