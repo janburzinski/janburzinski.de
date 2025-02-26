@@ -2,7 +2,7 @@
 	interface Project {
 		title: string;
 		description: string;
-		status: 'completed' | 'in-progress';
+		status: 'fertig' | 'in arbeit';
 		link?: string;
 		tech?: string[];
 	}
@@ -11,7 +11,7 @@
 		{
 			title: 'Persönliche Website',
 			description: 'Die erste Version meiner eigenen "Portfolio" Website.',
-			status: 'completed',
+			status: 'fertig',
 			tech: ['SvelteKit', 'TypeScript'],
 			link: 'https://github.com/janburzinski/janburzinski.de'
 		},
@@ -19,7 +19,7 @@
 			title: 'Minecraft Rang System',
 			description:
 				'Ein Gruppen System, ähnlich wie Pex oder LuckPerms. Es soll Verwaltung von Spielergruppen und deren Rechte (Permissions) direkt im Spiel ermöglichen.',
-			status: 'in-progress',
+			status: 'in arbeit',
 			tech: ['Java', 'PaperMC', 'Maven', 'PostgreSQL'],
 			link: 'https://github.com/janburzinski/playlegend-rank'
 		}
@@ -55,8 +55,8 @@
 					<div class="status">
 						<span
 							class="status-indicator"
-							class:completed={project.status === 'completed'}
-							class:in-progress={project.status === 'in-progress'}
+							class:completed={project.status === 'fertig'}
+							class:in-progress={project.status === 'in arbeit'}
 						></span>
 						<span class="status-text">{project.status}</span>
 					</div>
