@@ -18,7 +18,7 @@
 		{
 			title: 'Minecraft Rang System',
 			description:
-				'Ein Gruppen System, ähnlich wie Pex oder LuckPerms. Es soll eine Verwaltung von Spielergruppen und deren Rechte (Permissions) direkt im Spiel ermöglichen.',
+				'Ein Gruppensystem, ähnlich wie Pex oder LuckPerms. Es soll eine Verwaltung von Spielergruppen und deren Rechten (Permissions) direkt im Spiel ermöglichen.',
 			status: 'in arbeit',
 			tech: ['Java', 'PaperMC', 'Maven', 'PostgreSQL'],
 			link: 'https://github.com/janburzinski/playlegend-rank'
