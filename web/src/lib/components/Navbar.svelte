@@ -13,6 +13,7 @@
 			<a href="/">/startseite</a>
 			<a href="/resume">/resume</a>
 			<a href="/projekte">/projekte</a>
+			<a href="/blog">/blog</a>
 			<a href="mailto:jan@burzinski.de">/kontakt</a>
 		</div>
 	</div>
@@ -75,6 +76,7 @@
 		<a href="/">/startseite</a>
 		<a href="/resume">/resume</a>
 		<a href="/projekte">/projekte</a>
+		<a href="/blog">/blog</a>
 		<a href="mailto:jan@burzinski.de">/kontakt</a>
 	</div>
 </div>
