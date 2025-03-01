@@ -5,6 +5,7 @@
 # TODOs
 
 <p>
+- [ ] Blog implementieren
 </p>
 
 <br/><br/><br/>

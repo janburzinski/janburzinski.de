@@ -46,12 +46,12 @@
 
 	function updateBackground(): void {
 		if (!ctx || !canvas || !imageData) return;
-		const radius = 200;
+		const radius = 150;
 
 		ctx.putImageData(imageData, 0, 0);
 
 		grd = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, radius);
-		grd.addColorStop(0, 'rgba(50, 20, 80, 0.5)');
+		grd.addColorStop(0, 'rgba(138, 116, 165, 0.3)');
 		grd.addColorStop(1, 'rgba(50, 20, 80, 0)');
 
 		ctx.fillStyle = grd;
