@@ -13,7 +13,9 @@
 			Hey! Ich bin<br /> <span class="title-color-gradient">Jan Burzinski</span>
 		</h1>
 		<p class="title-under">
-			B.Sc. Informatik Student an der <span style="font-weight:bold;">TU Berlin</span>
+			B.Sc. Informatik Student an der <span style="font-weight:bold;"
+				>Technischen Universität Berlin</span
+			>
 		</p>
 
 		<a href="#about-me" class="scroll-down-icon" aria-label="Ueber mich"> ↓ </a>
@@ -57,7 +59,6 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		/*		gap: 0.5rem;*/
 		margin-top: 5vh;
 	}
 
@@ -65,12 +66,12 @@
 		width: 220px;
 		height: 220px;
 		object-fit: cover;
-		border-radius: 50%;
+		border-radius: 20%;
 		box-shadow:
-			0px 0px 5px 2px rgba(94, 230, 161, 0.2),
-			0px 0px 8px 3px rgba(58, 167, 241, 0.2),
-			0px 0px 10px 4px rgba(153, 153, 164, 0.2),
-			0px 0px 12px 5px rgba(230, 138, 117, 0.2);
+			0px 0px 3px 0px rgba(94, 230, 161, 0.2),
+			0px 0px 6px 0px rgba(58, 167, 241, 0.2),
+			0px 0px 8px 2px rgba(153, 153, 164, 0.2),
+			0px 0px 10px 2px rgba(230, 138, 117, 0.2);
 		animation: slideFromTop 1s ease-out forwards;
 	}
 
