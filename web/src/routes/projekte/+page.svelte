@@ -9,6 +9,13 @@
 
 	const projects: Project[] = [
 		{
+			title: 'Year Progression',
+			description: 'Wie eine Art Tagebuch, allerdings mit einem Gamifizierten touch.',
+			status: 'fertig',
+			tech: ['NextJS', 'TypeScript', 'PostgreSQL (w/Prisma ORM)', 'Google Auth'],
+			link: 'https://github.com/janburzinski/year-progression'
+		},
+		{
 			title: 'Persönliche Website',
 			description: 'Die erste Version meiner eigenen "Portfolio" Website.',
 			status: 'fertig',
@@ -53,12 +60,12 @@
 
 				<div class="project-footer">
 					<div class="status">
-						<span
+						<!--		<span
 							class="status-indicator"
 							class:completed={project.status === 'fertig'}
 							class:in-progress={project.status === 'in arbeit'}
 						></span>
-						<span class="status-text">{project.status}</span>
+						<span class="status-text">{project.status}</span> -->
 					</div>
 
 					{#if project.tech}
@@ -125,11 +132,6 @@
 		gap: 0.75rem;
 	}
 
-	.project-icon {
-		font-size: 1.2rem;
-		color: #7d8590;
-	}
-
 	h2 {
 		font-size: 1.1rem;
 		font-weight: normal;
@@ -152,7 +154,7 @@
 	.project-footer {
 		margin-top: auto;
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 		align-items: center;
 	}
 
@@ -183,6 +185,8 @@
 		display: flex;
 		gap: 0.5rem;
 		flex-wrap: wrap;
+		justify-content: center;
+		width: 100%;
 	}
 
 	.tech-tag {
