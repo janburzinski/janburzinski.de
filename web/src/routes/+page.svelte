@@ -24,7 +24,7 @@
 
 <div id="about-me" class="about-me-section">
 	<p>
-		Ich studiere gerade Informatik im ersten Semester an der <span class="highlighted-text"
+		Ich studiere gerade Informatik im zweiten Semester an der <span class="highlighted-text"
 			>Technischen Universität Berlin</span
 		>.
 	</p>
