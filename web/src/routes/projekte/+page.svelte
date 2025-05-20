@@ -2,33 +2,23 @@
 	interface Project {
 		title: string;
 		description: string;
-		status: 'fertig' | 'in arbeit';
 		link?: string;
-		tech?: string[];
+		imageUrl?: string;
 	}
 
 	const projects: Project[] = [
 		{
-			title: 'Year Progression',
-			description: 'Wie eine Art Tagebuch, allerdings mit einem Gamifizierten touch.',
-			status: 'fertig',
-			tech: ['NextJS', 'TypeScript', 'PostgreSQL (w/Prisma ORM)', 'Google Auth'],
-			link: 'https://github.com/janburzinski/year-progression'
-		},
-		{
 			title: 'Persönliche Website',
 			description: 'Die erste Version meiner eigenen "Portfolio" Website.',
-			status: 'fertig',
-			tech: ['SvelteKit', 'TypeScript'],
-			link: 'https://github.com/janburzinski/janburzinski.de'
+			link: 'https://github.com/janburzinski/janburzinski.de',
+			imageUrl: '/janburzinski_web_20_05_2025.png'
 		},
 		{
-			title: 'Minecraft Rang System',
+			title: 'FitByLinus',
 			description:
-				'Ein Gruppensystem, ähnlich wie Pex oder LuckPerms. Es soll eine Verwaltung von Spielergruppen und deren Rechten (Permissions) direkt im Spiel ermöglichen.',
-			status: 'in arbeit',
-			tech: ['Java', 'PaperMC', 'Maven', 'PostgreSQL'],
-			link: 'https://github.com/janburzinski/playlegend-rank'
+				'Eine moderne Webseite für einen Personal Trainer zur Präsentation von Dienstleistungen und zur Kontaktaufnahme.',
+			link: 'https://fitbylinus.de/',
+			imageUrl: '/fitbylinus_web_20_05_2025.png'
 		}
 	];
 </script>
@@ -46,38 +36,36 @@
 	<div class="projects-grid">
 		{#each projects as project}
 			<div class="project-card">
-				<div class="project-header" style="text-align: center;">
-					<h2>
-						{#if project.link}
-							<a href={project.link}>{project.title}</a>
-						{:else}
-							{project.title}
-						{/if}
-					</h2>
-				</div>
-
-				<p class="project-description">{project.description}</p>
-
-				<div class="project-footer">
-					<div class="status">
-						<!--		<span
-							class="status-indicator"
-							class:completed={project.status === 'fertig'}
-							class:in-progress={project.status === 'in arbeit'}
-						></span>
-						<span class="status-text">{project.status}</span> -->
+				{#if project.imageUrl}
+					<img src={project.imageUrl} alt={project.title} class="project-image" />
+				{/if}
+				<div class="project-card-content">
+					<div class="project-header">
+						<h2>
+							{#if project.link}
+								<a href={project.link}>{project.title}</a>
+							{:else}
+								{project.title}
+							{/if}
+						</h2>
 					</div>
 
-					{#if project.tech}
-						<div class="tech-stack">
-							{#each project.tech as tech}
-								<span class="tech-tag">{tech}</span>
-							{/each}
-						</div>
-					{/if}
+					<p class="project-description text-center">{project.description}</p>
 				</div>
 			</div>
 		{/each}
+	</div>
+
+	<div class="more-projects-section">
+		<p>Für weitere Projekte und Einblicke in meine Arbeit, besuche mein GitHub Profil.</p>
+		<a
+			href="https://github.com/janburzinski"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="github-button"
+		>
+			GitHub Profil ansehen
+		</a>
 	</div>
 </div>
 
@@ -109,21 +97,35 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 		gap: 1.5rem;
+		margin-bottom: 2rem;
 	}
 
 	.project-card {
 		background: rgba(22, 27, 34, 0.5);
 		border: 1px solid rgba(48, 54, 61, 0.5);
 		border-radius: 0.375rem;
-		padding: 1.5rem;
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
 		transition: background-color 0.2s ease;
+		overflow: hidden;
 	}
 
 	.project-card:hover {
 		background: rgba(22, 27, 34, 0.8);
+	}
+
+	.project-image {
+		width: 100%;
+		height: 300px;
+		object-fit: cover;
+	}
+
+	.project-card-content {
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		flex-grow: 1;
 	}
 
 	.project-header {
@@ -132,9 +134,11 @@
 		gap: 0.75rem;
 	}
 
-	h2 {
+	.project-header h2 {
 		font-size: 1.1rem;
 		font-weight: normal;
+		text-align: center;
+		width: 100%;
 	}
 
 	a {
@@ -151,49 +155,38 @@
 		font-size: 0.875rem;
 	}
 
-	.project-footer {
-		margin-top: auto;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+	.more-projects-section {
+		background-color: rgba(30, 37, 46, 0.7);
+		padding: 2rem;
+		text-align: center;
+		border-radius: 0.375rem;
+		border: 1px solid rgba(48, 54, 61, 0.5);
 	}
 
-	.status {
-		display: flex;
-		align-items: center;
-		gap: 0.25rem;
-		font-size: 0.75rem;
-		color: #7d8590;
+	.more-projects-section p {
+		color: #c9d1d9;
+		font-size: 1rem;
+		margin: 0;
+		margin-bottom: 1rem;
 	}
 
-	.status-indicator {
-		width: 0.5rem;
-		height: 0.5rem;
-		border-radius: 50%;
+	.github-button {
 		display: inline-block;
+		padding: 0.75rem 1.5rem;
+		background-color: #307ac0;
+		color: #ffffff;
+		text-decoration: none;
+		border-radius: 0.5rem;
+		font-weight: 500;
+		transition: background-color 0.2s ease;
 	}
 
-	.status-indicator.completed {
-		background-color: #238636;
+	.github-button:hover {
+		background-color: #2e72a0;
+		color: #ffffff;
 	}
 
-	.status-indicator.in-progress {
-		background-color: #db6d28;
-	}
-
-	.tech-stack {
-		display: flex;
-		gap: 0.5rem;
-		flex-wrap: wrap;
-		justify-content: center;
-		width: 100%;
-	}
-
-	.tech-tag {
-		padding: 0.125rem 0.375rem;
-		background-color: #30363d;
-		border-radius: 1rem;
-		font-size: 0.75rem;
-		color: #7d8590;
+	.text-center {
+		text-align: center;
 	}
 </style>

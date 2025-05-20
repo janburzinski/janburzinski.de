@@ -123,28 +123,6 @@
 		align-items: center;
 	}
 
-	.icon svg {
-		width: 24px;
-		height: 24px;
-	}
-
-	.additional-info {
-		margin-top: 3rem;
-		padding-top: 2rem;
-		border-top: 1px solid rgba(255, 255, 255, 0.1);
-	}
-
-	.additional-info h2 {
-		font-size: 1.5rem;
-		margin-bottom: 1rem;
-		color: #bbbbbb;
-	}
-
-	.additional-info p {
-		color: #bbbbbb;
-		line-height: 1.6;
-	}
-
 	@media (max-width: 768px) {
 		.contact-container {
 			padding: 1rem;
