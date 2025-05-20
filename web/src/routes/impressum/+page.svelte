@@ -15,12 +15,17 @@
 			<p>14197 Berlin</p>
 
 			<h2>Kontakt</h2>
-			<p>E-Mail: janburzinski@outlook.com</p>
+			<p>E-Mail: jan@burzinski.de</p>
 
 			<h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
 			<p>Jan Burzinski</p>
 			<p>Burgunder Str. 1</p>
 			<p>14197 Berlin</p>
+		</div>
+
+		<div class="content-section">
+			<h2>Letztes Update</h2>
+			<p>20.05.2025</p>
 		</div>
 	</div>
 </div>
@@ -58,6 +63,11 @@
 		padding: 2rem;
 		backdrop-filter: blur(10px);
 		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		margin-bottom: 2rem;
+	}
+
+	.content-section:last-child {
+		margin-bottom: 0;
 	}
 
 	h2 {

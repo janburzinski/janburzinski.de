@@ -59,7 +59,13 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-top: 5vh;
+		margin-top: 4vh;
+	}
+
+	@media (max-width: 768px) {
+		.profile-container {
+			margin-top: -10vh;
+		}
 	}
 
 	.profile-picture {
@@ -149,7 +155,7 @@
 	}
 
 	.about-me-section {
-		margin-top: calc(40vh - 160px);
+		margin-top: calc(25vh - 160px);
 		padding: 2rem;
 		text-align: center;
 		color: rgb(235, 235, 235);
