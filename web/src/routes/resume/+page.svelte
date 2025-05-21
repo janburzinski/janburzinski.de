@@ -1,8 +1,17 @@
-<script>
+<script lang="ts">
 	export let skills = {
 		Programmiersprachen: ['Go', 'C', 'Java', 'Python', 'JavaScript'],
 		Webtechnologien: ['HTML, CSS', 'ReactJS, NextJS, AngularJS', 'Node.js', 'Svelte'],
-		Applications: ['SQL [MySQL, PostgreSQL]', 'NoSQL [MongoDB, Redis, DynamoDB]'],
+		Datenbanken: [
+			{
+				name: 'SQL',
+				specifics: ['MySQL, PostgreSQL']
+			},
+			{
+				name: 'NoSQL',
+				specifics: ['MongoDB, Redis, DynamoDB']
+			}
+		],
 		Tools: ['Git', 'Docker'],
 		'Cloud-Plattformen': [
 			'Amazon Web Services',
@@ -24,6 +33,12 @@
 			period: '2010 – Juli 2024'
 		}
 	];
+
+	let openApplication: string | null = null;
+
+	function toggleApplication(appName: string) {
+		openApplication = openApplication === appName ? null : appName;
+	}
 </script>
 
 <svelte:head>
@@ -50,7 +65,30 @@
 					<h3 style="letter-spacing:0.7px;">{category}</h3>
 					<ul>
 						{#each items as item}
-							<li>{item}</li>
+							{#if category === 'Datenbanken'}
+								<li class="application-item">
+									<button
+										class="application-button"
+										on:click={() => toggleApplication(typeof item === 'object' ? item.name : item)}
+									>
+										{typeof item === 'object' ? item.name : item}
+										<span class="dropdown-icon">
+											{openApplication === (typeof item === 'object' ? item.name : item)
+												? '▲'
+												: '▼'}
+										</span>
+									</button>
+									{#if typeof item === 'object' && openApplication === item.name}
+										<ul class="specifics-list">
+											{#each item.specifics as specific}
+												<li>{specific}</li>
+											{/each}
+										</ul>
+									{/if}
+								</li>
+							{:else}
+								<li>{item}</li>
+							{/if}
 						{/each}
 					</ul>
 				</div>
@@ -81,6 +119,7 @@
 	}
 
 	.introduction-section {
+		margin-top: -18vh;
 		margin-bottom: 3rem;
 	}
 
@@ -150,6 +189,44 @@
 		margin-bottom: 0.5rem;
 		font-size: 1rem;
 		color: #c4c4c4;
+	}
+
+	.application-item {
+		margin-bottom: 0.5rem;
+	}
+
+	.application-button {
+		background: none;
+		border: none;
+		padding: 0;
+		margin: 0;
+		cursor: pointer;
+		color: #c4c4c4;
+		font-size: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		text-align: left;
+	}
+
+	.application-button:hover {
+		color: #fff;
+	}
+
+	.dropdown-icon {
+		margin-left: 5px;
+	}
+
+	.specifics-list {
+		list-style: disc;
+		padding-left: 20px;
+		margin-top: 0.5rem;
+		color: #a0a0a0;
+	}
+
+	.specifics-list li {
+		font-size: 0.9rem;
 	}
 
 	.education-section {

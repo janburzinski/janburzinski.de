@@ -77,6 +77,7 @@
 	}
 
 	.header {
+		margin-top: -20vh;
 		text-align: left;
 		margin-bottom: 2rem;
 	}

@@ -64,12 +64,11 @@
 	.title {
 		font-size: 3rem;
 		margin-bottom: 1.5rem;
-		text-align: center;
-		margin-top: 0.5rem;
+		margin-top: -15vh;
 	}
 
 	.highlight {
-		background: linear-gradient(to right, #60d394, #3fa7d6, #e07a5f);
+		background: white;
 		background-clip: text;
 		-webkit-background-clip: text;
 		color: transparent;
