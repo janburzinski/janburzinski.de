@@ -64,7 +64,7 @@
 
 	@media (max-width: 768px) {
 		.profile-container {
-			margin-top: -10vh;
+			margin-top: -15vh;
 		}
 	}
 
@@ -113,6 +113,7 @@
 		color: #bbbbbb;
 		margin: 0;
 		animation: slideFromBottom 1s ease-out forwards;
+		text-align: center;
 	}
 
 	@keyframes slideFromBottom {
@@ -188,5 +189,9 @@
 		height: auto;
 		opacity: 0.8;
 		display: block;
+	}
+
+	.text-center {
+		text-align: center;
 	}
 </style>

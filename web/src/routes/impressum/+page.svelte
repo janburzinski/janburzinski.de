@@ -32,6 +32,7 @@
 
 <style>
 	.impressum-wrapper {
+		margin-top: -15vh;
 		display: flex;
 		justify-content: center;
 		min-height: 100vh;

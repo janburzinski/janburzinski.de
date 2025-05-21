@@ -17,6 +17,7 @@
 		letter-spacing: 10px;
 	}
 	.coming-soon-container {
+		margin-top: -18vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
