@@ -65,17 +65,17 @@
 	}
 
 	.profile-picture {
-		width: 80%; /* Adjust as needed */
-		max-width: 250px; /* Keeps original max size */
-		height: auto; /* Maintain aspect ratio */
-		border-radius: 15%; /* Adjusted for better scaling, or use a fixed px value */
+		width: 80%;
+		max-width: 250px;
+		height: auto;
+		border-radius: 15%;
 		box-shadow:
 			0px 0px 3px 0px rgba(94, 230, 161, 0.2),
 			0px 0px 6px 0px rgba(58, 167, 241, 0.2),
 			0px 0px 8px 2px rgba(153, 153, 164, 0.2),
 			0px 0px 10px 2px rgba(230, 138, 117, 0.2);
 		animation: slideFromTop 1s ease-out forwards;
-		object-fit: contain; /* Ensures the entire image is visible within the area */
+		object-fit: contain;
 	}
 
 	@keyframes slideFromTop {
@@ -186,9 +186,5 @@
 		height: auto;
 		opacity: 0.8;
 		display: block;
-	}
-
-	.text-center {
-		text-align: center;
 	}
 </style>
