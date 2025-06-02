@@ -4,11 +4,7 @@
 
 <div class="page-wrapper">
 	<div class="profile-container">
-		<img
-			class="profile-picture"
-			src="https://avatars.githubusercontent.com/u/156842394?v=4"
-			alt="Jan Burzinski"
-		/>
+		<img class="profile-picture" src="/janbewerbungsbild.jpg" alt="Jan Burzinski" />
 		<h1 class="title-name">
 			Hey! Ich bin<br /> <span class="title-color-gradient">Jan Burzinski</span>
 		</h1>
@@ -59,7 +55,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-top: 4vh;
+		margin-top: -5vh;
 	}
 
 	@media (max-width: 768px) {
@@ -69,16 +65,17 @@
 	}
 
 	.profile-picture {
-		width: 220px;
-		height: 220px;
-		object-fit: cover;
-		border-radius: 20%;
+		width: 80%; /* Adjust as needed */
+		max-width: 250px; /* Keeps original max size */
+		height: auto; /* Maintain aspect ratio */
+		border-radius: 15%; /* Adjusted for better scaling, or use a fixed px value */
 		box-shadow:
 			0px 0px 3px 0px rgba(94, 230, 161, 0.2),
 			0px 0px 6px 0px rgba(58, 167, 241, 0.2),
 			0px 0px 8px 2px rgba(153, 153, 164, 0.2),
 			0px 0px 10px 2px rgba(230, 138, 117, 0.2);
 		animation: slideFromTop 1s ease-out forwards;
+		object-fit: contain; /* Ensures the entire image is visible within the area */
 	}
 
 	@keyframes slideFromTop {
