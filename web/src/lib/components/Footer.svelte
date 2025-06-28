@@ -1,5 +1,8 @@
 <footer class="footer">
-	<p>&copy; 2025 jan burzinski | <a href="/impressum" class="footer-link">Impressum</a></p>
+	<p>
+		&copy; 2025 Jan Burzinski | <a href="/impressum" class="footer-link">Impressum</a> -
+		<a href="/datenschutz" class="footer-link">Datenschutz</a>
+	</p>
 </footer>
 
 <style>
