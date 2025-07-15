@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { afterNavigate } from '$app/navigation';
 	import { writable } from 'svelte/store';
-	import { afterNavigate } from '$app/navigation'; // Import afterNavigate
+	// Import afterNavigate
 
 	const isMobileNavOpen = writable(false);
 
@@ -19,7 +20,7 @@
 		<div class="desktop-nav">
 			<a href="/">/startseite</a>
 			<a href="/resume">/resume</a>
-			<a href="/projekte">/projekte</a>
+			<!-- <a href="/projekte">/projekte</a> -->
 			<a href="/blog">/blog</a>
 			<a href="/kontakt">/kontakt</a>
 		</div>
