@@ -1,4 +1,13 @@
 <script lang="ts">
+	interface ProjekteInterface {
+		name: string;
+		description: string;
+		role: string;
+		technologies?: string[];
+		link?: string;
+		timeframe?: string;
+	}
+
 	export let skills = {
 		Programmiersprachen: ['Go', 'C', 'Java', 'Python', 'JavaScript'],
 		Webtechnologien: ['HTML, CSS', 'ReactJS, NextJS, AngularJS', 'Node.js', 'Svelte'],
@@ -31,6 +40,26 @@
 			institution: 'Private Kant Schulen / Internationale Schule Berlin',
 			degree: 'Abitur',
 			period: '2010 – Juli 2024'
+		}
+	];
+
+	export let projekte: ProjekteInterface[] = [
+		{
+			name: 'BejanicLabs',
+			description:
+				'Ein Startup, das sich auf die Entwicklung von Softwarelösungen, sowie Marketing- und Beratungsdienstleistungen für kleine und mittlere Unternehmen spezialisiert.',
+			role: 'Co-Founder & Lead Developer',
+			//technologies: ['Python', 'Go', 'AWS', 'Docker', 'React', 'Svelte', 'NextJS', 'TailwindCSS'],
+			link: 'https://bejaniclabs.de',
+			timeframe: '2025 - jetzt'
+		},
+		{
+			name: 'FitByLinus',
+			description:
+				'Eine moderne Webseite für einen Personal Trainer zur Präsentation von Dienstleistungen und zur Kontaktaufnahme.',
+			role: 'Developer',
+			link: 'https://fitbylinus.de',
+			timeframe: '2025'
 		}
 	];
 
@@ -105,6 +134,29 @@
 					<span>{edu.period}</span>
 				</div>
 				<p>{edu.degree}</p>
+			</div>
+		{/each}
+	</div>
+
+	<!-- Projekte Section -->
+	<div class="projekte-section">
+		<h2>Projekte</h2>
+		{#each projekte as projekt}
+			<div class="projekt-item">
+				<div class="projekt-header">
+					<h3>{projekt.name}</h3>
+					{#if projekt.link}
+						<a href={projekt.link} target="_blank" rel="noopener noreferrer">🔗</a>
+					{/if}
+				</div>
+				<p>{projekt.description}</p>
+				<p><strong>Rolle:</strong> {projekt.role}</p>
+				{#if projekt.technologies}
+					<p><strong>Technologien:</strong> {projekt.technologies.join(', ')}</p>
+				{/if}
+				{#if projekt.timeframe}
+					<p><strong>Zeitraum:</strong> {projekt.timeframe}</p>
+				{/if}
 			</div>
 		{/each}
 	</div>
@@ -264,5 +316,54 @@
 	.education-header span {
 		font-size: 1rem;
 		color: #888;
+	}
+
+	.projekte-section {
+		margin-bottom: 3rem;
+	}
+
+	.projekte-section h2 {
+		font-size: var(--h2-font-size);
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-bottom: 1.5rem;
+		border-bottom: var(--bottom-border-thickness);
+		letter-spacing: var(--h1-letter-spacing);
+		padding-bottom: 0.5rem;
+	}
+
+	.projekt-item:not(:last-child) {
+		margin-bottom: 2rem;
+		padding-bottom: 1.5rem;
+		border-bottom: var(--bottom-border-thickness);
+	}
+
+	.projekt-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		margin-bottom: 0.5rem;
+	}
+
+	.projekt-header h3 {
+		font-size: var(--h3-font-size);
+		font-weight: bold;
+	}
+
+	.projekt-header a {
+		font-size: 1.1rem;
+		color: #fff;
+		text-decoration: none;
+		margin-left: 0.5rem;
+	}
+
+	.projekt-header a:hover {
+		text-decoration: underline;
+	}
+
+	.projekt-item p {
+		font-size: 1rem;
+		color: #c4c4c4;
+		margin: 0.2rem 0;
 	}
 </style>
