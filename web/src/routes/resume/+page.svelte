@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fly } from 'svelte/transition';
 	interface ProjekteInterface {
 		name: string;
 		description: string;
@@ -75,7 +76,7 @@
 </svelte:head>
 
 <div class="container">
-	<div class="introduction-section">
+	<div class="introduction-section" in:fly={{ y: 40, duration: 600 }}>
 		<h1>Jan Burzinski</h1>
 		<a href="https://github.com/janburzinski" class="introduction-github-link" target="_blank"
 			>github.com/janburzinski</a
@@ -86,7 +87,7 @@
 		</p>
 	</div>
 
-	<div class="skills-section">
+	<div class="skills-section" in:fly={{ y: 40, duration: 600, delay: 100 }}>
 		<h2>Erfahrung</h2>
 		<div class="skills-grid">
 			{#each Object.entries(skills) as [category, items]}
@@ -125,7 +126,7 @@
 		</div>
 	</div>
 
-	<div class="education-section">
+	<div class="education-section" in:fly={{ y: 40, duration: 600, delay: 200 }}>
 		<h2>Schule</h2>
 		{#each education as edu}
 			<div class="education-item">
@@ -139,10 +140,10 @@
 	</div>
 
 	<!-- Projekte Section -->
-	<div class="projekte-section">
+	<div class="projekte-section" in:fly={{ y: 40, duration: 600, delay: 300 }}>
 		<h2>Projekte</h2>
-		{#each projekte as projekt}
-			<div class="projekt-item">
+		{#each projekte as projekt, i}
+			<div class="projekt-item" in:fly={{ y: 30, duration: 500, delay: 350 + i * 100 }}>
 				<div class="projekt-header">
 					<h3>{projekt.name}</h3>
 					{#if projekt.link}
@@ -365,5 +366,75 @@
 		font-size: 1rem;
 		color: #c4c4c4;
 		margin: 0.2rem 0;
+	}
+
+	@media (max-width: 600px) {
+		.container {
+			padding: 1rem;
+		}
+
+		.introduction-section {
+			margin-top: -8vh;
+			margin-bottom: 2rem;
+		}
+
+		.introduction-section h1 {
+			font-size: 2rem;
+			letter-spacing: 1px;
+		}
+
+		.introduction-section a {
+			font-size: 1rem;
+		}
+
+		.introduction-section p {
+			font-size: 1rem;
+		}
+
+		.skills-section h2,
+		.education-section h2,
+		.projekte-section h2 {
+			font-size: 1.05rem;
+			padding-bottom: 0.3rem;
+		}
+
+		.skills-grid {
+			gap: 1rem;
+		}
+
+		.skills-category h3 {
+			font-size: 0.95rem;
+		}
+
+		.skills-category li,
+		.projekt-item p {
+			font-size: 0.95rem;
+		}
+
+		.education-header,
+		.projekt-header {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.2rem;
+		}
+
+		.education-header h3,
+		.projekt-header h3 {
+			font-size: 0.95rem;
+		}
+
+		.education-header span {
+			font-size: 0.95rem;
+		}
+
+		.projekt-header a {
+			font-size: 1rem;
+		}
+
+		.projekt-item:not(:last-child),
+		.education-section .education-item:not(:last-child) {
+			margin-bottom: 1rem;
+			padding-bottom: 1rem;
+		}
 	}
 </style>
