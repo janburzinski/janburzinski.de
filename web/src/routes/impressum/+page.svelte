@@ -1,5 +1,10 @@
 <svelte:head>
-	<title>impressum - jan burzinski</title>
+	<title>Impressum - Jan Burzinski | Rechtliche Angaben</title>
+	<meta
+		name="description"
+		content="Impressum und rechtliche Angaben der Website janburzinski.de von Jan Burzinski."
+	/>
+	<meta name="robots" content="noindex, follow" />
 </svelte:head>
 
 <div class="impressum-wrapper">
@@ -10,9 +15,10 @@
 
 		<div class="content-section">
 			<h2>Angaben gemäß § 5 TMG</h2>
-			<p>Jan Burzinski</p>
+			<p>Burzinski & Jaenisch GbR</p>
 			<p>Burgunder Str. 1</p>
 			<p>14197 Berlin</p>
+			<p>Deutschland</p>
 
 			<h2>Kontakt</h2>
 			<p>E-Mail: jan@burzinski.de</p>
@@ -25,7 +31,7 @@
 
 		<div class="content-section">
 			<h2>Letztes Update</h2>
-			<p>20.05.2025</p>
+			<p>22.07.2025</p>
 		</div>
 	</div>
 </div>

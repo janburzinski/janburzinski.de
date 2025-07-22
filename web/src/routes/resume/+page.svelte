@@ -72,7 +72,11 @@
 </script>
 
 <svelte:head>
-	<title>resume - jan burzinski</title>
+	<title>Lebenslauf - Jan Burzinski | B.Sc. Informatik Student TU Berlin</title>
+	<meta
+		name="description"
+		content="Lebenslauf von Jan Burzinski - Informatik Student an der TU Berlin mit Erfahrung in Go, Java, Python, JavaScript und modernen Webtechnologien."
+	/>
 </svelte:head>
 
 <div class="container">
