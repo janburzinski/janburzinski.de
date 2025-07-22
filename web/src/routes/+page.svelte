@@ -1,5 +1,9 @@
 <svelte:head>
-	<title>start - jan burzinski</title>
+	<title>Jan Burzinski - Informatik Student & Entwickler | TU Berlin</title>
+	<meta
+		name="description"
+		content="Jan Burzinski - B.Sc. Informatik Student an der TU Berlin. Leidenschaftlicher Entwickler mit Expertise in Java, Python, JavaScript, TypeScript, C und Go."
+	/>
 </svelte:head>
 
 <div class="page-wrapper">
