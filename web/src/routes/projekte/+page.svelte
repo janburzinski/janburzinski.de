@@ -24,7 +24,11 @@
 </script>
 
 <svelte:head>
-	<title>projekte - jan burzinski</title>
+	<title>Projekte - Jan Burzinski | Portfolio & Entwicklungsprojekte</title>
+	<meta
+		name="description"
+		content="Übersicht der Projekte von Jan Burzinski - Webentwicklung, Softwareprojekte und Portfolio. Einschließlich persönlicher Website und FitByLinus."
+	/>
 </svelte:head>
 
 <div class="page-wrapper">

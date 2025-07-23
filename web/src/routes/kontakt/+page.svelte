@@ -19,7 +19,11 @@
 </script>
 
 <svelte:head>
-	<title>kontakt - jan burzinski</title>
+	<title>Kontakt - Jan Burzinski | E-Mail & GitHub</title>
+	<meta
+		name="description"
+		content="Kontaktieren Sie Jan Burzinski - Informatik Student an der TU Berlin. E-Mail: jan@burzinski.de | GitHub: github.com/janburzinski"
+	/>
 </svelte:head>
 
 <div class="contact-container">
@@ -34,6 +38,7 @@
 		<div class="contact-links">
 			{#each contactLinks as link}
 				<a href={link.url} class="contact-button" target="_blank" rel="noopener noreferrer">
+					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 					<span class="icon">{@html link.icon}</span>
 					{link.name}
 				</a>

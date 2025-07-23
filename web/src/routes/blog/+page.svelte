@@ -1,5 +1,9 @@
 <svelte:head>
-	<title>blog - jan burzinski</title>
+	<title>Blog - Jan Burzinski | Informatik & Entwicklung</title>
+	<meta
+		name="description"
+		content="Blog von Jan Burzinski über Informatik, Programmierung und Softwareentwicklung. Coming Soon - Bleiben Sie dran für interessante Artikel und Tutorials."
+	/>
 </svelte:head>
 
 <div class="coming-soon-container">

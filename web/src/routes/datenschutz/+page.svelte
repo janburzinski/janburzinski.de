@@ -1,5 +1,10 @@
 <svelte:head>
-	<title>datenschutz - jan burzinski</title>
+	<title>Datenschutzerklärung - Jan Burzinski | DSGVO</title>
+	<meta
+		name="description"
+		content="Datenschutzerklärung der Website janburzinski.de - Informationen zum Umgang mit personenbezogenen Daten gemäß DSGVO."
+	/>
+	<meta name="robots" content="noindex, follow" />
 </svelte:head>
 
 <div class="datenschutz-wrapper">

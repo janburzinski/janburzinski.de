@@ -19,7 +19,24 @@
 		href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
 		rel="stylesheet"
 	/>
-	<title>start - jan burzinski</title>
+	<title>Jan Burzinski - Informatik Student & Entwickler</title>
+	<script
+		src="https://cdn.databuddy.cc/databuddy.js"
+		data-client-id="zRRQcV1-4tCaDAE_xzhOk"
+		data-track-hash-changes="true"
+		data-track-attributes="true"
+		data-track-outgoing-links="true"
+		data-track-interactions="true"
+		data-track-engagement="true"
+		data-track-scroll-depth="true"
+		data-track-exit-intent="true"
+		data-track-bounce-rate="true"
+		data-track-web-vitals="true"
+		data-track-errors="true"
+		data-enable-batching="true"
+		crossOrigin="anonymous"
+		async
+	></script>
 </svelte:head>
 
 <svelte:body />

@@ -1,20 +1,94 @@
 <!doctype html>
 <html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-	<meta charset="utf-8" />
-	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	%sveltekit.head%
+		<!-- SEO Meta Tags -->
+		<meta
+			name="description"
+			content="Jan Burzinski - Informatik Student an der TU Berlin. Spezialisiert auf Web- und Softwareentwicklung mit Java, Python, JavaScript, TypeScript, C und Go."
+		/>
+		<meta
+			name="keywords"
+			content="Jan Burzinski, Informatik, TU Berlin, Webentwicklung, Software, Java, Python, JavaScript, TypeScript, Go, Hackathons"
+		/>
+		<meta name="author" content="Jan Burzinski" />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href="https://janburzinski.de" />
 
-	<!-- databuddy integration for analytics -->
-	<script src="https://app.databuddy.cc/databuddy.js" data-client-id="zRRQcV1-4tCaDAE_xzhOk"
-		data-track-engagement="true" data-track-scroll-depth="true" data-track-web-vitals="true"
-		data-track-errors="true" data-enable-batching="true" crossorigin="anonymous" async></script>
-</head>
+		<!-- Open Graph Meta Tags -->
+		<meta property="og:title" content="Jan Burzinski - Informatik Student & Entwickler" />
+		<meta
+			property="og:description"
+			content="B.Sc. Informatik Student an der TU Berlin. Spezialisiert auf Web- und Softwareentwicklung."
+		/>
+		<meta property="og:image" content="https://janburzinski.de/janbewerbungsbild.jpg" />
+		<meta property="og:url" content="https://janburzinski.de" />
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="de_DE" />
+		<meta property="og:site_name" content="Jan Burzinski" />
 
-<body data-sveltekit-preload-data="hover">
-	<div style="display: contents">%sveltekit.body%</div>
-</body>
+		<!-- Twitter Card Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Jan Burzinski - Informatik Student & Entwickler" />
+		<meta
+			name="twitter:description"
+			content="B.Sc. Informatik Student an der TU Berlin. Spezialisiert auf Web- und Softwareentwicklung."
+		/>
+		<meta name="twitter:image" content="https://janburzinski.de/janbewerbungsbild.jpg" />
 
+		%sveltekit.head%
+
+		<!-- Structured Data -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Jan Burzinski",
+				"jobTitle": "Informatik Student",
+				"affiliation": {
+					"@type": "Organization",
+					"name": "Technische Universität Berlin"
+				},
+				"url": "https://janburzinski.de",
+				"email": "jan@burzinski.de",
+				"sameAs": ["https://github.com/janburzinski"],
+				"alumniOf": {
+					"@type": "Organization",
+					"name": "Private Kant Schulen / Internationale Schule Berlin"
+				},
+				"knowsAbout": [
+					"Java",
+					"Python",
+					"JavaScript",
+					"TypeScript",
+					"C",
+					"Go",
+					"Web Development",
+					"Software Development",
+					"Computer Science"
+				],
+				"description": "B.Sc. Informatik Student an der TU Berlin, spezialisiert auf Web- und Softwareentwicklung"
+			}
+		</script>
+
+		<!-- databuddy integration for analytics -->
+		<script
+			src="https://app.databuddy.cc/databuddy.js"
+			data-client-id="zRRQcV1-4tCaDAE_xzhOk"
+			data-track-engagement="true"
+			data-track-scroll-depth="true"
+			data-track-web-vitals="true"
+			data-track-errors="true"
+			data-enable-batching="true"
+			crossorigin="anonymous"
+			async
+		></script>
+	</head>
+
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
 </html>
