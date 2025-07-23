@@ -20,6 +20,23 @@
 		rel="stylesheet"
 	/>
 	<title>Jan Burzinski - Informatik Student & Entwickler</title>
+	<script
+		src="https://cdn.databuddy.cc/databuddy.js"
+		data-client-id="zRRQcV1-4tCaDAE_xzhOk"
+		data-track-hash-changes="true"
+		data-track-attributes="true"
+		data-track-outgoing-links="true"
+		data-track-interactions="true"
+		data-track-engagement="true"
+		data-track-scroll-depth="true"
+		data-track-exit-intent="true"
+		data-track-bounce-rate="true"
+		data-track-web-vitals="true"
+		data-track-errors="true"
+		data-enable-batching="true"
+		crossOrigin="anonymous"
+		async
+	></script>
 </svelte:head>
 
 <svelte:body />
