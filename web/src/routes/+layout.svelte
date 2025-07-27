@@ -1,8 +1,12 @@
 <script lang="ts">
-	import Navbar from '$lib/components/Navbar.svelte';
-	import Footer from '$lib/components/Footer.svelte';
-	import Sidebar from '$lib/components/Sidebar.svelte';
+	import { dev } from '$app/environment';
 	import BackgroundEffect from '$lib/components/BackgroundEffect.svelte';
+	import Footer from '$lib/components/Footer.svelte';
+	import Navbar from '$lib/components/Navbar.svelte';
+	import Sidebar from '$lib/components/Sidebar.svelte';
+	import { inject } from '@vercel/analytics';
+
+	inject({ mode: dev ? 'development' : 'production' });
 </script>
 
 <svelte:head>

@@ -39,19 +39,19 @@
 		</div>
 
 		<div class="content-section">
-			<h2>3. Content Delivery Network (CDN) & Domain</h2>
+			<h2>3. Hosting & Content Delivery Network (CDN)</h2>
 			<p>
-				Für eine schnelle und sichere Auslieferung der Website nutzen wir Cloudflare (Cloudflare
-				Inc., 101 Townsend St, San Francisco, CA 94107, USA) als CDN und Domain-Provider. Cloudflare
-				verarbeitet dabei technische Daten (z.B. IP-Adresse, Zugriffszeitpunkt) zur Bereitstellung
-				und Absicherung der Website.
+				Für eine schnelle und sichere Auslieferung der Website nutzen wir Vercel (Vercel Inc., 340 S
+				Lemon Ave #4133, Walnut, CA 91789, USA) als Hosting- und CDN-Provider. Vercel verarbeitet
+				dabei technische Daten (z.B. IP-Adresse, Zugriffszeitpunkt) zur Bereitstellung und
+				Absicherung der Website.
 			</p>
 			<p>
 				Weitere Informationen finden Sie in der <a
-					href="https://www.cloudflare.com/de-de/privacypolicy/"
+					href="https://vercel.com/legal/privacy-policy"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="external-link">Cloudflare Datenschutzerklärung</a
+					class="external-link">Vercel Datenschutzerklärung</a
 				>.
 			</p>
 		</div>
