@@ -7,6 +7,7 @@
 		technologies?: string[];
 		link?: string;
 		timeframe?: string;
+		icon?: string;
 	}
 
 	export let skills = {
@@ -35,12 +36,14 @@
 		{
 			institution: 'Technische Universität Berlin',
 			degree: 'B.Sc Informatik',
-			period: '2024 – Heute'
+			period: '2024 – Heute',
+			icon: '/tu_berlin_logo.png'
 		},
 		{
 			institution: 'Private Kant Schulen / Internationale Schule Berlin',
 			degree: 'Abitur',
-			period: '2010 – Juli 2024'
+			period: '2010 – Juli 2024',
+			icon: '/private_kant_schule.png'
 		}
 	];
 
@@ -52,7 +55,8 @@
 			role: 'Co-Founder & Lead Developer',
 			//technologies: ['Python', 'Go', 'AWS', 'Docker', 'React', 'Svelte', 'NextJS', 'TailwindCSS'],
 			link: 'https://bejaniclabs.de',
-			timeframe: '2025 - jetzt'
+			timeframe: '2025 - jetzt',
+			icon: '/bj_favicon.svg'
 		},
 		{
 			name: 'FitByLinus',
@@ -60,7 +64,8 @@
 				'Eine moderne Webseite für einen Personal Trainer zur Präsentation von Dienstleistungen und zur Kontaktaufnahme.',
 			role: 'Developer',
 			link: 'https://fitbylinus.de',
-			timeframe: '2025'
+			timeframe: '2025',
+			icon: '/fb_favicon.svg'
 		}
 	];
 
@@ -135,7 +140,12 @@
 		{#each education as edu}
 			<div class="education-item">
 				<div class="education-header">
-					<h3>{edu.institution}</h3>
+					<div class="institution-with-icon">
+						{#if edu.icon}
+							<img src={edu.icon} alt={edu.institution} class="institution-icon" />
+						{/if}
+						<h3>{edu.institution}</h3>
+					</div>
 					<span>{edu.period}</span>
 				</div>
 				<p>{edu.degree}</p>
@@ -149,7 +159,12 @@
 		{#each projekte as projekt, i}
 			<div class="projekt-item" in:fly={{ y: 30, duration: 500, delay: 350 + i * 100 }}>
 				<div class="projekt-header">
-					<h3>{projekt.name}</h3>
+					<div class="project-with-icon">
+						{#if projekt.icon}
+							<img src={projekt.icon} alt={projekt.name} class="project-icon" />
+						{/if}
+						<h3>{projekt.name}</h3>
+					</div>
 					{#if projekt.link}
 						<a href={projekt.link} target="_blank" rel="noopener noreferrer">🔗</a>
 					{/if}
@@ -372,6 +387,23 @@
 		margin: 0.2rem 0;
 	}
 
+	/* Icon Styles */
+	.institution-with-icon,
+	.project-with-icon {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.institution-icon,
+	.project-icon {
+		width: 32px;
+		height: 32px;
+		flex-shrink: 0;
+		border-radius: 3px;
+		object-fit: contain;
+	}
+
 	@media (max-width: 600px) {
 		.container {
 			padding: 1rem;
@@ -420,6 +452,13 @@
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 0.2rem;
+		}
+
+		.institution-icon,
+		.project-icon {
+			width: 28px;
+			height: 28px;
+			object-fit: contain;
 		}
 
 		.education-header h3,
