@@ -8,12 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@supabase/supabase-js':
+        specifier: ^2.53.0
+        version: 2.53.0
       '@sveltejs/adapter-vercel':
         specifier: ^5.8.1
-        version: 5.8.1(@sveltejs/kit@2.26.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5))(svelte@5.37.0)(vite@6.3.5))(rollup@4.46.1)
+        version: 5.8.1(@sveltejs/kit@2.26.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0)))(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0)))(rollup@4.46.1)
       '@vercel/analytics':
         specifier: ^1.5.0
-        version: 1.5.0(@sveltejs/kit@2.26.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5))(svelte@5.37.0)(vite@6.3.5))(svelte@5.37.0)
+        version: 1.5.0(@sveltejs/kit@2.26.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0)))(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0)))(svelte@5.37.0)
     devDependencies:
       '@eslint/compat':
         specifier: ^1.3.1
@@ -23,10 +26,10 @@ importers:
         version: 9.32.0
       '@sveltejs/kit':
         specifier: ^2.26.1
-        version: 2.26.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5))(svelte@5.37.0)(vite@6.3.5)
+        version: 2.26.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0)))(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0))
       '@sveltejs/vite-plugin-svelte':
         specifier: ^5.1.1
-        version: 5.1.1(svelte@5.37.0)(vite@6.3.5)
+        version: 5.1.1(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0))
       eslint:
         specifier: ^9.32.0
         version: 9.32.0
@@ -59,7 +62,7 @@ importers:
         version: 8.38.0(eslint@9.32.0)(typescript@5.8.3)
       vite:
         specifier: ^6.3.5
-        version: 6.3.5
+        version: 6.3.5(@types/node@24.1.0)
 
 packages:
 
@@ -444,6 +447,28 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@supabase/auth-js@2.71.1':
+    resolution: {integrity: sha512-mMIQHBRc+SKpZFRB2qtupuzulaUhFYupNyxqDj5Jp/LyPvcWvjaJzZzObv6URtL/O6lPxkanASnotGtNpS3H2Q==}
+
+  '@supabase/functions-js@2.4.5':
+    resolution: {integrity: sha512-v5GSqb9zbosquTo6gBwIiq7W9eQ7rE5QazsK/ezNiQXdCbY+bH8D9qEaBIkhVvX4ZRW5rP03gEfw5yw9tiq4EQ==}
+
+  '@supabase/node-fetch@2.6.15':
+    resolution: {integrity: sha512-1ibVeYUacxWYi9i0cf5efil6adJ9WRyZBLivgjs+AUpewx1F3xPi7gLgaASI2SmIQxPoCEjAsLAzKPgMJVgOUQ==}
+    engines: {node: 4.x || >=6.0.0}
+
+  '@supabase/postgrest-js@1.19.4':
+    resolution: {integrity: sha512-O4soKqKtZIW3olqmbXXbKugUtByD2jPa8kL2m2c1oozAO11uCcGrRhkZL0kVxjBLrXHE0mdSkFsMj7jDSfyNpw==}
+
+  '@supabase/realtime-js@2.11.15':
+    resolution: {integrity: sha512-HQKRnwAqdVqJW/P9TjKVK+/ETpW4yQ8tyDPPtRMKOH4Uh3vQD74vmj353CYs8+YwVBKubeUOOEpI9CT8mT4obw==}
+
+  '@supabase/storage-js@2.10.4':
+    resolution: {integrity: sha512-cvL02GarJVFcNoWe36VBybQqTVRq6wQSOCvTS64C+eyuxOruFIm1utZAY0xi2qKtHJO3EjKaj8iWJKySusDmAQ==}
+
+  '@supabase/supabase-js@2.53.0':
+    resolution: {integrity: sha512-Vg9sl0oFn55cCPaEOsDsRDbxOVccxRrK/cikjL1XbywHEOfyA5SOOEypidMvQLwgoAfnC2S4D9BQwJDcZs7/TQ==}
+
   '@sveltejs/acorn-typescript@1.0.5':
     resolution: {integrity: sha512-IwQk4yfwLdibDlrXVE04jTZYlLnwsTT2PIOQQGNLWfjavGifnk1JD1LcZjZaBTRcxZu2FfPfNLOE04DSu9lqtQ==}
     peerDependencies:
@@ -486,6 +511,15 @@ packages:
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+
+  '@types/node@24.1.0':
+    resolution: {integrity: sha512-ut5FthK5moxFKH2T1CUOC6ctR67rQRvvHdFLCD2Ql6KXmMuCrjsSsRI9UsLCm9M18BMwClv4pn327UvB7eeO1w==}
+
+  '@types/phoenix@1.6.6':
+    resolution: {integrity: sha512-PIzZZlEppgrpoT2QgbnDU+MMzuR6BbCjllj0bM70lWoejMeNJAxCchxnv7J3XFkI8MpygtRpzXrIlmWUBclP5A==}
+
+  '@types/ws@8.18.1':
+    resolution: {integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==}
 
   '@typescript-eslint/eslint-plugin@8.38.0':
     resolution: {integrity: sha512-CPoznzpuAnIOl4nhj4tRr4gIPj5AfKgkiJmGQDaq+fQnRJTYlcBjbX3wbciGmpoPf8DREufuPRe1tNMZnGdanA==}
@@ -945,6 +979,11 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
+  isows@1.0.7:
+    resolution: {integrity: sha512-I1fSfDCZL5P0v33sVqeTDSpcstAg/N+wF5HS033mogOVIp4B+oHC7oOCsA3axAbBSGTJ8QubbNmnIRN/h8U7hg==}
+    peerDependencies:
+      ws: '*'
+
   jackspeak@3.4.3:
     resolution: {integrity: sha512-OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw==}
 
@@ -1298,6 +1337,9 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  undici-types@7.8.0:
+    resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
+
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
@@ -1374,6 +1416,18 @@ packages:
   wrap-ansi@8.1.0:
     resolution: {integrity: sha512-si7QWI6zUMq56bESFvagtmzMdGOtoxfR+Sez11Mobfc7tm+VkUckk9bW2UeffTGVUbOksxmSw0AA2gs8g71NCQ==}
     engines: {node: '>=12'}
+
+  ws@8.18.3:
+    resolution: {integrity: sha512-PEIGCY5tSlUt50cqyMXfCzX+oOPqN0vuGqWzbcJ2xvnkzkq46oOpz7dQaTDBdfICb4N14+GARUDw2XV2N4tvzg==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
 
   yallist@5.0.0:
     resolution: {integrity: sha512-YgvUTfwqyc7UXVMrB+SImsVYSmTS8X/tSrtdNZMImM+n7+QTriRXyXim0mBrTXNeqzVF0KWGgHPeiyViFFrNDw==}
@@ -1661,13 +1715,56 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.46.1':
     optional: true
 
+  '@supabase/auth-js@2.71.1':
+    dependencies:
+      '@supabase/node-fetch': 2.6.15
+
+  '@supabase/functions-js@2.4.5':
+    dependencies:
+      '@supabase/node-fetch': 2.6.15
+
+  '@supabase/node-fetch@2.6.15':
+    dependencies:
+      whatwg-url: 5.0.0
+
+  '@supabase/postgrest-js@1.19.4':
+    dependencies:
+      '@supabase/node-fetch': 2.6.15
+
+  '@supabase/realtime-js@2.11.15':
+    dependencies:
+      '@supabase/node-fetch': 2.6.15
+      '@types/phoenix': 1.6.6
+      '@types/ws': 8.18.1
+      isows: 1.0.7(ws@8.18.3)
+      ws: 8.18.3
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  '@supabase/storage-js@2.10.4':
+    dependencies:
+      '@supabase/node-fetch': 2.6.15
+
+  '@supabase/supabase-js@2.53.0':
+    dependencies:
+      '@supabase/auth-js': 2.71.1
+      '@supabase/functions-js': 2.4.5
+      '@supabase/node-fetch': 2.6.15
+      '@supabase/postgrest-js': 1.19.4
+      '@supabase/realtime-js': 2.11.15
+      '@supabase/storage-js': 2.10.4
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   '@sveltejs/acorn-typescript@1.0.5(acorn@8.15.0)':
     dependencies:
       acorn: 8.15.0
 
-  '@sveltejs/adapter-vercel@5.8.1(@sveltejs/kit@2.26.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5))(svelte@5.37.0)(vite@6.3.5))(rollup@4.46.1)':
+  '@sveltejs/adapter-vercel@5.8.1(@sveltejs/kit@2.26.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0)))(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0)))(rollup@4.46.1)':
     dependencies:
-      '@sveltejs/kit': 2.26.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5))(svelte@5.37.0)(vite@6.3.5)
+      '@sveltejs/kit': 2.26.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0)))(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0))
       '@vercel/nft': 0.30.0(rollup@4.46.1)
       esbuild: 0.25.8
     transitivePeerDependencies:
@@ -1675,10 +1772,10 @@ snapshots:
       - rollup
       - supports-color
 
-  '@sveltejs/kit@2.26.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5))(svelte@5.37.0)(vite@6.3.5)':
+  '@sveltejs/kit@2.26.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0)))(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0))':
     dependencies:
       '@sveltejs/acorn-typescript': 1.0.5(acorn@8.15.0)
-      '@sveltejs/vite-plugin-svelte': 5.1.1(svelte@5.37.0)(vite@6.3.5)
+      '@sveltejs/vite-plugin-svelte': 5.1.1(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0))
       '@types/cookie': 0.6.0
       acorn: 8.15.0
       cookie: 0.6.0
@@ -1691,27 +1788,27 @@ snapshots:
       set-cookie-parser: 2.7.1
       sirv: 3.0.1
       svelte: 5.37.0
-      vite: 6.3.5
+      vite: 6.3.5(@types/node@24.1.0)
 
-  '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5))(svelte@5.37.0)(vite@6.3.5)':
+  '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0)))(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 5.1.1(svelte@5.37.0)(vite@6.3.5)
+      '@sveltejs/vite-plugin-svelte': 5.1.1(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0))
       debug: 4.4.1
       svelte: 5.37.0
-      vite: 6.3.5
+      vite: 6.3.5(@types/node@24.1.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5)':
+  '@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 4.0.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5))(svelte@5.37.0)(vite@6.3.5)
+      '@sveltejs/vite-plugin-svelte-inspector': 4.0.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0)))(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0))
       debug: 4.4.1
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.17
       svelte: 5.37.0
-      vite: 6.3.5
-      vitefu: 1.1.1(vite@6.3.5)
+      vite: 6.3.5(@types/node@24.1.0)
+      vitefu: 1.1.1(vite@6.3.5(@types/node@24.1.0))
     transitivePeerDependencies:
       - supports-color
 
@@ -1720,6 +1817,16 @@ snapshots:
   '@types/estree@1.0.8': {}
 
   '@types/json-schema@7.0.15': {}
+
+  '@types/node@24.1.0':
+    dependencies:
+      undici-types: 7.8.0
+
+  '@types/phoenix@1.6.6': {}
+
+  '@types/ws@8.18.1':
+    dependencies:
+      '@types/node': 24.1.0
 
   '@typescript-eslint/eslint-plugin@8.38.0(@typescript-eslint/parser@8.38.0(eslint@9.32.0)(typescript@5.8.3))(eslint@9.32.0)(typescript@5.8.3)':
     dependencies:
@@ -1814,9 +1921,9 @@ snapshots:
       '@typescript-eslint/types': 8.38.0
       eslint-visitor-keys: 4.2.1
 
-  '@vercel/analytics@1.5.0(@sveltejs/kit@2.26.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5))(svelte@5.37.0)(vite@6.3.5))(svelte@5.37.0)':
+  '@vercel/analytics@1.5.0(@sveltejs/kit@2.26.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0)))(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0)))(svelte@5.37.0)':
     optionalDependencies:
-      '@sveltejs/kit': 2.26.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5))(svelte@5.37.0)(vite@6.3.5)
+      '@sveltejs/kit': 2.26.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0)))(svelte@5.37.0)(vite@6.3.5(@types/node@24.1.0))
       svelte: 5.37.0
 
   '@vercel/nft@0.30.0(rollup@4.46.1)':
@@ -2207,6 +2314,10 @@ snapshots:
 
   isexe@2.0.0: {}
 
+  isows@1.0.7(ws@8.18.3):
+    dependencies:
+      ws: 8.18.3
+
   jackspeak@3.4.3:
     dependencies:
       '@isaacs/cliui': 8.0.2
@@ -2542,13 +2653,15 @@ snapshots:
 
   typescript@5.8.3: {}
 
+  undici-types@7.8.0: {}
+
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
 
   util-deprecate@1.0.2: {}
 
-  vite@6.3.5:
+  vite@6.3.5(@types/node@24.1.0):
     dependencies:
       esbuild: 0.25.8
       fdir: 6.4.6(picomatch@4.0.3)
@@ -2557,11 +2670,12 @@ snapshots:
       rollup: 4.46.1
       tinyglobby: 0.2.14
     optionalDependencies:
+      '@types/node': 24.1.0
       fsevents: 2.3.3
 
-  vitefu@1.1.1(vite@6.3.5):
+  vitefu@1.1.1(vite@6.3.5(@types/node@24.1.0)):
     optionalDependencies:
-      vite: 6.3.5
+      vite: 6.3.5(@types/node@24.1.0)
 
   webidl-conversions@3.0.1: {}
 
@@ -2587,6 +2701,8 @@ snapshots:
       ansi-styles: 6.2.1
       string-width: 5.1.2
       strip-ansi: 7.1.0
+
+  ws@8.18.3: {}
 
   yallist@5.0.0: {}
 

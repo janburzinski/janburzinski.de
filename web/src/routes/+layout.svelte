@@ -5,11 +5,15 @@
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Sidebar from '$lib/components/Sidebar.svelte';
 	import { inject } from '@vercel/analytics';
+	import { page } from '$app/stores';
 
 	inject({ mode: dev ? 'development' : 'production' });
+
+	$: isAdminRoute = $page.url.pathname.startsWith('/admin');
 </script>
 
 <svelte:head>
+	{#if !isAdminRoute}
 	<style>
 		:root {
 			font-family: 'Rubik', 'Inter', sans-serif;
@@ -17,6 +21,7 @@
 			background-color: #121212;
 		}
 	</style>
+	{/if}
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link
@@ -45,12 +50,16 @@
 
 <svelte:body />
 
+{#if !isAdminRoute}
 <Navbar />
 
 <BackgroundEffect />
 
 <Sidebar />
+{/if}
 
 <slot />
 
+{#if !isAdminRoute}
 <Footer />
+{/if}

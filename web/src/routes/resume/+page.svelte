@@ -12,11 +12,11 @@
 
 	export let skills = {
 		Programmiersprachen: ['Go', 'C', 'Java', 'Python', 'JavaScript'],
-		Webtechnologien: ['HTML, CSS', 'ReactJS, NextJS, AngularJS', 'Node.js', 'Svelte'],
+		Webtechnologien: ['HTML, CSS', 'ReactJS', 'NextJS', 'Node.js', 'Svelte'],
 		Datenbanken: [
 			{
 				name: 'SQL',
-				specifics: ['MySQL, PostgreSQL']
+				specifics: ['MySQL, PostgreSQL', 'SQLite']
 			},
 			{
 				name: 'NoSQL',
