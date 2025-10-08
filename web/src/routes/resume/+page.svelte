@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
+
 	interface ProjekteInterface {
 		name: string;
 		description: string;
@@ -10,7 +11,7 @@
 		icon?: string;
 	}
 
-	export let skills = {
+	let skills = {
 		Programmiersprachen: ['Go', 'C', 'Java', 'Python', 'JavaScript'],
 		Webtechnologien: ['HTML, CSS', 'ReactJS', 'NextJS', 'Node.js', 'Svelte'],
 		Datenbanken: [
@@ -32,7 +33,7 @@
 		]
 	};
 
-	export let education = [
+	let education = [
 		{
 			institution: 'Technische Universität Berlin',
 			degree: 'B.Sc Informatik',
@@ -47,7 +48,7 @@
 		}
 	];
 
-	export let projekte: ProjekteInterface[] = [
+	let projekte: ProjekteInterface[] = [
 		{
 			name: 'BejanicLabs',
 			description:
@@ -99,11 +100,11 @@
 	<div class="skills-section" in:fly={{ y: 40, duration: 600, delay: 100 }}>
 		<h2>Erfahrung</h2>
 		<div class="skills-grid">
-			{#each Object.entries(skills) as [category, items]}
+			{#each Object.entries(skills) as [category, items] (category)}
 				<div class="skills-category">
 					<h3 style="letter-spacing:0.7px;">{category}</h3>
 					<ul>
-						{#each items as item}
+						{#each items as item, index (typeof item === 'object' ? item.name : `${category}-${index}`)}
 							{#if category === 'Datenbanken'}
 								<li class="application-item">
 									<button
@@ -119,7 +120,7 @@
 									</button>
 									{#if typeof item === 'object' && openApplication === item.name}
 										<ul class="specifics-list">
-											{#each item.specifics as specific}
+											{#each item.specifics as specific, idx (`${item.name}-specific-${idx}`)}
 												<li>{specific}</li>
 											{/each}
 										</ul>
@@ -137,7 +138,7 @@
 
 	<div class="education-section" in:fly={{ y: 40, duration: 600, delay: 200 }}>
 		<h2>Schule</h2>
-		{#each education as edu}
+		{#each education as edu (edu.institution)}
 			<div class="education-item">
 				<div class="education-header">
 					<div class="institution-with-icon">
@@ -156,7 +157,7 @@
 	<!-- Projekte Section -->
 	<div class="projekte-section" in:fly={{ y: 40, duration: 600, delay: 300 }}>
 		<h2>Projekte</h2>
-		{#each projekte as projekt, i}
+		{#each projekte as projekt, i (projekt.name)}
 			<div class="projekt-item" in:fly={{ y: 30, duration: 500, delay: 350 + i * 100 }}>
 				<div class="projekt-header">
 					<div class="project-with-icon">

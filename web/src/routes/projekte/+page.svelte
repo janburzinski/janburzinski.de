@@ -38,7 +38,7 @@
 	</div>
 
 	<div class="projects-grid">
-		{#each projects as project}
+		{#each projects as project (project.title)}
 			<div class="project-card">
 				{#if project.imageUrl}
 					<img src={project.imageUrl} alt={project.title} class="project-image" />

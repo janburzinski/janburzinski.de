@@ -1,9 +1,15 @@
 <script lang="ts">
 	import { afterNavigate } from '$app/navigation';
+	import { resolveRoute } from '$app/paths';
 	import { writable } from 'svelte/store';
-	// Import afterNavigate
 
 	const isMobileNavOpen = writable(false);
+
+	// Resolve internal routes
+	const homeUrl = resolveRoute('/');
+	const resumeUrl = resolveRoute('/resume');
+	const projekteUrl = resolveRoute('/projekte');
+	const kontaktUrl = resolveRoute('/kontakt');
 
 	// Close mobile nav on page change
 	afterNavigate(() => {
@@ -18,11 +24,10 @@
 
 	<div class="navbar-center">
 		<div class="desktop-nav">
-			<a href="/">/startseite</a>
-			<a href="/resume">/resume</a>
-			<!-- <a href="/projekte">/projekte</a> -->
-			<a href="/blog">/blog</a>
-			<a href="/kontakt">/kontakt</a>
+			<a href={homeUrl}>/startseite</a>
+			<a href={resumeUrl}>/resume</a>
+			<!-- <a href={projekteUrl}>/projekte</a> -->
+			<a href={kontaktUrl}>/kontakt</a>
 		</div>
 	</div>
 
@@ -116,11 +121,10 @@
 
 <div class="mobile-nav" class:is-open={$isMobileNavOpen}>
 	<div class="mobile-nav-links">
-		<a href="/">/startseite</a>
-		<a href="/resume">/resume</a>
-		<a href="/projekte">/projekte</a>
-		<a href="/blog">/blog</a>
-		<a href="/kontakt">/kontakt</a>
+		<a href={homeUrl}>/startseite</a>
+		<a href={resumeUrl}>/resume</a>
+		<a href={projekteUrl}>/projekte</a>
+		<a href={kontaktUrl}>/kontakt</a>
 	</div>
 </div>
 
@@ -156,42 +160,25 @@
 	}
 
 	.desktop-nav a {
-		color: #c0c0c0;
+		color: #999;
 		text-decoration: none;
 		font-size: 1.2rem;
-		transition: all 0.3s ease;
-		position: relative;
+		transition: color 0.2s ease;
 	}
 
 	.desktop-nav a:hover {
-		color: #ffffff;
-		transform: translateX(-5px);
-	}
-
-	.desktop-nav a::after {
-		content: '';
-		position: absolute;
-		bottom: -4px;
-		left: 0;
-		width: 0;
-		height: 2px;
-		background: linear-gradient(to right, #60d394, #3fa7d6, #e07a5f);
-		transition: width 0.3s ease;
-	}
-
-	.desktop-nav a:hover::after {
-		width: 100%;
+		color: #fff;
 	}
 
 	.navbar-title {
 		text-decoration: none;
 		color: #fff;
 		font-size: 1.5rem;
-		padding-bottom: 5px;
-		background-image: linear-gradient(to right, currentColor 2px, transparent 2px);
-		background-position: left bottom;
-		background-repeat: repeat-x;
-		background-size: 8px 2px;
+		transition: color 0.2s ease;
+	}
+
+	.navbar-title:hover {
+		color: #e0e0e0;
 	}
 
 	.social-icons {

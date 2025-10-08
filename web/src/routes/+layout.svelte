@@ -7,9 +7,20 @@
 	import { inject } from '@vercel/analytics';
 
 	inject({ mode: dev ? 'development' : 'production' });
+
+	export let data;
+
+	$: title = data.title
+		? `${data.title} - Jan Burzinski`
+		: 'Jan Burzinski - Informatik Student & Entwickler';
+	$: description =
+		data.description ||
+		'B.Sc. Informatik Student an der TU Berlin. Spezialisiert auf Web- und Softwareentwicklung.';
 </script>
 
 <svelte:head>
+	<title>{title}</title>
+	<meta name="description" content={description} />
 	<style>
 		:root {
 			font-family: 'Rubik', 'Inter', sans-serif;
@@ -23,7 +34,6 @@
 		href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
 		rel="stylesheet"
 	/>
-	<title>Jan Burzinski - Informatik Student & Entwickler</title>
 	<script
 		src="https://cdn.databuddy.cc/databuddy.js"
 		data-client-id="zRRQcV1-4tCaDAE_xzhOk"

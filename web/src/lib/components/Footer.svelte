@@ -1,7 +1,15 @@
+<script lang="ts">
+	import { resolveRoute } from '$app/paths';
+
+	const impressumUrl = resolveRoute('/impressum');
+	const datenschutzUrl = resolveRoute('/datenschutz');
+</script>
+
 <footer class="footer">
 	<p>
-		&copy; 2025 Jan Burzinski | <a href="/impressum" class="footer-link">Impressum</a> -
-		<a href="/datenschutz" class="footer-link">Datenschutz</a>
+		&copy; 2025 Jan Burzinski | <a href={impressumUrl} class="footer-link">Impressum</a>
+		-
+		<a href={datenschutzUrl} class="footer-link">Datenschutz</a>
 	</p>
 </footer>
 
