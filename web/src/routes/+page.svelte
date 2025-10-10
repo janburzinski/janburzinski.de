@@ -161,10 +161,10 @@
             <li class="resume-item">
 				<div class="resume-left">
 					<img src="/bj_favicon.svg" alt="Bejanic" class="resume-logo" />
-					<div class="resume-meta">
-						<div class="resume-title">Burzinski & Jaenisch GbR</div>
-						<div class="resume-subtitle">software engineer | founder</div>
-					</div>
+						<div class="resume-meta">
+							<div class="resume-title"><a href="https://bejaniclabs.de" target="_blank" rel="noopener noreferrer">Burzinski & Jaenisch GbR</a></div>
+							<div class="resume-subtitle">software engineer | founder</div>
+						</div>
 				</div>
 				<div class="resume-right">2025 – aktuell</div>
             </li>
@@ -178,7 +178,7 @@
 				<div class="resume-left">
 					<img src="/tu_berlin_logo.png" alt="TU Berlin" class="resume-logo" />
 					<div class="resume-meta">
-						<div class="resume-title">Technische Universität Berlin</div>
+						<div class="resume-title"><a href="https://tu.berlin" target="_blank" rel="noopener noreferrer">Technische Universität Berlin</a></div>
 						<div class="resume-subtitle">B.Sc. Informatik (studierend)</div>
 					</div>
 				</div>
@@ -188,7 +188,7 @@
 				<div class="resume-left">
 					<img src="/private_kant_schule.png" alt="Private Kant Schulen" class="resume-logo" />
 					<div class="resume-meta">
-						<div class="resume-title">Private Kant Schulen / Internationale Schule Berlin</div>
+						<div class="resume-title"><a href="https://www.private-kant-schulen.de/" target="_blank" rel="noopener noreferrer">Private Kant Schulen / Internationale Schule Berlin</a></div>
 						<div class="resume-subtitle">Schule</div>
 					</div>
 				</div>
@@ -383,6 +383,16 @@
 	.resume-title {
 		font-size: 1rem;
 		color: #ffffff;
+	}
+
+	.resume-title a {
+		color: #ffffff;
+		text-decoration: none;
+	}
+
+	.resume-title a:hover {
+		color: #ffffff;
+		text-decoration: underline;
 	}
 
 	.resume-subtitle {
