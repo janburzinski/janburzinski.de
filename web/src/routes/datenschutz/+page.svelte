@@ -168,11 +168,19 @@
 		}
 
 		.title {
-			font-size: 2.5rem;
+			font-size: 2rem;
+			letter-spacing: 1px;
 		}
 
 		.content-section {
 			padding: 1.5rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.title {
+			font-size: 1.5rem;
+			letter-spacing: 0.5px;
 		}
 	}
 

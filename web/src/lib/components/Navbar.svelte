@@ -62,7 +62,7 @@
 	});
 </script>
 
-<!-- <nav class="navbar">
+<nav class="navbar">
 	<div class="navbar-left">
         <h1 class="title-wrap">
             <a href="/" class="navbar-title" bind:this={titleEl} on:contextmenu|preventDefault={openContextMenu}>jan burzinski</a>
@@ -89,7 +89,7 @@
         <a href={homeUrl}>/startseite</a>
         <a href={resumeUrl}>/resume</a>
 	</div>
-</div> -->
+</div>
 
 {#if isContextMenuOpen}
     <div class="ctx-menu" style={`top:${menuY}px;left:${menuX}px`} role="menu" aria-label="Links">
