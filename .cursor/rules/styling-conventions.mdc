@@ -1,0 +1,129 @@
+---
+globs: *.svelte,*.css
+description: Styling and CSS conventions for the project
+---
+
+# Styling and CSS Conventions
+
+## Color Scheme
+The project uses a **dark theme** with these primary colors:
+- **Background**: `#121212` (main background)
+- **Text**: `#fff` (primary text), `#bbbbbb` (secondary text)
+- **Accent**: `#00a2ff` (hover states)
+- **Highlight**: `#60d394` (special highlights)
+
+## Typography
+- **Primary Font**: `'Rubik', 'Inter', sans-serif`
+- **Font Weights**: 300-900 (Rubik), 100-900 (Public Sans)
+- **Font Sizes**: Use rem units for scalability
+- **Line Height**: 1.5 for body text, adjust for headings
+
+## Layout Patterns
+
+### CSS Grid Usage
+```css
+.navbar {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: center;
+}
+```
+
+### Flexbox Usage
+```css
+.profile-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+```
+
+### Responsive Design
+- **Mobile First**: Start with mobile styles, add desktop with `@media`
+- **Breakpoint**: `768px` for mobile/desktop transition
+- **Mobile Navigation**: Full-screen overlay with smooth transitions
+
+## Animation Patterns
+
+### Keyframe Animations
+```css
+@keyframes slideFromTop {
+	0% {
+		transform: translateY(-30px);
+		opacity: 20%;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 100%;
+	}
+}
+```
+
+### Transition Usage
+```css
+.desktop-nav a {
+	transition: color 0.2s ease;
+}
+
+.mobile-nav {
+	transition: transform 0.3s ease;
+}
+```
+
+### Animation Properties
+- **Duration**: 0.2s for micro-interactions, 0.3s for navigation, 1s for page elements
+- **Easing**: `ease` for standard, `ease-out` for entrance animations
+- **Performance**: Use `transform` and `opacity` for smooth animations
+
+## Component Styling
+
+### Scoped Styles
+- Use component-scoped styles in `<style>` blocks
+- Avoid global CSS unless necessary
+- Use CSS custom properties for theme consistency
+
+### Class Naming
+- Use **kebab-case** for CSS classes: `.mobile-nav-toggle`
+- Use descriptive names: `.profile-container`, `.social-icons`
+- Use BEM-like naming for complex components
+
+### Box Shadows
+```css
+.profile-picture {
+	box-shadow:
+		0px 0px 3px 0px rgba(94, 230, 161, 0.2),
+		0px 0px 6px 0px rgba(58, 167, 241, 0.2),
+		0px 0px 8px 2px rgba(153, 153, 164, 0.2),
+		0px 0px 10px 2px rgba(230, 138, 117, 0.2);
+}
+```
+
+## Media Queries
+```css
+@media (max-width: 768px) {
+	.profile-container {
+		margin-top: -15vh;
+	}
+	
+	.navbar {
+		grid-template-columns: auto auto;
+	}
+}
+```
+
+## SVG Styling
+- Use gradients for social icons
+- Maintain consistent stroke-width: `1.5`
+- Use `stroke-linecap="round"` and `stroke-linejoin="round"`
+
+## Accessibility
+- Ensure sufficient color contrast
+- Use `aria-label` for interactive elements
+- Provide focus states for keyboard navigation
+- Use semantic HTML elements
+
+## Performance
+- Use `transform` instead of changing layout properties
+- Minimize repaints and reflows
+- Use `will-change` sparingly and remove after animation
+- Optimize images and use appropriate formats

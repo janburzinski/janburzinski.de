@@ -1,0 +1,96 @@
+---
+globs: *.svelte
+description: Svelte component patterns and best practices
+---
+
+# Svelte Component Patterns
+
+## Component Structure
+Follow this order in Svelte components:
+1. `<script lang="ts">` - TypeScript logic
+2. `<svelte:head>` - Meta tags and external resources
+3. `<svelte:body>` - Body modifications (if needed)
+4. HTML markup
+5. `<style>` - Component styles
+
+## Script Section Patterns
+```svelte
+<script lang="ts">
+	// Imports first
+	import { afterNavigate } from '$app/navigation';
+	import { writable } from 'svelte/store';
+	
+	// Component props
+	export let data;
+	
+	// Reactive statements
+	$: title = data.title ? `${data.title} - Jan Burzinski` : 'Jan Burzinski';
+	
+	// Store declarations
+	const isMobileNavOpen = writable(false);
+	
+	// Functions
+	function handleClick() {
+		// Implementation
+	}
+</script>
+```
+
+## Navigation Patterns
+- Use `resolveRoute()` for internal links: `const homeUrl = resolveRoute('/');`
+- Use `afterNavigate()` for cleanup on route changes
+- Always provide `aria-label` for accessibility
+- Use `target="_blank"` for external links with proper security
+
+## State Management
+- Use Svelte stores for global state: `const store = writable(initialValue);`
+- Use reactive statements for derived state: `$: computedValue = baseValue * 2;`
+- Prefer local component state for simple cases
+
+## Event Handling
+- Use `on:click` for click events
+- Use `on:keydown` for keyboard navigation
+- Always handle both mouse and keyboard interactions for accessibility
+
+## Component Props
+- Always type component props: `export let data: PageData;`
+- Use default values when appropriate: `export let size = 'medium';`
+- Document complex props with JSDoc comments
+
+## Conditional Rendering
+```svelte
+{#if condition}
+	<div>Content</div>
+{/if}
+
+{#if user}
+	<UserProfile user={user} />
+{:else}
+	<LoginForm />
+{/if}
+```
+
+## List Rendering
+```svelte
+{#each items as item (item.id)}
+	<ItemComponent {item} />
+{/each}
+```
+
+## Key Blocks
+Use `{#key}` for reactive updates when data changes:
+```svelte
+{#key selectedTab}
+	<TabContent tab={selectedTab} />
+{/key}
+```
+
+## Component Communication
+- Use props for parent-to-child communication
+- Use `createEventDispatcher()` for child-to-parent communication
+- Use stores for sibling component communication
+
+## Lifecycle Management
+- Use `onMount()` for component initialization
+- Use `onDestroy()` for cleanup
+- Use `beforeUpdate()` and `afterUpdate()` sparingly

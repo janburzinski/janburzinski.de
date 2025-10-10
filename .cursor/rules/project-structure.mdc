@@ -1,0 +1,49 @@
+---
+alwaysApply: true
+description: Project structure and tech stack guide for janburzinski.de
+---
+
+# Project Structure Guide
+
+This is a **SvelteKit** project for janburzinski.de - a personal portfolio website.
+
+## Tech Stack
+- **Framework**: SvelteKit 2.x with Svelte 5
+- **Language**: TypeScript with strict mode
+- **Styling**: CSS with modern features (CSS Grid, Flexbox, animations)
+- **Build Tool**: Vite
+- **Deployment**: Vercel with Node.js 22.x runtime
+- **Analytics**: Vercel Analytics + DataBuddy
+- **Package Manager**: pnpm
+- **Linting**: ESLint + Prettier
+
+## Project Structure
+- **Entry Point**: [src/app.html](mdc:web/src/app.html)
+- **Main Layout**: [src/routes/+layout.svelte](mdc:web/src/routes/+layout.svelte)
+- **Homepage**: [src/routes/+page.svelte](mdc:web/src/routes/+page.svelte)
+- **Components**: [src/lib/components/](mdc:web/src/lib/components/)
+- **Static Assets**: [static/](mdc:web/static/)
+- **Configuration**: [svelte.config.js](mdc:web/svelte.config.js), [vite.config.ts](mdc:web/vite.config.ts)
+
+## Key Features
+- **Responsive Design**: Mobile-first approach with CSS Grid/Flexbox
+- **Dark Theme**: Custom color scheme with #121212 background
+- **Animations**: CSS keyframes for smooth transitions
+- **SEO Optimized**: Proper meta tags and structured data
+- **Performance**: Image optimization with Vercel adapter
+- **Analytics**: Multiple tracking solutions integrated
+
+## Routes Structure
+- `/` - Homepage with profile and about section
+- `/resume` - Professional resume/CV
+- `/projekte` - Projects showcase (currently commented out)
+- `/kontakt` - Contact information
+- `/datenschutz` - Privacy policy (German)
+- `/impressum` - Legal notice (German)
+- `/sitemap.xml` - SEO sitemap
+
+## Component Architecture
+- **Navbar.svelte**: Main navigation with desktop/mobile responsive design
+- **Footer.svelte**: Site footer component
+- **BackgroundEffect.svelte**: Visual background effects
+- **Sidebar.svelte**: Mobile sidebar navigation

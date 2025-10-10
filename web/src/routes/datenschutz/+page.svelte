@@ -18,7 +18,7 @@
 			<p>Jan Burzinski</p>
 			<p>Burgunder Str. 1</p>
 			<p>14197 Berlin</p>
-			<p>E-Mail: jan@burzinski.de</p>
+			<p>E-Mail: j_burzinski@proton.me</p>
 		</div>
 
 		<div class="content-section">
@@ -78,7 +78,7 @@
 			<h2>5. Rechte der Nutzer</h2>
 			<p>
 				Sie haben das Recht auf Auskunft, Berichtigung oder Löschung Ihrer gespeicherten Daten.
-				Kontaktieren Sie uns dazu unter jan@burzinski.de.
+			Kontaktieren Sie uns dazu unter j_burzinski@proton.me.
 			</p>
 		</div>
 
@@ -116,10 +116,8 @@
 	}
 
 	.title-color-gradient {
-		background: linear-gradient(to right, #60d394, #3fa7d6, #e07a5f);
-		background-clip: text;
-		-webkit-background-clip: text;
-		color: transparent;
+		/* Remove gradient text; use normal text color */
+		color: inherit;
 	}
 
 	.content-section {

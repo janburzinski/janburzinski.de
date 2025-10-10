@@ -1,0 +1,179 @@
+---
+globs: *.ts,*.svelte
+description: TypeScript and code quality standards
+---
+
+# TypeScript and Code Quality Standards
+
+## TypeScript Configuration
+The project uses **strict TypeScript** with these settings:
+- **Strict Mode**: Enabled for type safety
+- **Module Resolution**: `bundler` for modern tooling
+- **Target**: Latest ES features with Vite compilation
+
+## Type Definitions
+
+### SvelteKit Types
+```typescript
+// In app.d.ts - extend global App namespace
+declare global {
+	namespace App {
+		interface PageData {
+			title?: string;
+			description?: string;
+		}
+		interface Locals {
+			// Server-side locals
+		}
+		interface Platform {
+			// Platform-specific types
+		}
+	}
+}
+```
+
+### Component Props
+```typescript
+// Always type component props
+export let data: App.PageData;
+export let size: 'small' | 'medium' | 'large' = 'medium';
+export let isVisible: boolean = false;
+```
+
+### Store Types
+```typescript
+import { writable, type Writable } from 'svelte/store';
+
+const isMobileNavOpen: Writable<boolean> = writable(false);
+```
+
+## Code Quality Standards
+
+### ESLint Configuration
+The project uses:
+- **ESLint 9** with flat config
+- **TypeScript ESLint** for TS-specific rules
+- **Svelte ESLint** plugin for component linting
+- **Prettier** for code formatting
+
+### Import Organization
+```typescript
+// 1. SvelteKit imports
+import { afterNavigate } from '$app/navigation';
+import { resolveRoute } from '$app/paths';
+
+// 2. Svelte imports
+import { writable } from 'svelte/store';
+
+// 3. Third-party imports
+import { inject } from '@vercel/analytics';
+
+// 4. Local imports
+import Navbar from '$lib/components/Navbar.svelte';
+```
+
+### Function Declarations
+```typescript
+// Use explicit return types for complex functions
+function calculateTotal(items: Item[]): number {
+	return items.reduce((sum, item) => sum + item.price, 0);
+}
+
+// Use arrow functions for simple operations
+const formatDate = (date: Date): string => date.toLocaleDateString('de-DE');
+```
+
+### Error Handling
+```typescript
+// Use proper error handling with types
+try {
+	const data = await fetch('/api/data');
+	if (!data.ok) {
+		throw new Error(`HTTP error! status: ${data.status}`);
+	}
+	const result = await data.json();
+} catch (error) {
+	console.error('Failed to fetch data:', error);
+}
+```
+
+## SvelteKit Specific Patterns
+
+### Page Data Loading
+```typescript
+// +page.ts or +page.server.ts
+import type { PageLoad } from './$types';
+
+export const load: PageLoad = async ({ params }) => {
+	return {
+		title: 'Page Title',
+		description: 'Page description'
+	};
+};
+```
+
+### Server Actions
+```typescript
+// +page.server.ts
+import type { Actions } from './$types';
+
+export const actions: Actions = {
+	default: async ({ request }) => {
+		const formData = await request.formData();
+		const email = formData.get('email') as string;
+		
+		// Validation and processing
+		return { success: true };
+	}
+};
+```
+
+### API Routes
+```typescript
+// +server.ts
+import type { RequestHandler } from './$types';
+
+export const GET: RequestHandler = async ({ url }) => {
+	const query = url.searchParams.get('q');
+	
+	return new Response(JSON.stringify({ results: [] }), {
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	});
+};
+```
+
+## Best Practices
+
+### Type Safety
+- Always use strict mode
+- Avoid `any` type - use `unknown` or proper types
+- Use type assertions sparingly and with proper guards
+- Leverage TypeScript's strict null checks
+
+### Performance
+- Use `$:` reactive statements efficiently
+- Avoid unnecessary re-computations
+- Use `onDestroy` for cleanup
+- Optimize bundle size with proper imports
+
+### Accessibility
+- Use semantic HTML elements
+- Provide proper ARIA labels
+- Ensure keyboard navigation works
+- Test with screen readers
+
+### SEO and Meta
+```typescript
+// In +layout.svelte or +page.svelte
+$: title = data.title ? `${data.title} - Jan Burzinski` : 'Jan Burzinski';
+$: description = data.description || 'Default description';
+```
+
+## Code Formatting
+- Use **Prettier** for consistent formatting
+- Run `pnpm format` before commits
+- Use **semicolons** consistently
+- Use **double quotes** for strings
+- Use **2-space indentation**

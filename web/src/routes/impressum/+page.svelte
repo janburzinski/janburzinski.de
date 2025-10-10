@@ -21,7 +21,7 @@
 			<p>Deutschland</p>
 
 			<h2>Kontakt</h2>
-			<p>E-Mail: jan@burzinski.de</p>
+			<p>E-Mail: j_burzinski@proton.me</p>
 
 			<h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
 			<p>Jan Burzinski</p>
@@ -58,10 +58,8 @@
 	}
 
 	.title-color-gradient {
-		background: linear-gradient(to right, #60d394, #3fa7d6, #e07a5f);
-		background-clip: text;
-		-webkit-background-clip: text;
-		color: transparent;
+		/* Remove gradient text; use normal text color */
+		color: inherit;
 	}
 
 	.content-section {
