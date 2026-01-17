@@ -1,34 +1,53 @@
 <script lang="ts">
-	import { resolveRoute } from '$app/paths';
-
-	const impressumUrl = resolveRoute('/impressum');
-	const datenschutzUrl = resolveRoute('/datenschutz');
 </script>
 
 <footer class="footer">
-	<p>
-		&copy; 2025 Jan Burzinski | <a href={impressumUrl} class="footer-link">Impressum</a>
-		-
-		<a href={datenschutzUrl} class="footer-link">Datenschutz</a>
-	</p>
+	<div class="container">
+		<p>&copy; 2026 Jan Burzinski</p>
+		<div class="links">
+			<a href="/impressum">Impressum</a>
+			<a href="/datenschutz">Datenschutz</a>
+		</div>
+	</div>
 </footer>
 
 <style>
 	.footer {
-		width: 100%;
-		text-align: center;
-		padding: 1rem 0;
-		font-size: 0.9rem;
-		color: #7d8590;
+		border-top: 1px solid #222;
+		margin-top: 4rem;
+		padding: 2rem 0;
+		color: #666;
+		font-size: 0.85rem;
 	}
 
-	.footer-link {
-		color: #3fa7d6;
+	.container {
+		max-width: 700px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.links {
+		display: flex;
+		gap: 1.5rem;
+	}
+
+	.links a {
+		color: #666;
 		text-decoration: none;
-		transition: color 0.2s ease;
 	}
 
-	.footer-link:hover {
-		color: #60d394;
+	.links a:hover {
+		color: #fff;
+	}
+
+	@media (max-width: 480px) {
+		.container {
+			flex-direction: column;
+			gap: 1rem;
+			text-align: center;
+		}
 	}
 </style>
