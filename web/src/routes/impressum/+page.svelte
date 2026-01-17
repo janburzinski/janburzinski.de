@@ -1,120 +1,66 @@
 <svelte:head>
-	<title>Impressum - Jan Burzinski | Rechtliche Angaben</title>
-	<meta
-		name="description"
-		content="Impressum und rechtliche Angaben der Website janburzinski.de von Jan Burzinski."
-	/>
+	<title>Impressum - Jan Burzinski</title>
 	<meta name="robots" content="noindex, follow" />
 </svelte:head>
 
-<div class="impressum-wrapper">
-	<div class="impressum-container">
-		<h1 class="title">
-			<span class="title-color-gradient">Impressum</span>
-		</h1>
+<section class="legal">
+	<h1>Impressum</h1>
 
-		<div class="content-section">
-			<h2>Angaben gemäß § 5 TMG</h2>
-			<p>Burzinski & Jaenisch GbR</p>
-			<p>Burgunder Str. 1</p>
-			<p>14197 Berlin</p>
-			<p>Deutschland</p>
+	<div class="content">
+		<h2>Angaben gemäß § 5 TMG</h2>
+		<p>
+			Burzinski & Jaenisch GbR<br />
+			Burgunder Str. 1<br />
+			14197 Berlin<br />
+			Deutschland
+		</p>
 
-			<h2>Kontakt</h2>
-			<p>E-Mail: j_burzinski@proton.me</p>
+		<h2>Kontakt</h2>
+		<p>E-Mail: j_burzinski@proton.me</p>
 
-			<h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-			<p>Jan Burzinski</p>
-			<p>Burgunder Str. 1</p>
-			<p>14197 Berlin</p>
-		</div>
+		<h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+		<p>
+			Jan Burzinski<br />
+			Burgunder Str. 1<br />
+			14197 Berlin
+		</p>
 
-		<div class="content-section">
-			<h2>Letztes Update</h2>
-			<p>22.07.2025</p>
-		</div>
+		<div class="meta">Letztes Update: 22.07.2025</div>
 	</div>
-</div>
+</section>
 
 <style>
-	.impressum-wrapper {
-		margin-top: -15vh;
-		display: flex;
-		justify-content: center;
-		min-height: 100vh;
-		animation: fadeIn 0.8s ease-out forwards;
-	}
-
-	.impressum-container {
-		max-width: 800px;
-		width: 100%;
-	}
-
-	.title {
-		font-size: 3rem;
-		text-align: center;
+	h1 {
+		font-size: 2rem;
+		font-weight: 700;
 		margin-bottom: 3rem;
-		letter-spacing: 2px;
-	}
-
-	.title-color-gradient {
-		/* Remove gradient text; use normal text color */
-		color: inherit;
-	}
-
-	.content-section {
-		background: rgba(255, 255, 255, 0.03);
-		border-radius: 15px;
-		padding: 2rem;
-		backdrop-filter: blur(10px);
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-		margin-bottom: 2rem;
-	}
-
-	.content-section:last-child {
-		margin-bottom: 0;
+		letter-spacing: -0.03em;
 	}
 
 	h2 {
-		color: #bbbbbb;
-		margin-top: 2rem;
+		font-size: 0.9rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: #888;
+		margin-top: 2.5rem;
 		margin-bottom: 1rem;
-		font-size: 1.5rem;
 	}
 
-	h2:first-child {
+	h2:first-of-type {
 		margin-top: 0;
 	}
 
 	p {
-		color: #ffffff;
+		font-size: 1rem;
 		line-height: 1.6;
-		margin: 0.5rem 0;
-		font-size: 1.1rem;
+		color: #ccc;
+		margin: 0;
 	}
 
-	@keyframes fadeIn {
-		0% {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		100% {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	@media (max-width: 768px) {
-		.impressum-container {
-			margin-top: 2vh;
-		}
-
-		.title {
-			font-size: 2.5rem;
-		}
-
-		.content-section {
-			padding: 1.5rem;
-		}
+	.meta {
+		margin-top: 4rem;
+		font-size: 0.85rem;
+		color: #666;
 	}
 </style>
