@@ -1,484 +1,154 @@
 <script lang="ts">
-	import { fly } from 'svelte/transition';
-
-	interface ProjekteInterface {
-		name: string;
-		description: string;
-		role: string;
-		technologies?: string[];
-		link?: string;
-		timeframe?: string;
-		icon?: string;
-	}
-
-	let skills = {
-		Programmiersprachen: ['Go', 'C', 'Java', 'Python', 'JavaScript'],
-		Webtechnologien: ['HTML, CSS', 'ReactJS', 'NextJS', 'Node.js', 'Svelte'],
-		Datenbanken: [
-			{
-				name: 'SQL',
-				specifics: ['MySQL, PostgreSQL', 'SQLite']
-			},
-			{
-				name: 'NoSQL',
-				specifics: ['MongoDB, Redis, DynamoDB']
-			}
-		],
-		Tools: ['Git', 'Docker'],
-		'Cloud-Plattformen': [
-			'Amazon Web Services',
-			'Google Cloud Platform',
-			'Hetzner',
-			'Digital Ocean'
-		]
-	};
+	let experience = [
+		{
+			company: 'Burzinski & Jaenisch GbR',
+			role: 'Software Engineer | Founder',
+			period: '2025 – Heute',
+			description: 'Softwarelösungen, Marketing und Beratung für KMUs.'
+		}
+	];
 
 	let education = [
 		{
 			institution: 'Technische Universität Berlin',
-			degree: 'B.Sc Informatik',
-			period: '2024 – Heute',
-			icon: '/tu_berlin_logo.png'
+			degree: 'B.Sc. Informatik',
+			period: '2024 – Heute'
 		},
 		{
-			institution: 'Private Kant Schulen / Internationale Schule Berlin',
+			institution: 'Private Kant Schulen',
 			degree: 'Abitur',
-			period: '2010 – Juli 2024',
-			icon: '/private_kant_schule.png'
+			period: '2010 – 2024'
 		}
 	];
 
-	let projekte: ProjekteInterface[] = [
-		{
-			name: 'BejanicLabs',
-			description:
-				'Ein Startup, das sich auf die Entwicklung von Softwarelösungen, sowie Marketing- und Beratungsdienstleistungen für kleine und mittlere Unternehmen spezialisiert.',
-			role: 'Co-Founder & Lead Developer',
-			//technologies: ['Python', 'Go', 'AWS', 'Docker', 'React', 'Svelte', 'NextJS', 'TailwindCSS'],
-			link: 'https://bejaniclabs.de',
-			timeframe: '2025 - jetzt',
-			icon: '/bj_favicon.svg'
-		},
-		{
-			name: 'FitByLinus',
-			description:
-				'Eine moderne Webseite für einen Personal Trainer zur Präsentation von Dienstleistungen und zur Kontaktaufnahme.',
-			role: 'Developer',
-			link: 'https://fitbylinus.de',
-			timeframe: '2025',
-			icon: '/fb_favicon.svg'
-		}
-	];
-
-	let openApplication: string | null = null;
-
-	function toggleApplication(appName: string) {
-		openApplication = openApplication === appName ? null : appName;
-	}
+	let skills = {
+		Languages: ['Go', 'C', 'Java', 'Python', 'JavaScript', 'TypeScript'],
+		Frontend: ['React', 'Next.js', 'Svelte', 'Tailwind CSS'],
+		Backend: ['Node.js', 'PostgreSQL', 'MongoDB', 'Redis'],
+		Tools: ['Git', 'Docker', 'AWS', 'GCP']
+	};
 </script>
 
 <svelte:head>
-	<title>Lebenslauf - Jan Burzinski | B.Sc. Informatik Student TU Berlin</title>
-	<meta
-		name="description"
-		content="Lebenslauf von Jan Burzinski - Informatik Student an der TU Berlin mit Erfahrung in Go, Java, Python, JavaScript und modernen Webtechnologien."
-	/>
+	<title>Resume - Jan Burzinski</title>
 </svelte:head>
 
-<div class="container">
-	<div class="introduction-section" in:fly={{ y: 40, duration: 600 }}>
-		<h1>Jan Burzinski</h1>
-		<a href="https://github.com/janburzinski" class="introduction-github-link" target="_blank"
-			>github.com/janburzinski</a
-		>
-		<p>
-			Ein kreativer Informatik-Student mit Leidenschaft für Softwareentwicklung, Problemlösung und
-			Technologien.
-		</p>
+<section class="resume-container">
+	<h1>Resume</h1>
+
+	<div class="section">
+		<h2>Experience</h2>
+		{#each experience as job}
+			<div class="entry">
+				<div class="entry-header">
+					<span class="entry-title">{job.company}</span>
+					<span class="entry-date">{job.period}</span>
+				</div>
+				<p class="entry-role">{job.role}</p>
+				<p class="entry-desc">{job.description}</p>
+			</div>
+		{/each}
 	</div>
 
-	<div class="skills-section" in:fly={{ y: 40, duration: 600, delay: 100 }}>
-		<h2>Erfahrung</h2>
+	<div class="section">
+		<h2>Education</h2>
+		{#each education as edu}
+			<div class="entry">
+				<div class="entry-header">
+					<span class="entry-title">{edu.institution}</span>
+					<span class="entry-date">{edu.period}</span>
+				</div>
+				<p class="entry-role">{edu.degree}</p>
+			</div>
+		{/each}
+	</div>
+
+	<div class="section">
+		<h2>Skills</h2>
 		<div class="skills-grid">
-			{#each Object.entries(skills) as [category, items] (category)}
-				<div class="skills-category">
-					<h3 style="letter-spacing:0.7px;">{category}</h3>
-					<ul>
-						{#each items as item, index (typeof item === 'object' ? item.name : `${category}-${index}`)}
-							{#if category === 'Datenbanken'}
-								<li class="application-item">
-									<button
-										class="application-button"
-										on:click={() => toggleApplication(typeof item === 'object' ? item.name : item)}
-									>
-										{typeof item === 'object' ? item.name : item}
-										<span class="dropdown-icon">
-											{openApplication === (typeof item === 'object' ? item.name : item)
-												? '▲'
-												: '▼'}
-										</span>
-									</button>
-									{#if typeof item === 'object' && openApplication === item.name}
-										<ul class="specifics-list">
-											{#each item.specifics as specific, idx (`${item.name}-specific-${idx}`)}
-												<li>{specific}</li>
-											{/each}
-										</ul>
-									{/if}
-								</li>
-							{:else}
-								<li>{item}</li>
-							{/if}
-						{/each}
-					</ul>
+			{#each Object.entries(skills) as [category, list]}
+				<div class="skill-category">
+					<h3>{category}</h3>
+					<p>{list.join(', ')}</p>
 				</div>
 			{/each}
 		</div>
 	</div>
-
-	<div class="education-section" in:fly={{ y: 40, duration: 600, delay: 200 }}>
-		<h2>Schule</h2>
-		{#each education as edu (edu.institution)}
-			<div class="education-item">
-				<div class="education-header">
-					<div class="institution-with-icon">
-						{#if edu.icon}
-							<img src={edu.icon} alt={edu.institution} class="institution-icon" />
-						{/if}
-						<h3>{edu.institution}</h3>
-					</div>
-					<span>{edu.period}</span>
-				</div>
-				<p>{edu.degree}</p>
-			</div>
-		{/each}
-	</div>
-
-	<!-- Projekte Section -->
-	<div class="projekte-section" in:fly={{ y: 40, duration: 600, delay: 300 }}>
-		<h2>Projekte</h2>
-		{#each projekte as projekt, i (projekt.name)}
-			<div class="projekt-item" in:fly={{ y: 30, duration: 500, delay: 350 + i * 100 }}>
-				<div class="projekt-header">
-					<div class="project-with-icon">
-						{#if projekt.icon}
-							<img src={projekt.icon} alt={projekt.name} class="project-icon" />
-						{/if}
-						<h3>{projekt.name}</h3>
-					</div>
-					{#if projekt.link}
-						<a href={projekt.link} target="_blank" rel="noopener noreferrer">🔗</a>
-					{/if}
-				</div>
-				<p>{projekt.description}</p>
-				<p><strong>Rolle:</strong> {projekt.role}</p>
-				{#if projekt.technologies}
-					<p><strong>Technologien:</strong> {projekt.technologies.join(', ')}</p>
-				{/if}
-				{#if projekt.timeframe}
-					<p><strong>Zeitraum:</strong> {projekt.timeframe}</p>
-				{/if}
-			</div>
-		{/each}
-	</div>
-</div>
+</section>
 
 <style>
-	:root {
-		--bottom-border-thickness: 1px solid #6e6e6e;
-		--h2-font-size: 1.3rem;
-		--h3-font-size: 1rem;
-		--h1-letter-spacing: 2.5px;
-	}
-
-	.introduction-section {
-		margin-top: -18vh;
+	h1 {
+		font-size: 2rem;
+		font-weight: 700;
 		margin-bottom: 3rem;
+		letter-spacing: -0.03em;
 	}
 
-	.introduction-section h1 {
-		font-size: 2.8rem;
-		letter-spacing: 2px; /* letter spacing is different here then anywhere else because leck mein ars.. */
-		font-weight: bold;
-		margin-bottom: 0.5rem;
+	.section {
+		margin-bottom: 4rem;
 	}
 
-	.introduction-section a {
-		color: #fff;
-		text-decoration: none;
-		font-size: 1.3rem;
-	}
-
-	.introduction-section a:hover {
-		text-decoration: underline;
-	}
-
-	.introduction-section p {
-		margin-top: 1rem;
-		font-size: 1.2rem;
-		color: #ccc;
-		line-height: 1.6;
-	}
-
-	.container {
-		max-width: 1000px;
-		margin: 0 auto;
-		padding: 2rem;
-	}
-
-	.skills-section {
-		margin-bottom: 3rem;
-	}
-
-	.skills-section h2 {
-		letter-spacing: var(--h1-letter-spacing);
-		font-size: var(--h2-font-size);
-		font-weight: bold;
+	h2 {
+		font-size: 0.9rem;
+		font-weight: 600;
 		text-transform: uppercase;
-		margin-bottom: 1.5rem;
-		border-bottom: var(--bottom-border-thickness);
+		letter-spacing: 0.05em;
+		color: #888;
+		border-bottom: 1px solid #222;
 		padding-bottom: 0.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.entry {
+		margin-bottom: 2rem;
+	}
+
+	.entry-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+	}
+
+	.entry-title {
+		font-weight: 500;
+		color: #fff;
+	}
+
+	.entry-date {
+		font-size: 0.85rem;
+		color: #666;
+	}
+
+	.entry-role {
+		margin: 0.25rem 0 0.5rem 0;
+		font-size: 0.95rem;
+		color: #ccc;
+	}
+
+	.entry-desc {
+		margin: 0;
+		font-size: 0.9rem;
+		color: #888;
+		line-height: 1.5;
 	}
 
 	.skills-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 		gap: 2rem;
 	}
 
-	.skills-category h3 {
-		font-size: var(--h3-font-size);
-		font-weight: bold;
-		margin-bottom: 0.5rem;
-	}
-
-	.skills-category ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-
-	.skills-category li {
-		margin-bottom: 0.5rem;
-		font-size: 1rem;
-		color: #c4c4c4;
-	}
-
-	.application-item {
-		margin-bottom: 0.5rem;
-	}
-
-	.application-button {
-		background: none;
-		border: none;
-		padding: 0;
-		margin: 0;
-		cursor: pointer;
-		color: #c4c4c4;
-		font-size: 1rem;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		width: 100%;
-		text-align: left;
-	}
-
-	.application-button:hover {
-		color: #fff;
-	}
-
-	.dropdown-icon {
-		margin-left: 5px;
-	}
-
-	.specifics-list {
-		list-style: disc;
-		padding-left: 20px;
-		margin-top: 0.5rem;
-		color: #a0a0a0;
-	}
-
-	.specifics-list li {
+	h3 {
 		font-size: 0.9rem;
+		font-weight: 600;
+		margin: 0 0 0.5rem 0;
+		color: #eee;
 	}
 
-	.education-section {
-		margin-bottom: 3rem;
-	}
-
-	.education-section h2 {
-		font-size: var(--h2-font-size);
-		font-weight: bold;
-		text-transform: uppercase;
-		margin-bottom: 1.5rem;
-		border-bottom: var(--bottom-border-thickness);
-		letter-spacing: var(--h1-letter-spacing);
-		padding-bottom: 0.5rem;
-	}
-
-	.education-section .education-item:not(:last-child) {
-		margin-bottom: 2rem;
-		padding-bottom: 1.5rem;
-		border-bottom: var(--bottom-border-thickness);
-	}
-
-	.education-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: baseline;
-		margin-bottom: 0.5rem;
-	}
-
-	.education-header h3 {
-		font-size: var(--h3-font-size);
-		font-weight: bold;
-	}
-
-	.education-header span {
-		font-size: 1rem;
+	.skill-category p {
+		margin: 0;
+		font-size: 0.9rem;
 		color: #888;
-	}
-
-	.projekte-section {
-		margin-bottom: 3rem;
-	}
-
-	.projekte-section h2 {
-		font-size: var(--h2-font-size);
-		font-weight: bold;
-		text-transform: uppercase;
-		margin-bottom: 1.5rem;
-		border-bottom: var(--bottom-border-thickness);
-		letter-spacing: var(--h1-letter-spacing);
-		padding-bottom: 0.5rem;
-	}
-
-	.projekt-item:not(:last-child) {
-		margin-bottom: 2rem;
-		padding-bottom: 1.5rem;
-		border-bottom: var(--bottom-border-thickness);
-	}
-
-	.projekt-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: baseline;
-		margin-bottom: 0.5rem;
-	}
-
-	.projekt-header h3 {
-		font-size: var(--h3-font-size);
-		font-weight: bold;
-	}
-
-	.projekt-header a {
-		font-size: 1.1rem;
-		color: #fff;
-		text-decoration: none;
-		margin-left: 0.5rem;
-	}
-
-	.projekt-header a:hover {
-		text-decoration: underline;
-	}
-
-	.projekt-item p {
-		font-size: 1rem;
-		color: #c4c4c4;
-		margin: 0.2rem 0;
-	}
-
-	/* Icon Styles */
-	.institution-with-icon,
-	.project-with-icon {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.institution-icon,
-	.project-icon {
-		width: 32px;
-		height: 32px;
-		flex-shrink: 0;
-		border-radius: 3px;
-		object-fit: contain;
-	}
-
-	@media (max-width: 600px) {
-		.container {
-			padding: 1rem;
-		}
-
-		.introduction-section {
-			margin-top: -8vh;
-			margin-bottom: 2rem;
-		}
-
-		.introduction-section h1 {
-			font-size: 2rem;
-			letter-spacing: 1px;
-		}
-
-		.introduction-section a {
-			font-size: 1rem;
-		}
-
-		.introduction-section p {
-			font-size: 1rem;
-		}
-
-		.skills-section h2,
-		.education-section h2,
-		.projekte-section h2 {
-			font-size: 1.05rem;
-			padding-bottom: 0.3rem;
-		}
-
-		.skills-grid {
-			gap: 1rem;
-		}
-
-		.skills-category h3 {
-			font-size: 0.95rem;
-		}
-
-		.skills-category li,
-		.projekt-item p {
-			font-size: 0.95rem;
-		}
-
-		.education-header,
-		.projekt-header {
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 0.2rem;
-		}
-
-		.institution-icon,
-		.project-icon {
-			width: 28px;
-			height: 28px;
-			object-fit: contain;
-		}
-
-		.education-header h3,
-		.projekt-header h3 {
-			font-size: 0.95rem;
-		}
-
-		.education-header span {
-			font-size: 0.95rem;
-		}
-
-		.projekt-header a {
-			font-size: 1rem;
-		}
-
-		.projekt-item:not(:last-child),
-		.education-section .education-item:not(:last-child) {
-			margin-bottom: 1rem;
-			padding-bottom: 1rem;
-		}
+		line-height: 1.4;
 	}
 </style>
