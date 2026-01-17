@@ -10,12 +10,8 @@
 
 	export let data;
 
-	$: title = data.title
-		? `${data.title} - Jan Burzinski`
-		: 'Jan Burzinski - Informatik Student & Entwickler';
-	$: description =
-		data.description ||
-		'B.Sc. Informatik Student an der TU Berlin. Spezialisiert auf Web- und Softwareentwicklung.';
+	$: title = data.title ? `${data.title} - Jan Burzinski` : 'Jan Burzinski';
+	$: description = data.description || 'B.Sc. Informatik Student an der TU Berlin.';
 </script>
 
 <svelte:head>
@@ -23,44 +19,43 @@
 	<meta name="description" content={description} />
 	<style>
 		:root {
-			font-family: 'Rubik', 'Inter', sans-serif;
+			font-family:
+				'Inter',
+				-apple-system,
+				BlinkMacSystemFont,
+				'Segoe UI',
+				Roboto,
+				sans-serif;
 			color: #fff;
-			background-color: #121212;
+			background-color: #000;
+			-webkit-font-smoothing: antialiased;
+			scroll-behavior: auto;
+		}
+		body {
+			margin: 0;
+			padding: 0;
 		}
 	</style>
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link
-		href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+		href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
 		rel="stylesheet"
 	/>
-	<script
-		src="https://cdn.databuddy.cc/databuddy.js"
-		data-client-id="zRRQcV1-4tCaDAE_xzhOk"
-		data-track-hash-changes="true"
-		data-track-attributes="true"
-		data-track-outgoing-links="true"
-		data-track-interactions="true"
-		data-track-engagement="true"
-		data-track-scroll-depth="true"
-		data-track-exit-intent="true"
-		data-track-bounce-rate="true"
-		data-track-web-vitals="true"
-		data-track-errors="true"
-		data-enable-batching="true"
-		crossOrigin="anonymous"
-		async
-	></script>
 </svelte:head>
-
-<svelte:body />
 
 <Navbar />
 
-<BackgroundEffect />
-
-<Sidebar />
-
-<slot />
+<main class="content">
+	<slot />
+</main>
 
 <Footer />
+
+<style>
+	.content {
+		max-width: 700px;
+		margin: 0 auto;
+		padding: 2rem 1rem;
+	}
+</style>
