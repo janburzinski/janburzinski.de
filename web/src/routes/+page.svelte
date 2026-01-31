@@ -33,6 +33,24 @@
 </section>
 
 <section class="section">
+	<h2 class="section-title">Projekte</h2>
+	<div class="project">
+		<div class="project-header">
+			<img src="/afora-logo.png" alt="afora" class="project-logo" />
+			<div class="project-info">
+				<div class="project-title-row">
+					<a href="https://afora.app" target="_blank" class="entry-title">afora</a>
+					<span class="entry-date">2025</span>
+				</div>
+				<p class="project-description">
+					AI-Powered Mood Journal & Mental Health Tracker für iOS. Ein minimalistischer Tracker mit KI-gestützten Erkenntnissen, die deine Muster lernen und verstehen.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section">
 	<h2 class="section-title">Bildung</h2>
 	<div class="entry">
 		<div class="entry-header">
@@ -129,6 +147,45 @@
 		font-family: 'JetBrains Mono', monospace;
 	}
 
+	.project {
+		margin-bottom: 1.5rem;
+	}
+
+	.project-header {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+
+	.project-logo {
+		width: 36px;
+		height: 36px;
+		border-radius: 8px;
+		object-fit: cover;
+		flex-shrink: 0;
+	}
+
+	.project-info {
+		flex: 1;
+	}
+
+	.project-title-row {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+	}
+
+	.project-description {
+		margin: 0.5rem 0 0 0;
+		font-size: 0.9rem;
+		color: #888;
+		line-height: 1.5;
+	}
+
 	@media (max-width: 480px) {
+		.project-header {
+			flex-direction: column;
+			align-items: flex-start;
+		}
 	}
 </style>
