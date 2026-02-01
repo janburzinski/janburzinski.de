@@ -33,7 +33,7 @@
 			gerne per E-Mail.
 		</p>
 
-		<div class="meta">Letztes Update: 28.06.2025</div>
+		<div class="meta">Letztes Update: 01.02.2026</div>
 	</div>
 </section>
 

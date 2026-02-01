@@ -1,6 +1,3 @@
-<script lang="ts">
-</script>
-
 <footer class="footer">
 	<div class="container">
 		<p>&copy; 2026 Jan Burzinski</p>

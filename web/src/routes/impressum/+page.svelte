@@ -16,7 +16,7 @@
 		</p>
 
 		<h2>Kontakt</h2>
-		<p>E-Mail: j_burzinski@proton.me</p>
+		<p>E-Mail: jan@burzinski.de</p>
 
 		<h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
 		<p>
@@ -25,7 +25,7 @@
 			14197 Berlin
 		</p>
 
-		<div class="meta">Letztes Update: 22.07.2025</div>
+		<div class="meta">Letztes Update: 01.02.2026</div>
 	</div>
 </section>
 

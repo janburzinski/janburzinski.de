@@ -1,6 +1,3 @@
-<script lang="ts">
-</script>
-
 <svelte:head>
 	<title>jan burzinski</title>
 </svelte:head>
@@ -43,7 +40,8 @@
 					<span class="entry-date">2025</span>
 				</div>
 				<p class="project-description">
-					AI-Powered Mood Journal & Mental Health Tracker für iOS. Ein minimalistischer Tracker mit KI-gestützten Erkenntnissen, die deine Muster lernen und verstehen.
+					AI-Powered Mood Journal & Mental Health Tracker für iOS. Ein minimalistischer Tracker mit
+					KI-gestützten Erkenntnissen, die deine Muster lernen und verstehen.
 				</p>
 			</div>
 		</div>
@@ -141,10 +139,6 @@
 		margin: 0.25rem 0 0 0;
 		font-size: 0.9rem;
 		color: #888;
-	}
-
-	.mono {
-		font-family: 'JetBrains Mono', monospace;
 	}
 
 	.project {

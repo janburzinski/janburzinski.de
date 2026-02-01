@@ -6,7 +6,6 @@
 	<div class="container">
 		<a href="/" class="logo" class:active={$page.url.pathname === '/'}> jan burzinski </a>
 		<div class="links">
-			<a href="/resume" class:active={$page.url.pathname === '/resume'}> resume </a>
 			<a href="https://github.com/janburzinski" target="_blank" rel="noopener noreferrer">
 				github
 			</a>
@@ -18,9 +17,9 @@
 	.navbar {
 		position: sticky;
 		top: 0;
-		background: rgba(0, 0, 0, 0.8);
+		background: rgba(13, 13, 13, 0.8);
 		backdrop-filter: blur(10px);
-		border-bottom: 1px solid #222;
+		border-bottom: 1px solid #1a1a1a;
 		z-index: 100;
 	}
 
@@ -49,13 +48,13 @@
 
 	.links a {
 		text-decoration: none;
-		color: #888;
+		color: #666;
 		font-size: 0.9rem;
 	}
 
 	.links a:hover,
 	.links a.active {
-		color: #fff;
+		color: #e0e0e0;
 	}
 
 	@media (max-width: 480px) {

@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { dev } from '$app/environment';
-	import BackgroundEffect from '$lib/components/BackgroundEffect.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
-	import Sidebar from '$lib/components/Sidebar.svelte';
 	import { inject } from '@vercel/analytics';
 
 	inject({ mode: dev ? 'development' : 'production' });
@@ -27,7 +25,7 @@
 				Roboto,
 				sans-serif;
 			color: #fff;
-			background-color: #000;
+			background-color: #0d0d0d;
 			-webkit-font-smoothing: antialiased;
 			scroll-behavior: auto;
 		}

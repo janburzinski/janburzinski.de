@@ -38,7 +38,6 @@
 	},
 	"dependencies": {
 		"@sveltejs/adapter-vercel": "^5.10.3",
-		"@vercel/analytics": "^1.6.1",
-		"mdsvex": "^0.12.6"
+		"@vercel/analytics": "^1.6.1"
 	}
 }
