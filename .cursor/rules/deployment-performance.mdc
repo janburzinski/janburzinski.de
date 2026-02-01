@@ -68,28 +68,6 @@ import { inject } from '@vercel/analytics';
 inject({ mode: dev ? 'development' : 'production' });
 ```
 
-### DataBuddy Analytics
-```html
-<!-- In +layout.svelte -->
-<script
-	src="https://cdn.databuddy.cc/databuddy.js"
-	data-client-id="zRRQcV1-4tCaDAE_xzhOk"
-	data-track-hash-changes="true"
-	data-track-attributes="true"
-	data-track-outgoing-links="true"
-	data-track-interactions="true"
-	data-track-engagement="true"
-	data-track-scroll-depth="true"
-	data-track-exit-intent="true"
-	data-track-bounce-rate="true"
-	data-track-web-vitals="true"
-	data-track-errors="true"
-	data-enable-batching="true"
-	crossOrigin="anonymous"
-	async
-></script>
-```
-
 ## SEO Optimization
 
 ### Meta Tags
@@ -136,7 +114,6 @@ inject({ mode: dev ? 'development' : 'production' });
 
 ### Production Monitoring
 - Vercel Analytics for performance metrics
-- DataBuddy for user behavior analytics
 - Monitor error rates and performance
 - Set up alerts for critical issues
 

@@ -13,7 +13,7 @@ This is a **SvelteKit** project for janburzinski.de - a personal portfolio websi
 - **Styling**: CSS with modern features (CSS Grid, Flexbox, animations)
 - **Build Tool**: Vite
 - **Deployment**: Vercel with Node.js 22.x runtime
-- **Analytics**: Vercel Analytics + DataBuddy
+- **Analytics**: Vercel Analytics
 - **Package Manager**: pnpm
 - **Linting**: ESLint + Prettier
 
