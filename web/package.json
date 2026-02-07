@@ -37,6 +37,8 @@
 		]
 	},
 	"dependencies": {
+		"@fontsource/geist-mono": "^5.2.7",
+		"@fontsource/geist-sans": "^5.2.5",
 		"@sveltejs/adapter-vercel": "^5.10.3",
 		"@vercel/analytics": "^1.6.1"
 	}

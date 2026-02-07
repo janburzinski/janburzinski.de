@@ -32,6 +32,8 @@
 	}
 
 	.links a {
+		font-family: var(--font-geist-mono);
+		font-size: 0.8rem;
 		color: #666;
 		text-decoration: none;
 	}

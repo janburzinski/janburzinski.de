@@ -34,11 +34,12 @@
 	}
 
 	.logo {
-		font-weight: 600;
+		font-family: var(--font-geist-pixel-square);
+		font-weight: 400;
 		text-decoration: none;
 		color: #fff;
 		font-size: 0.95rem;
-		letter-spacing: -0.01em;
+		letter-spacing: 0.02em;
 	}
 
 	.links {
@@ -47,9 +48,10 @@
 	}
 
 	.links a {
+		font-family: var(--font-geist-mono);
 		text-decoration: none;
 		color: #666;
-		font-size: 0.9rem;
+		font-size: 0.85rem;
 	}
 
 	.links a:hover,

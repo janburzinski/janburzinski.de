@@ -31,17 +31,19 @@
 
 <style>
 	h1 {
-		font-size: 2rem;
-		font-weight: 700;
+		font-family: var(--font-geist-pixel-square);
+		font-size: 1.75rem;
+		font-weight: 400;
 		margin-bottom: 3rem;
-		letter-spacing: -0.03em;
+		letter-spacing: 0.02em;
 	}
 
 	h2 {
-		font-size: 0.9rem;
-		font-weight: 600;
+		font-family: var(--font-geist-pixel-square);
+		font-size: 0.8rem;
+		font-weight: 400;
 		text-transform: uppercase;
-		letter-spacing: 0.05em;
+		letter-spacing: 0.08em;
 		color: #888;
 		margin-top: 2.5rem;
 		margin-bottom: 1rem;
@@ -59,8 +61,9 @@
 	}
 
 	.meta {
+		font-family: var(--font-geist-mono);
 		margin-top: 4rem;
-		font-size: 0.85rem;
+		font-size: 0.8rem;
 		color: #666;
 	}
 </style>

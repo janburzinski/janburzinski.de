@@ -83,9 +83,10 @@
 	}
 
 	.subtitle {
+		font-family: var(--font-geist-mono);
 		color: #888;
 		margin: 0.25rem 0 0 0;
-		font-size: 0.95rem;
+		font-size: 0.9rem;
 	}
 
 	.bio {
@@ -99,10 +100,11 @@
 	}
 
 	.section-title {
-		font-size: 0.9rem;
-		font-weight: 600;
+		font-family: var(--font-geist-pixel-square);
+		font-size: 0.85rem;
+		font-weight: 400;
 		text-transform: uppercase;
-		letter-spacing: 0.05em;
+		letter-spacing: 0.08em;
 		color: #888;
 		border-bottom: 1px solid #222;
 		padding-bottom: 0.5rem;
@@ -120,9 +122,11 @@
 	}
 
 	.entry-title {
-		font-weight: 500;
+		font-family: var(--font-geist-pixel-square);
+		font-weight: 400;
 		color: #fff;
 		text-decoration: none;
+		letter-spacing: 0.02em;
 	}
 
 	.entry-title:hover {
@@ -130,14 +134,16 @@
 	}
 
 	.entry-date {
-		font-size: 0.85rem;
+		font-family: var(--font-geist-mono);
+		font-size: 0.8rem;
 		color: #666;
 		font-variant-numeric: tabular-nums;
 	}
 
 	.entry-role {
+		font-family: var(--font-geist-mono);
 		margin: 0.25rem 0 0 0;
-		font-size: 0.9rem;
+		font-size: 0.85rem;
 		color: #888;
 	}
 
@@ -170,8 +176,9 @@
 	}
 
 	.project-description {
+		font-family: var(--font-geist-mono);
 		margin: 0.5rem 0 0 0;
-		font-size: 0.9rem;
+		font-size: 0.85rem;
 		color: #888;
 		line-height: 1.5;
 	}
