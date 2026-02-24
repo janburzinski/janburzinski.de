@@ -52,7 +52,7 @@
 			<div class="project-info">
 				<div class="project-title-row">
 					<a href="https://samtly.app" target="_blank" class="entry-title">samtly</a>
-					<span class="entry-date">2025</span>
+					<span class="entry-date">2026</span>
 				</div>
 				<p class="project-description">
 					KI-Hautpflege-App mit personalisierter Hautanalyse. Tracke Schlaf, Stress und Ernährung, um
@@ -67,7 +67,7 @@
 			<div class="project-info">
 				<div class="project-title-row">
 					<a href="https://afora.app" target="_blank" class="entry-title">afora</a>
-					<span class="entry-date">2026</span>
+					<span class="entry-date">2025</span>
 				</div>
 				<p class="project-description">
 					AI-Powered Mood Journal & Mental Health Tracker für iOS. Ein minimalistischer Tracker mit
@@ -206,8 +206,8 @@
 	}
 
 	.entry-logo {
-		width: 44px;
-		height: 44px;
+		width: 28px;
+		height: 28px;
 		border-radius: 8px;
 		object-fit: cover;
 		flex-shrink: 0;
@@ -224,8 +224,8 @@
 	}
 
 	.project-logo {
-		width: 44px;
-		height: 44px;
+		width: 28px;
+		height: 28px;
 		border-radius: 8px;
 		object-fit: cover;
 		flex-shrink: 0;
