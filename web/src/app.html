@@ -92,6 +92,23 @@
 	</head>
 
 	<body data-sveltekit-preload-data="hover">
+		<script>
+			(function () {
+				const savedTheme = localStorage.getItem('theme');
+				if (savedTheme === 'light') {
+					document.documentElement.classList.add('light');
+				} else if (savedTheme === 'dark') {
+					document.documentElement.classList.add('dark');
+				} else {
+					// system default
+					if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+						document.documentElement.classList.add('light');
+					} else {
+						document.documentElement.classList.add('dark');
+					}
+				}
+			})();
+		</script>
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>

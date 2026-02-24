@@ -1,15 +1,11 @@
 <script lang="ts">
-	import { dev } from '$app/environment';
 	import Footer from '$lib/components/Footer.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
-	import { inject } from '@vercel/analytics';
 	import '@fontsource/geist-sans/400.css';
 	import '@fontsource/geist-sans/500.css';
 	import '@fontsource/geist-sans/600.css';
 	import '@fontsource/geist-mono/400.css';
 	import '@fontsource/geist-mono/500.css';
-
-	inject({ mode: dev ? 'development' : 'production' });
 
 	export let data;
 
@@ -58,25 +54,71 @@
 		}
 
 		:root {
-			--font-geist-sans: 'Geist Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			--font-geist-sans:
+				'Geist Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 			--font-geist-mono: 'Geist Mono', 'SF Mono', Monaco, 'Cascadia Code', monospace;
 			--font-geist-pixel-square: 'Geist Pixel Square', monospace;
 			--font-geist-pixel-grid: 'Geist Pixel Grid', monospace;
 			--font-geist-pixel-circle: 'Geist Pixel Circle', monospace;
 			--font-geist-pixel-triangle: 'Geist Pixel Triangle', monospace;
 			--font-geist-pixel-line: 'Geist Pixel Line', monospace;
-			
+
 			font-family: var(--font-geist-sans);
-			color: #fff;
-			background-color: #0d0d0d;
 			-webkit-font-smoothing: antialiased;
 			scroll-behavior: auto;
+
+			/* Smooth theme transition */
+			transition:
+				color 0.3s ease,
+				background-color 0.3s ease;
+		}
+
+		/* Dark theme (default) */
+		:root.dark,
+		:root:not(.light) {
+			color: #fff;
+			background-color: #0d0d0d;
+
+			/* Theme variables */
+			--text-primary: #fff;
+			--text-secondary: #666;
+			--text-muted: #444;
+			--border-color: #1a1a1a;
+			--border-hover: #333;
+			--hover-bg: rgba(255, 255, 255, 0.05);
+			--active-bg: rgba(255, 255, 255, 0.1);
+			--dropdown-bg: rgba(13, 13, 13, 0.95);
+			--card-bg: #111;
+			--link-color: #666;
+			--link-hover: #e0e0e0;
+		}
+
+		/* Light theme */
+		:root.light {
+			color: #0d0d0d;
+			background-color: #fafafa;
+
+			/* Theme variables */
+			--text-primary: #0d0d0d;
+			--text-secondary: #666;
+			--text-muted: #999;
+			--border-color: #e0e0e0;
+			--border-hover: #ccc;
+			--hover-bg: rgba(0, 0, 0, 0.05);
+			--active-bg: rgba(0, 0, 0, 0.1);
+			--dropdown-bg: rgba(255, 255, 255, 0.95);
+			--card-bg: #fff;
+			--link-color: #666;
+			--link-hover: #333;
 		}
 		body {
 			margin: 0;
 			padding: 0;
 		}
-		code, pre, kbd, samp {
+		code,
+		pre,
+		kbd,
+		samp {
 			font-family: var(--font-geist-mono);
 		}
 	</style>

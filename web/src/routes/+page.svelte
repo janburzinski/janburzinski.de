@@ -33,11 +33,41 @@
 	<h2 class="section-title">Projekte</h2>
 	<div class="project">
 		<div class="project-header">
+			<img src="/crisprlogo.svg" alt="CrisprClear" class="project-logo project-logo--crisp" />
+			<div class="project-info">
+				<div class="project-title-row">
+					<a href="https://crisprclear.com" target="_blank" class="entry-title">CrisprClear</a>
+					<span class="entry-date">2026</span>
+				</div>
+				<p class="project-description">
+					KI-gestützte Sprachtranskription für Desktop. Diktiere statt zu tippen, offline, in über
+					100 Sprachen, ohne dass deine Daten dein Gerät verlassen.
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="project">
+		<div class="project-header">
+			<img src="/logosamtly.svg" alt="samtly" class="project-logo" />
+			<div class="project-info">
+				<div class="project-title-row">
+					<a href="https://samtly.app" target="_blank" class="entry-title">samtly</a>
+					<span class="entry-date">2025</span>
+				</div>
+				<p class="project-description">
+					KI-Hautpflege-App mit personalisierter Hautanalyse. Tracke Schlaf, Stress und Ernährung, um
+					Trigger für Unreinheiten zu erkennen und individuelle Routinen zu erhalten.
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="project">
+		<div class="project-header">
 			<img src="/afora-logo.png" alt="afora" class="project-logo" />
 			<div class="project-info">
 				<div class="project-title-row">
 					<a href="https://afora.app" target="_blank" class="entry-title">afora</a>
-					<span class="entry-date">2025</span>
+					<span class="entry-date">2026</span>
 				</div>
 				<p class="project-description">
 					AI-Powered Mood Journal & Mental Health Tracker für iOS. Ein minimalistischer Tracker mit
@@ -51,18 +81,28 @@
 <section class="section">
 	<h2 class="section-title">Bildung</h2>
 	<div class="entry">
-		<div class="entry-header">
-			<span class="entry-title">Technische Universität Berlin</span>
-			<span class="entry-date">2024 – Heute</span>
+		<div class="entry-with-logo">
+			<img src="/tu_berlin_logo.png" alt="TU Berlin" class="entry-logo" />
+			<div>
+				<div class="entry-header">
+					<span class="entry-title">Technische Universität Berlin</span>
+					<span class="entry-date">2024 – Heute</span>
+				</div>
+				<p class="entry-role">B.Sc. Informatik</p>
+			</div>
 		</div>
-		<p class="entry-role">B.Sc. Informatik</p>
 	</div>
 	<div class="entry">
-		<div class="entry-header">
-			<span class="entry-title">Private Kant Schulen</span>
-			<span class="entry-date">2010 – 2024</span>
+		<div class="entry-with-logo">
+			<img src="/private_kant_schule.png" alt="Private Kant Schulen" class="entry-logo" />
+			<div>
+				<div class="entry-header">
+					<span class="entry-title">Private Kant Schulen</span>
+					<span class="entry-date">2010 – 2024</span>
+				</div>
+				<p class="entry-role">Abitur</p>
+			</div>
 		</div>
-		<p class="entry-role">Abitur</p>
 	</div>
 </section>
 
@@ -84,15 +124,17 @@
 
 	.subtitle {
 		font-family: var(--font-geist-mono);
-		color: #888;
+		color: var(--text-secondary);
 		margin: 0.25rem 0 0 0;
 		font-size: 0.9rem;
+		transition: color 0.3s ease;
 	}
 
 	.bio {
 		font-size: 1rem;
 		line-height: 1.6;
-		color: #ccc;
+		color: var(--text-secondary);
+		transition: color 0.3s ease;
 	}
 
 	.section {
@@ -105,10 +147,13 @@
 		font-weight: 400;
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
-		color: #888;
-		border-bottom: 1px solid #222;
+		color: var(--text-secondary);
+		border-bottom: 1px solid var(--border-color);
 		padding-bottom: 0.5rem;
 		margin-bottom: 1.5rem;
+		transition:
+			color 0.3s ease,
+			border-color 0.3s ease;
 	}
 
 	.entry {
@@ -124,9 +169,10 @@
 	.entry-title {
 		font-family: var(--font-geist-pixel-square);
 		font-weight: 400;
-		color: #fff;
+		color: var(--text-primary);
 		text-decoration: none;
 		letter-spacing: 0.02em;
+		transition: color 0.3s ease;
 	}
 
 	.entry-title:hover {
@@ -136,15 +182,35 @@
 	.entry-date {
 		font-family: var(--font-geist-mono);
 		font-size: 0.8rem;
-		color: #666;
+		color: var(--text-secondary);
 		font-variant-numeric: tabular-nums;
+		transition: color 0.3s ease;
 	}
 
 	.entry-role {
 		font-family: var(--font-geist-mono);
 		margin: 0.25rem 0 0 0;
 		font-size: 0.85rem;
-		color: #888;
+		color: var(--text-secondary);
+		transition: color 0.3s ease;
+	}
+
+	.entry-with-logo {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+
+	.entry-with-logo > div {
+		flex: 1;
+	}
+
+	.entry-logo {
+		width: 44px;
+		height: 44px;
+		border-radius: 8px;
+		object-fit: cover;
+		flex-shrink: 0;
 	}
 
 	.project {
@@ -158,11 +224,17 @@
 	}
 
 	.project-logo {
-		width: 36px;
-		height: 36px;
+		width: 44px;
+		height: 44px;
 		border-radius: 8px;
 		object-fit: cover;
 		flex-shrink: 0;
+	}
+
+	.project-logo--crisp {
+		background: white;
+		padding: 4px;
+		object-fit: contain;
 	}
 
 	.project-info {
@@ -179,8 +251,9 @@
 		font-family: var(--font-geist-mono);
 		margin: 0.5rem 0 0 0;
 		font-size: 0.85rem;
-		color: #888;
+		color: var(--text-secondary);
 		line-height: 1.5;
+		transition: color 0.3s ease;
 	}
 
 	@media (max-width: 480px) {

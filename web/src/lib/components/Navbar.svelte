@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import ThemeSwitcher from './ThemeSwitcher.svelte';
 </script>
 
 <nav class="navbar">
@@ -9,6 +10,7 @@
 			<a href="https://github.com/janburzinski" target="_blank" rel="noopener noreferrer">
 				github
 			</a>
+			<ThemeSwitcher />
 		</div>
 	</div>
 </nav>
@@ -17,10 +19,13 @@
 	.navbar {
 		position: sticky;
 		top: 0;
-		background: rgba(13, 13, 13, 0.8);
+		background: var(--dropdown-bg);
 		backdrop-filter: blur(10px);
-		border-bottom: 1px solid #1a1a1a;
+		border-bottom: 1px solid var(--border-color);
 		z-index: 100;
+		transition:
+			background-color 0.3s ease,
+			border-color 0.3s ease;
 	}
 
 	.container {
@@ -37,26 +42,29 @@
 		font-family: var(--font-geist-pixel-square);
 		font-weight: 400;
 		text-decoration: none;
-		color: #fff;
+		color: var(--text-primary);
 		font-size: 0.95rem;
 		letter-spacing: 0.02em;
+		transition: color 0.3s ease;
 	}
 
 	.links {
 		display: flex;
 		gap: 1.5rem;
+		align-items: center;
 	}
 
 	.links a {
 		font-family: var(--font-geist-mono);
 		text-decoration: none;
-		color: #666;
+		color: var(--link-color);
 		font-size: 0.85rem;
+		transition: color 0.2s ease;
 	}
 
 	.links a:hover,
 	.links a.active {
-		color: #e0e0e0;
+		color: var(--link-hover);
 	}
 
 	@media (max-width: 480px) {

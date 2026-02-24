@@ -44,9 +44,10 @@
 		font-weight: 400;
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
-		color: #888;
+		color: var(--text-secondary);
 		margin-top: 2.5rem;
 		margin-bottom: 1rem;
+		transition: color 0.3s ease;
 	}
 
 	h2:first-of-type {
@@ -56,14 +57,16 @@
 	p {
 		font-size: 1rem;
 		line-height: 1.6;
-		color: #ccc;
+		color: var(--text-secondary);
 		margin: 0;
+		transition: color 0.3s ease;
 	}
 
 	.meta {
 		font-family: var(--font-geist-mono);
 		margin-top: 4rem;
 		font-size: 0.8rem;
-		color: #666;
+		color: var(--text-secondary);
+		transition: color 0.3s ease;
 	}
 </style>

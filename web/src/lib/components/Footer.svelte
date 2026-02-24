@@ -10,11 +10,14 @@
 
 <style>
 	.footer {
-		border-top: 1px solid #222;
+		border-top: 1px solid var(--border-color);
 		margin-top: 4rem;
 		padding: 2rem 0;
-		color: #666;
+		color: var(--text-secondary);
 		font-size: 0.85rem;
+		transition:
+			border-color 0.3s ease,
+			color 0.3s ease;
 	}
 
 	.container {
@@ -34,12 +37,13 @@
 	.links a {
 		font-family: var(--font-geist-mono);
 		font-size: 0.8rem;
-		color: #666;
+		color: var(--text-secondary);
 		text-decoration: none;
+		transition: color 0.2s ease;
 	}
 
 	.links a:hover {
-		color: #fff;
+		color: var(--text-primary);
 	}
 
 	@media (max-width: 480px) {
