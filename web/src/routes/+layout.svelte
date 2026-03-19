@@ -1,11 +1,6 @@
 <script lang="ts">
 	import Footer from '$lib/components/Footer.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
-	import '@fontsource/geist-sans/400.css';
-	import '@fontsource/geist-sans/500.css';
-	import '@fontsource/geist-sans/600.css';
-	import '@fontsource/geist-mono/400.css';
-	import '@fontsource/geist-mono/500.css';
 
 	export let data;
 
@@ -17,6 +12,46 @@
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	<style>
+		/* Geist Sans — self-hosted, preloaded in app.html */
+		@font-face {
+			font-family: 'Geist Sans';
+			src: url('/fonts/geist-sans-latin-400-normal.woff2') format('woff2');
+			font-weight: 400;
+			font-style: normal;
+			font-display: swap;
+		}
+		@font-face {
+			font-family: 'Geist Sans';
+			src: url('/fonts/geist-sans-latin-500-normal.woff2') format('woff2');
+			font-weight: 500;
+			font-style: normal;
+			font-display: swap;
+		}
+		@font-face {
+			font-family: 'Geist Sans';
+			src: url('/fonts/geist-sans-latin-600-normal.woff2') format('woff2');
+			font-weight: 600;
+			font-style: normal;
+			font-display: swap;
+		}
+
+		/* Geist Mono — self-hosted, preloaded in app.html */
+		@font-face {
+			font-family: 'Geist Mono';
+			src: url('/fonts/geist-mono-latin-400-normal.woff2') format('woff2');
+			font-weight: 400;
+			font-style: normal;
+			font-display: swap;
+		}
+		@font-face {
+			font-family: 'Geist Mono';
+			src: url('/fonts/geist-mono-latin-500-normal.woff2') format('woff2');
+			font-weight: 500;
+			font-style: normal;
+			font-display: swap;
+		}
+
+		/* Geist Pixel variants */
 		@font-face {
 			font-family: 'Geist Pixel Square';
 			src: url('/fonts/GeistPixel-Square.woff2') format('woff2');
@@ -63,11 +98,18 @@
 			--font-geist-pixel-triangle: 'Geist Pixel Triangle', monospace;
 			--font-geist-pixel-line: 'Geist Pixel Line', monospace;
 
+			/* Custom easing curves */
+			--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+			--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+			--ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+
 			font-family: var(--font-geist-sans);
 			-webkit-font-smoothing: antialiased;
 			scroll-behavior: auto;
+		}
 
-			/* Smooth theme transition */
+		/* Only enable theme transitions after initial paint */
+		:root.theme-ready {
 			transition:
 				color 0.3s ease,
 				background-color 0.3s ease;
@@ -120,6 +162,50 @@
 		kbd,
 		samp {
 			font-family: var(--font-geist-mono);
+		}
+
+		/* Page load stagger animation
+		   fill-mode: both = backwards (applies 'from' before start) + forwards (keeps 'to' after end)
+		   No explicit opacity:0 on the element — prevents flash during hydration */
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(8px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.animate-in {
+			animation: fadeInUp 500ms var(--ease-out) both;
+		}
+
+		.stagger-1 { animation-delay: 0ms; }
+		.stagger-2 { animation-delay: 60ms; }
+		.stagger-3 { animation-delay: 120ms; }
+		.stagger-4 { animation-delay: 180ms; }
+		.stagger-5 { animation-delay: 240ms; }
+		.stagger-6 { animation-delay: 300ms; }
+		.stagger-7 { animation-delay: 360ms; }
+		.stagger-8 { animation-delay: 420ms; }
+
+		/* Reduced motion: keep opacity fade, remove transform */
+		@media (prefers-reduced-motion: reduce) {
+			@keyframes fadeInUp {
+				from { opacity: 0; }
+				to { opacity: 1; }
+			}
+
+			.animate-in {
+				animation-duration: 200ms;
+			}
+
+			.stagger-1, .stagger-2, .stagger-3, .stagger-4,
+			.stagger-5, .stagger-6, .stagger-7, .stagger-8 {
+				animation-delay: 0ms;
+			}
 		}
 	</style>
 </svelte:head>

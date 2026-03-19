@@ -2,7 +2,7 @@
 	<title>jan burzinski</title>
 </svelte:head>
 
-<section class="hero">
+<section class="hero animate-in stagger-1">
 	<div class="header">
 		<h1>Jan Burzinski</h1>
 		<p class="subtitle">B.Sc. Informatik Student @ TU Berlin</p>
@@ -16,7 +16,7 @@
 	</div>
 </section>
 
-<section class="section">
+<section class="section animate-in stagger-2">
 	<h2 class="section-title">Erfahrung</h2>
 	<div class="entry">
 		<div class="entry-header">
@@ -29,14 +29,14 @@
 	</div>
 </section>
 
-<section class="section">
+<section class="section animate-in stagger-3">
 	<h2 class="section-title">Projekte</h2>
-	<div class="project">
+	<div class="project animate-in stagger-4">
 		<div class="project-header">
-			<img src="/crisprlogo.svg" alt="CrisprClear" class="project-logo project-logo--crisp" />
+			<img src="/klarvoice-logo.svg" alt="klarvoice" class="project-logo" />
 			<div class="project-info">
 				<div class="project-title-row">
-					<a href="https://crisprclear.com" target="_blank" class="entry-title">CrisprClear</a>
+					<a href="https://klarvoice.com" target="_blank" class="entry-title">klarvoice</a>
 					<span class="entry-date">2026</span>
 				</div>
 				<p class="project-description">
@@ -46,7 +46,22 @@
 			</div>
 		</div>
 	</div>
-	<div class="project">
+	<div class="project animate-in stagger-5">
+		<div class="project-header">
+			<img src="/datix-logo.svg" alt="Datix" class="project-logo" />
+			<div class="project-info">
+				<div class="project-title-row">
+					<a href="https://usedatix.com" target="_blank" class="entry-title">Datix</a>
+					<span class="entry-date">2026</span>
+				</div>
+				<p class="project-description">
+					Privacy-First Product Analytics. Echtzeit-Dashboards, Funnels, Revenue-Tracking und Web
+					Vitals — ohne Cookies, ohne Consent-Banner, unter 1KB Script.
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="project animate-in stagger-6">
 		<div class="project-header">
 			<img src="/logosamtly.svg" alt="samtly" class="project-logo" />
 			<div class="project-info">
@@ -61,7 +76,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="project">
+	<div class="project animate-in stagger-7">
 		<div class="project-header">
 			<img src="/afora-logo.png" alt="afora" class="project-logo" />
 			<div class="project-info">
@@ -78,7 +93,7 @@
 	</div>
 </section>
 
-<section class="section">
+<section class="section animate-in stagger-8">
 	<h2 class="section-title">Bildung</h2>
 	<div class="entry">
 		<div class="entry-with-logo">
@@ -172,11 +187,40 @@
 		color: var(--text-primary);
 		text-decoration: none;
 		letter-spacing: 0.02em;
-		transition: color 0.3s ease;
+		transition: color 0.2s var(--ease-out);
 	}
 
-	.entry-title:hover {
-		text-decoration: underline;
+	a.entry-title {
+		position: relative;
+	}
+
+	/* Animated underline on hover — gated for pointer devices */
+	a.entry-title::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: -1px;
+		width: 100%;
+		height: 1px;
+		background: currentColor;
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 200ms var(--ease-out);
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		a.entry-title:hover::after {
+			transform: scaleX(1);
+		}
+
+		a.entry-title:hover {
+			color: var(--text-primary);
+		}
+	}
+
+	/* Press feedback on links */
+	a.entry-title:active {
+		opacity: 0.7;
 	}
 
 	.entry-date {
@@ -229,12 +273,6 @@
 		border-radius: 8px;
 		object-fit: cover;
 		flex-shrink: 0;
-	}
-
-	.project-logo--crisp {
-		background: white;
-		padding: 4px;
-		object-fit: contain;
 	}
 
 	.project-info {

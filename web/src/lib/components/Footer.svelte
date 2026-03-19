@@ -39,11 +39,17 @@
 		font-size: 0.8rem;
 		color: var(--text-secondary);
 		text-decoration: none;
-		transition: color 0.2s ease;
+		transition: color 0.2s var(--ease-out);
 	}
 
-	.links a:hover {
-		color: var(--text-primary);
+	@media (hover: hover) and (pointer: fine) {
+		.links a:hover {
+			color: var(--text-primary);
+		}
+	}
+
+	.links a:active {
+		opacity: 0.7;
 	}
 
 	@media (max-width: 480px) {

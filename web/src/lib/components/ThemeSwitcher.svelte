@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { Sun, Moon, Monitor } from 'lucide-svelte';
-	import { slide } from 'svelte/transition';
 
 	type Theme = 'light' | 'dark' | 'system';
 
 	let theme: Theme = 'system';
 	let isOpen = false;
+	let dropdownEl: HTMLDivElement;
 
 	const themes = [
 		{ value: 'light' as const, icon: Sun, label: 'Hell' },
@@ -67,13 +67,18 @@
 	</button>
 
 	{#if isOpen}
-		<div class="theme-dropdown" transition:slide|global={{ duration: 200 }}>
-			{#each themes as t (t.value)}
+		<div
+			class="theme-dropdown"
+			bind:this={dropdownEl}
+			on:click|stopPropagation
+		>
+			{#each themes as t, i (t.value)}
 				<button
 					class="theme-option"
 					class:active={theme === t.value}
 					on:click|stopPropagation={() => setTheme(t.value)}
 					type="button"
+					style="animation-delay: {i * 30}ms"
 				>
 					<svelte:component this={t.icon} size={16} />
 					<span class="option-label">{t.label}</span>
@@ -98,16 +103,25 @@
 		justify-content: center;
 		color: var(--text-secondary);
 		transition:
-			color 0.2s ease,
-			background-color 0.2s ease;
+			color 0.2s var(--ease-out),
+			background-color 0.2s var(--ease-out),
+			transform 160ms var(--ease-out);
 		border-radius: 6px;
 	}
 
-	.theme-button:hover {
-		background: var(--hover-bg);
-		color: var(--text-primary);
+	@media (hover: hover) and (pointer: fine) {
+		.theme-button:hover {
+			background: var(--hover-bg);
+			color: var(--text-primary);
+		}
 	}
 
+	/* Press feedback */
+	.theme-button:active {
+		transform: scale(0.92);
+	}
+
+	/* Dropdown — scale from top-right trigger origin */
 	.theme-dropdown {
 		position: absolute;
 		top: calc(100% + 8px);
@@ -120,8 +134,22 @@
 		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 		backdrop-filter: blur(10px);
 		z-index: 1000;
+		transform-origin: top right;
+		animation: dropdownIn 180ms var(--ease-out) forwards;
 	}
 
+	@keyframes dropdownIn {
+		from {
+			opacity: 0;
+			transform: scale(0.95);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+
+	/* Staggered option entry */
 	.theme-option {
 		display: flex;
 		align-items: center;
@@ -135,15 +163,36 @@
 		color: var(--text-secondary);
 		font-family: var(--font-geist-mono);
 		font-size: 0.85rem;
-		transition:
-			all 0.15s ease,
-			color 0.3s ease;
 		text-align: left;
+		opacity: 0;
+		animation: optionFadeIn 200ms var(--ease-out) forwards;
+		transition:
+			background-color 0.15s var(--ease-out),
+			color 0.15s var(--ease-out),
+			transform 120ms var(--ease-out);
 	}
 
-	.theme-option:hover {
-		background: var(--hover-bg);
-		color: var(--text-primary);
+	@keyframes optionFadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(4px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.theme-option:hover {
+			background: var(--hover-bg);
+			color: var(--text-primary);
+		}
+	}
+
+	/* Press feedback on options */
+	.theme-option:active {
+		transform: scale(0.97);
 	}
 
 	.theme-option.active {
@@ -153,6 +202,27 @@
 
 	.option-label {
 		flex: 1;
+	}
+
+	/* Reduced motion */
+	@media (prefers-reduced-motion: reduce) {
+		.theme-dropdown {
+			animation: none;
+			opacity: 1;
+		}
+
+		.theme-option {
+			animation: none;
+			opacity: 1;
+		}
+
+		.theme-button:active {
+			transform: none;
+		}
+
+		.theme-option:active {
+			transform: none;
+		}
 	}
 
 	@media (max-width: 480px) {

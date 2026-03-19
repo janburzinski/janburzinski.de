@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--12qhfyh--><link rel="icon" href="/logoklarvoice.svg"/><!----><!--1j96wlh--><!----><title>404 — Seite nicht gefunden</title>
+		<link href="./_app/immutable/assets/0.BefJFUbt.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/Footer.C_iPTzE0.css" rel="stylesheet">
+		<!-- Datix Analytics with error suppression for ad blockers -->
+		<script>
+			// Suppress Datix errors when blocked by ad blockers
+			window.__datixSilent = true;
+			window.addEventListener('error', function(e) {
+				if (e.filename && e.filename.includes('usedatix.com')) {
+					e.preventDefault();
+					e.stopPropagation();
+					return false;
+				}
+			}, true);
+		</script>
+		<script defer data-site-id="a4b3a5c4-03ff-4d5c-ac90-84f55e746c7f" data-endpoint="https://cdn.usedatix.com/api/event" data-site-domain="klarvoice.com" src="https://cdn.usedatix.com/script.js"></script>
+		<script defer data-site-id="a4b3a5c4-03ff-4d5c-ac90-84f55e746c7f" data-endpoint="https://cdn.usedatix.com/api/vitals" data-site-domain="klarvoice.com" src="https://cdn.usedatix.com/vitals.js"></script>
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents"><!--[--><!--[0--><!--[--><div class="page-enter"><!--[-1--><!--[--><div class="noise"></div> <nav class="fixed left-0 right-0 z-50 backdrop-blur-xl transition-[top] duration-300" style="top: 0px; background: color-mix(in srgb, var(--color-warm) 85%, transparent);"><div class="max-w-[1100px] mx-auto px-8 h-[72px] flex items-center gap-12"><a href="/" class="flex items-center gap-2 text-lg font-bold tracking-[-0.03em] text-[var(--color-ink)]"><img src="/logoklarvoice.svg" alt="klarvoice logo" class="w-[18px] h-[18px]"/> klarvoice.</a> <div class="hidden md:flex items-center gap-10"><a href="/guide" class="text-[13px] font-medium text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] transition-colors duration-300">Guide</a> <div><button class="text-[13px] font-medium text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] transition-colors duration-200 inline-flex items-center gap-1 ">Produkt <svg class="w-3 h-3 transition-transform duration-200 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg></button></div> <span class="invisible inline-flex items-center gap-1.5 px-4 py-2 text-[12px] font-bold" style="font-family: var(--font-display);"><svg class="w-[14px] h-[14px]" viewBox="0 0 24 24"><path d="M18.71 19.5"></path></svg> <span>Get for macOS</span></span></div> <button class="md:hidden ml-auto relative w-6 h-5 flex flex-col justify-between" aria-label="Menu" aria-expanded="false"><span class="block h-[2px] w-full bg-[var(--color-ink)] rounded-full transition-all duration-300 origin-center "></span> <span class="block h-[2px] w-full bg-[var(--color-ink)] rounded-full transition-all duration-300 "></span> <span class="block h-[2px] w-full bg-[var(--color-ink)] rounded-full transition-all duration-300 origin-center "></span></button></div></nav> <!--[-1--><!--]--> <!--[-1--><!--]--> <a href="/download/macos" class="nav-cta-scroll fixed z-[9999] hidden md:inline-flex items-center gap-2 px-5 py-2.5 text-[13px] font-bold rounded-[10px] transition-opacity duration-300 opacity-0 pointer-events-none svelte-rfuq4y" style="font-family: var(--font-display); top: 20px; right: 16px;"><svg class="relative z-10 w-[16px] h-[16px] fill-current" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"></path></svg> <span class="relative z-10">Get for macOS</span></a><!----> <main class="pt-[72px] min-h-[80vh] flex items-center justify-center px-8"><div class="text-center max-w-md"><p class="text-[80px] font-bold tracking-[-0.04em] text-[var(--color-accent)] leading-none mb-4">404</p> <h1 class="text-2xl font-bold tracking-[-0.02em] mb-3">Seite nicht gefunden</h1> <p class="text-[var(--color-ink-muted)] text-[15px] mb-8">Die angeforderte Seite existiert leider nicht.</p> <a href="/" class="inline-flex items-center gap-2 px-5 py-2.5 text-[13px] font-bold rounded-[10px] transition-all duration-300" style="background: linear-gradient(135deg, rgba(142,164,212,0.35) 0%, rgba(184,198,230,0.45) 50%, rgba(107,133,194,0.3) 100%); backdrop-filter: blur(20px) saturate(1.8); border: 1px solid rgba(184,198,230,0.5); color: var(--color-ink);">← Zurück zur Startseite</a></div></main> <footer class="border-t border-[var(--color-divider)]"><div class="max-w-[1100px] mx-auto px-8 py-16 flex flex-col md:flex-row items-start justify-between gap-12"><div><span class="text-lg font-bold tracking-[-0.03em]">klarvoice<span class="text-[var(--color-ink)]">.</span></span> <p class="text-[13px] text-[var(--color-ink-faint)] mt-1">Deine Stimme, einfach klar.</p></div> <div class="w-full md:w-[400px]"><h3 class="text-[15px] font-bold text-[var(--color-ink)] mb-1" style="font-family: var(--font-display);">Bleib auf dem Laufenden</h3> <p class="text-[13px] text-[var(--color-ink-muted)] mb-4">Erhalte Updates zu neuen Features und Tipps — kein Spam.</p> <!--[-1--><form class="space-y-3"><input type="text" value="" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" class="absolute opacity-0 pointer-events-none h-0 w-0 overflow-hidden"/> <div class="flex gap-2"><input type="email" value="" placeholder="deine@email.de" required="" class="flex-1 px-3.5 py-2.5 text-[13px] rounded-lg border border-[var(--color-divider)] bg-[var(--color-surface)] text-[var(--color-ink)] placeholder:text-[var(--color-ink-faint)] focus:outline-none focus:border-[var(--color-accent)] transition-colors duration-200"/> <button type="submit" disabled="" class="px-4 py-2.5 text-[13px] font-bold rounded-lg bg-[var(--color-ink)] text-[var(--color-surface)] hover:opacity-90 transition-opacity duration-200 disabled:opacity-40 disabled:cursor-not-allowed shrink-0">Abonnieren</button></div> <label class="flex items-start gap-2 cursor-pointer"><input type="checkbox" class="mt-0.5 accent-[var(--color-accent)]"/> <span class="text-[11px] text-[var(--color-ink-faint)] leading-snug">Ich stimme dem Erhalt von E-Mails zu. Jederzeit abmeldbar.</span></label> <!--[-1--><!--]--></form><!--]--></div></div> <div class="max-w-[1100px] mx-auto px-8 pb-8"><div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-6 border-t border-[var(--color-divider)]"><div class="flex items-center gap-10 text-[13px] font-medium text-[var(--color-ink-muted)]"><a href="/privacy" class="hover:text-[var(--color-ink)] transition-colors duration-300">Datenschutz</a> <a href="/terms" class="hover:text-[var(--color-ink)] transition-colors duration-300">AGB</a> <a href="/imprint" class="hover:text-[var(--color-ink)] transition-colors duration-300">Kontakt</a> <a href="/changelog" class="hover:text-[var(--color-ink)] transition-colors duration-300">Changelog</a> <a href="/blog" class="hover:text-[var(--color-ink)] transition-colors duration-300">Blog</a></div> <div class="flex items-center gap-1 border border-[var(--color-divider)] rounded-md overflow-hidden"><button class="px-2.5 py-1.5 text-[12px] font-bold tracking-wide transition-colors duration-200 bg-[var(--color-ink)] text-[var(--color-surface)]">DE</button> <button class="px-2.5 py-1.5 text-[12px] font-bold tracking-wide transition-colors duration-200 text-[var(--color-ink-faint)] hover:text-[var(--color-ink)]">EN</button></div></div></div></footer><!----><!--]--><!--]--><!----></div><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_8qsohc = {
+						base: new URL(".", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("./_app/immutable/entry/start.D8h3g3nh.js"),
+						import("./_app/immutable/entry/app.IZevJtcJ.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 1],
+							data: [null],
+							form: null,
+							error: {message:"Not Found"},
+							status: 404
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

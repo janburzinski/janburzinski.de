@@ -5,6 +5,11 @@
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
+		<!-- Preload critical fonts to prevent layout shift -->
+		<link rel="preload" href="/fonts/geist-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/geist-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin />
+
 		<!-- SEO Meta Tags -->
 		<meta
 			name="description"
@@ -82,19 +87,26 @@
 	<body data-sveltekit-preload-data="hover">
 		<script>
 			(function () {
-				const savedTheme = localStorage.getItem('theme');
+				var d = document.documentElement;
+				var savedTheme = localStorage.getItem('theme');
 				if (savedTheme === 'light') {
-					document.documentElement.classList.add('light');
+					d.classList.add('light');
 				} else if (savedTheme === 'dark') {
-					document.documentElement.classList.add('dark');
+					d.classList.add('dark');
 				} else {
-					// system default
 					if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-						document.documentElement.classList.add('light');
+						d.classList.add('light');
 					} else {
-						document.documentElement.classList.add('dark');
+						d.classList.add('dark');
 					}
 				}
+				// Enable theme transitions only after initial paint
+				// so the first theme application doesn't flash
+				requestAnimationFrame(function () {
+					requestAnimationFrame(function () {
+						d.classList.add('theme-ready');
+					});
+				});
 			})();
 		</script>
 		<div style="display: contents">%sveltekit.body%</div>

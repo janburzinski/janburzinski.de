@@ -45,7 +45,7 @@
 		color: var(--text-primary);
 		font-size: 0.95rem;
 		letter-spacing: 0.02em;
-		transition: color 0.3s ease;
+		transition: color 0.2s var(--ease-out);
 	}
 
 	.links {
@@ -59,12 +59,18 @@
 		text-decoration: none;
 		color: var(--link-color);
 		font-size: 0.85rem;
-		transition: color 0.2s ease;
+		transition: color 0.2s var(--ease-out);
 	}
 
-	.links a:hover,
-	.links a.active {
-		color: var(--link-hover);
+	@media (hover: hover) and (pointer: fine) {
+		.links a:hover,
+		.links a.active {
+			color: var(--link-hover);
+		}
+	}
+
+	.links a:active {
+		opacity: 0.7;
 	}
 
 	@media (max-width: 480px) {
