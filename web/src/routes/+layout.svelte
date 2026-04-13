@@ -1,7 +1,4 @@
 <script lang="ts">
-	import Footer from '$lib/components/Footer.svelte';
-	import Navbar from '$lib/components/Navbar.svelte';
-
 	export let data;
 
 	$: title = data.title ? `${data.title} - Jan Burzinski` : 'Jan Burzinski';
@@ -12,216 +9,118 @@
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	<style>
-		/* Geist Sans — self-hosted, preloaded in app.html */
 		@font-face {
-			font-family: 'Geist Sans';
-			src: url('/fonts/geist-sans-latin-400-normal.woff2') format('woff2');
+			font-family: 'Inter';
+			src: url('/fonts/inter-latin-400-normal.woff2') format('woff2');
 			font-weight: 400;
 			font-style: normal;
 			font-display: swap;
 		}
 		@font-face {
-			font-family: 'Geist Sans';
-			src: url('/fonts/geist-sans-latin-500-normal.woff2') format('woff2');
+			font-family: 'Inter';
+			src: url('/fonts/inter-latin-500-normal.woff2') format('woff2');
 			font-weight: 500;
 			font-style: normal;
 			font-display: swap;
 		}
 		@font-face {
-			font-family: 'Geist Sans';
-			src: url('/fonts/geist-sans-latin-600-normal.woff2') format('woff2');
+			font-family: 'Inter';
+			src: url('/fonts/inter-latin-600-normal.woff2') format('woff2');
 			font-weight: 600;
 			font-style: normal;
 			font-display: swap;
 		}
 
-		/* Geist Mono — self-hosted, preloaded in app.html */
-		@font-face {
-			font-family: 'Geist Mono';
-			src: url('/fonts/geist-mono-latin-400-normal.woff2') format('woff2');
-			font-weight: 400;
-			font-style: normal;
-			font-display: swap;
-		}
-		@font-face {
-			font-family: 'Geist Mono';
-			src: url('/fonts/geist-mono-latin-500-normal.woff2') format('woff2');
-			font-weight: 500;
-			font-style: normal;
-			font-display: swap;
-		}
-
-		/* Geist Pixel variants */
-		@font-face {
-			font-family: 'Geist Pixel Square';
-			src: url('/fonts/GeistPixel-Square.woff2') format('woff2');
-			font-weight: normal;
-			font-style: normal;
-			font-display: swap;
-		}
-		@font-face {
-			font-family: 'Geist Pixel Grid';
-			src: url('/fonts/GeistPixel-Grid.woff2') format('woff2');
-			font-weight: normal;
-			font-style: normal;
-			font-display: swap;
-		}
-		@font-face {
-			font-family: 'Geist Pixel Circle';
-			src: url('/fonts/GeistPixel-Circle.woff2') format('woff2');
-			font-weight: normal;
-			font-style: normal;
-			font-display: swap;
-		}
-		@font-face {
-			font-family: 'Geist Pixel Triangle';
-			src: url('/fonts/GeistPixel-Triangle.woff2') format('woff2');
-			font-weight: normal;
-			font-style: normal;
-			font-display: swap;
-		}
-		@font-face {
-			font-family: 'Geist Pixel Line';
-			src: url('/fonts/GeistPixel-Line.woff2') format('woff2');
-			font-weight: normal;
-			font-style: normal;
-			font-display: swap;
-		}
-
 		:root {
-			--font-geist-sans:
-				'Geist Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-			--font-geist-mono: 'Geist Mono', 'SF Mono', Monaco, 'Cascadia Code', monospace;
-			--font-geist-pixel-square: 'Geist Pixel Square', monospace;
-			--font-geist-pixel-grid: 'Geist Pixel Grid', monospace;
-			--font-geist-pixel-circle: 'Geist Pixel Circle', monospace;
-			--font-geist-pixel-triangle: 'Geist Pixel Triangle', monospace;
-			--font-geist-pixel-line: 'Geist Pixel Line', monospace;
-
-			/* Custom easing curves */
+			--font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 			--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-			--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-			--ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
 
-			font-family: var(--font-geist-sans);
+			font-family: var(--font-inter);
 			-webkit-font-smoothing: antialiased;
 			scroll-behavior: auto;
 		}
 
-		/* Only enable theme transitions after initial paint */
 		:root.theme-ready {
 			transition:
 				color 0.3s ease,
 				background-color 0.3s ease;
 		}
 
-		/* Dark theme (default) */
 		:root.dark,
 		:root:not(.light) {
-			color: #fff;
-			background-color: #0d0d0d;
+			color: #e8e8e8;
+			background-color: #0a0a0a;
 
-			/* Theme variables */
-			--text-primary: #fff;
+			--text-primary: #e8e8e8;
 			--text-secondary: #666;
 			--text-muted: #444;
-			--border-color: #1a1a1a;
-			--border-hover: #333;
-			--hover-bg: rgba(255, 255, 255, 0.05);
-			--active-bg: rgba(255, 255, 255, 0.1);
-			--dropdown-bg: rgba(13, 13, 13, 0.95);
-			--card-bg: #111;
-			--link-color: #666;
-			--link-hover: #e0e0e0;
+			--link-color: #e8e8e8;
+			--link-hover: #fff;
 		}
 
-		/* Light theme */
 		:root.light {
-			color: #0d0d0d;
+			color: #1a1a1a;
 			background-color: #fafafa;
 
-			/* Theme variables */
-			--text-primary: #0d0d0d;
+			--text-primary: #1a1a1a;
 			--text-secondary: #666;
 			--text-muted: #999;
-			--border-color: #e0e0e0;
-			--border-hover: #ccc;
-			--hover-bg: rgba(0, 0, 0, 0.05);
-			--active-bg: rgba(0, 0, 0, 0.1);
-			--dropdown-bg: rgba(255, 255, 255, 0.95);
-			--card-bg: #fff;
-			--link-color: #666;
-			--link-hover: #333;
+			--link-color: #1a1a1a;
+			--link-hover: #000;
 		}
+
 		body {
 			margin: 0;
 			padding: 0;
 		}
-		code,
-		pre,
-		kbd,
-		samp {
-			font-family: var(--font-geist-mono);
-		}
 
-		/* Page load stagger animation
-		   fill-mode: both = backwards (applies 'from' before start) + forwards (keeps 'to' after end)
-		   No explicit opacity:0 on the element — prevents flash during hydration */
-		@keyframes fadeInUp {
+		@keyframes blurFadeIn {
 			from {
 				opacity: 0;
-				transform: translateY(8px);
+				filter: blur(12px);
+				transform: translateY(4px);
 			}
 			to {
 				opacity: 1;
+				filter: blur(0);
 				transform: translateY(0);
 			}
 		}
 
-		.animate-in {
-			animation: fadeInUp 500ms var(--ease-out) both;
+		.blur-in {
+			animation: blurFadeIn 800ms var(--ease-out) both;
 		}
 
-		.stagger-1 { animation-delay: 0ms; }
-		.stagger-2 { animation-delay: 60ms; }
-		.stagger-3 { animation-delay: 120ms; }
-		.stagger-4 { animation-delay: 180ms; }
-		.stagger-5 { animation-delay: 240ms; }
-		.stagger-6 { animation-delay: 300ms; }
-		.stagger-7 { animation-delay: 360ms; }
-		.stagger-8 { animation-delay: 420ms; }
+		.delay-1 { animation-delay: 0ms; }
+		.delay-2 { animation-delay: 150ms; }
+		.delay-3 { animation-delay: 300ms; }
+		.delay-4 { animation-delay: 450ms; }
 
-		/* Reduced motion: keep opacity fade, remove transform */
 		@media (prefers-reduced-motion: reduce) {
-			@keyframes fadeInUp {
+			@keyframes blurFadeIn {
 				from { opacity: 0; }
 				to { opacity: 1; }
 			}
 
-			.animate-in {
+			.blur-in {
 				animation-duration: 200ms;
 			}
 
-			.stagger-1, .stagger-2, .stagger-3, .stagger-4,
-			.stagger-5, .stagger-6, .stagger-7, .stagger-8 {
+			.delay-1, .delay-2, .delay-3, .delay-4 {
 				animation-delay: 0ms;
 			}
 		}
 	</style>
 </svelte:head>
 
-<Navbar />
-
 <main class="content">
 	<slot />
 </main>
 
-<Footer />
-
 <style>
 	.content {
-		max-width: 700px;
+		max-width: 480px;
 		margin: 0 auto;
-		padding: 2rem 1rem;
+		padding: 0 1.5rem;
 	}
 </style>

@@ -1,303 +1,230 @@
+<script lang="ts">
+	import { Github, Mail, Sun, Moon } from 'lucide-svelte';
+	import { onMount } from 'svelte';
+
+	type Theme = 'light' | 'dark' | 'system';
+	let theme: Theme = 'system';
+
+	onMount(() => {
+		const saved = localStorage.getItem('theme') as Theme | null;
+		if (saved && ['light', 'dark', 'system'].includes(saved)) {
+			theme = saved;
+		}
+	});
+
+	function toggleTheme() {
+		const root = document.documentElement;
+		const isDark = root.classList.contains('dark');
+		const newTheme: Theme = isDark ? 'light' : 'dark';
+		theme = newTheme;
+		localStorage.setItem('theme', newTheme);
+		root.classList.toggle('dark', newTheme === 'dark');
+		root.classList.toggle('light', newTheme === 'light');
+	}
+</script>
+
 <svelte:head>
 	<title>jan burzinski</title>
 </svelte:head>
 
-<section class="hero animate-in stagger-1">
-	<div class="header">
-		<h1>Jan Burzinski</h1>
-		<p class="subtitle">B.Sc. Informatik Student @ TU Berlin</p>
-	</div>
+<div class="page">
+	<div class="main">
+		<h1 class="blur-in delay-1 shimmer">Jan Burzinski</h1>
 
-	<div class="bio">
-		<p>
-			Informatikstudent im 3. Semester, 21 Jahre alt, mit einer Leidenschaft für
-			Softwareentwicklung, geweckt durch Minecraft. Ich liebe es, Dinge zu bauen.
+		<p class="blur-in delay-1">
+			Ich baue Software bei <a href="https://bejaniclabs.de" target="_blank" rel="noopener noreferrer">Burzinski & Jaenisch GbR</a>.
 		</p>
-	</div>
-</section>
 
-<section class="section animate-in stagger-2">
-	<h2 class="section-title">Erfahrung</h2>
-	<div class="entry">
-		<div class="entry-header">
-			<a href="https://bejaniclabs.de" target="_blank" class="entry-title"
-				>Burzinski & Jaenisch GbR</a
-			>
-			<span class="entry-date">2025 – Heute</span>
-		</div>
-		<p class="entry-role">Software Engineer | Founder</p>
-	</div>
-</section>
+		<p class="blur-in delay-2">
+			Informatikstudent im 4. Semester an der <a href="https://tu.berlin" target="_blank" rel="noopener noreferrer">TU Berlin</a>, 21 Jahre alt. Meine Leidenschaft für Software wurde durch Minecraft geweckt. Seitdem baue ich Dinge.
+		</p>
 
-<section class="section animate-in stagger-3">
-	<h2 class="section-title">Projekte</h2>
-	<div class="project animate-in stagger-4">
-		<div class="project-header">
-			<img src="/klarvoice-logo.svg" alt="klarvoice" class="project-logo" />
-			<div class="project-info">
-				<div class="project-title-row">
-					<a href="https://klarvoice.com" target="_blank" class="entry-title">klarvoice</a>
-					<span class="entry-date">2026</span>
-				</div>
-				<p class="project-description">
-					KI-gestützte Sprachtranskription für Desktop. Diktiere statt zu tippen, offline, in über
-					100 Sprachen, ohne dass deine Daten dein Gerät verlassen.
-				</p>
-			</div>
-		</div>
-	</div>
-	<div class="project animate-in stagger-5">
-		<div class="project-header">
-			<img src="/datix-logo.svg" alt="Datix" class="project-logo" />
-			<div class="project-info">
-				<div class="project-title-row">
-					<a href="https://usedatix.com" target="_blank" class="entry-title">Datix</a>
-					<span class="entry-date">2026</span>
-				</div>
-				<p class="project-description">
-					Privacy-First Product Analytics. Echtzeit-Dashboards, Funnels, Revenue-Tracking und Web
-					Vitals — ohne Cookies, ohne Consent-Banner, unter 1KB Script.
-				</p>
-			</div>
-		</div>
-	</div>
-	<div class="project animate-in stagger-6">
-		<div class="project-header">
-			<img src="/logosamtly.svg" alt="samtly" class="project-logo" />
-			<div class="project-info">
-				<div class="project-title-row">
-					<a href="https://samtly.app" target="_blank" class="entry-title">samtly</a>
-					<span class="entry-date">2026</span>
-				</div>
-				<p class="project-description">
-					KI-Hautpflege-App mit personalisierter Hautanalyse. Tracke Schlaf, Stress und Ernährung, um
-					Trigger für Unreinheiten zu erkennen und individuelle Routinen zu erhalten.
-				</p>
-			</div>
-		</div>
-	</div>
-	<div class="project animate-in stagger-7">
-		<div class="project-header">
-			<img src="/afora-logo.png" alt="afora" class="project-logo" />
-			<div class="project-info">
-				<div class="project-title-row">
-					<a href="https://afora.app" target="_blank" class="entry-title">afora</a>
-					<span class="entry-date">2025</span>
-				</div>
-				<p class="project-description">
-					AI-Powered Mood Journal & Mental Health Tracker für iOS. Ein minimalistischer Tracker mit
-					KI-gestützten Erkenntnissen, die deine Muster lernen und verstehen.
-				</p>
-			</div>
-		</div>
-	</div>
-</section>
+		<p class="blur-in delay-2">
+			Aktuell arbeite ich an <a href="https://klarvoice.com" target="_blank" rel="noopener noreferrer">klarvoice</a>. Davor habe ich <a href="https://usedatix.com" target="_blank" rel="noopener noreferrer">Datix</a>, <a href="https://samtly.app" target="_blank" rel="noopener noreferrer">samtly</a> und <a href="https://afora.app" target="_blank" rel="noopener noreferrer">afora</a> gebaut.
+		</p>
 
-<section class="section animate-in stagger-8">
-	<h2 class="section-title">Bildung</h2>
-	<div class="entry">
-		<div class="entry-with-logo">
-			<img src="/tu_berlin_logo.png" alt="TU Berlin" class="entry-logo" />
-			<div>
-				<div class="entry-header">
-					<span class="entry-title">Technische Universität Berlin</span>
-					<span class="entry-date">2024 – Heute</span>
-				</div>
-				<p class="entry-role">B.Sc. Informatik</p>
-			</div>
+		<div class="social-links blur-in delay-3">
+			<a href="https://github.com/janburzinski" target="_blank" rel="noopener noreferrer" class="social-link">
+				<Github size={16} />
+				<span>GitHub</span>
+			</a>
+			<a href="mailto:j_burzinski@proton.me" class="social-link">
+				<Mail size={16} />
+				<span>Mail</span>
+			</a>
 		</div>
 	</div>
-	<div class="entry">
-		<div class="entry-with-logo">
-			<img src="/private_kant_schule.png" alt="Private Kant Schulen" class="entry-logo" />
-			<div>
-				<div class="entry-header">
-					<span class="entry-title">Private Kant Schulen</span>
-					<span class="entry-date">2010 – 2024</span>
-				</div>
-				<p class="entry-role">Abitur</p>
-			</div>
+
+	<div class="bottom blur-in delay-4">
+		<div class="bottom-links">
+			<a href="https://github.com/janburzinski" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+				<Github size={16} />
+			</a>
+			<button class="theme-toggle" on:click={toggleTheme} aria-label="Theme wechseln" type="button">
+				{#if theme === 'light'}
+					<Sun size={16} />
+				{:else}
+					<Moon size={16} />
+				{/if}
+			</button>
+		</div>
+		<div class="legal-links">
+			<a href="/impressum">Impressum</a>
+			<a href="/datenschutz">Datenschutz</a>
 		</div>
 	</div>
-</section>
+</div>
 
 <style>
-	.hero {
-		margin-bottom: 4rem;
+	.page {
+		max-width: 480px;
+		width: 100%;
+		min-height: 100dvh;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 
-	.header {
-		margin-bottom: 2rem;
+	.main {
+		padding-top: 20vh;
 	}
 
 	h1 {
-		font-size: 1.5rem;
-		font-weight: 600;
-		margin: 0;
-		letter-spacing: -0.02em;
+		font-size: 1.125rem;
+		font-weight: 500;
+		margin: 0 0 1.75rem 0;
+		letter-spacing: -0.01em;
+		color: var(--text-primary);
 	}
 
-	.subtitle {
-		font-family: var(--font-geist-mono);
+	.shimmer {
+		--spread: 40px;
+		display: inline-block;
+		background:
+			linear-gradient(
+				90deg,
+				transparent calc(50% - var(--spread)),
+				var(--text-primary) 50%,
+				transparent calc(50% + var(--spread))
+			) 100% center / 250% 100% no-repeat,
+			linear-gradient(var(--text-muted), var(--text-muted));
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		animation: shimmer 1.8s linear infinite;
+	}
+
+	@keyframes shimmer {
+		from { background-position: 100% center; }
+		to { background-position: 0% center; }
+	}
+
+	p {
+		font-size: 0.9375rem;
+		line-height: 1.7;
 		color: var(--text-secondary);
-		margin: 0.25rem 0 0 0;
-		font-size: 0.9rem;
-		transition: color 0.3s ease;
-	}
-
-	.bio {
-		font-size: 1rem;
-		line-height: 1.6;
-		color: var(--text-secondary);
-		transition: color 0.3s ease;
-	}
-
-	.section {
-		margin-bottom: 3rem;
-	}
-
-	.section-title {
-		font-family: var(--font-geist-pixel-square);
-		font-size: 0.85rem;
+		margin: 0 0 1rem 0;
 		font-weight: 400;
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		color: var(--text-secondary);
-		border-bottom: 1px solid var(--border-color);
-		padding-bottom: 0.5rem;
-		margin-bottom: 1.5rem;
-		transition:
-			color 0.3s ease,
-			border-color 0.3s ease;
 	}
 
-	.entry {
-		margin-bottom: 1.5rem;
-	}
-
-	.entry-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: baseline;
-	}
-
-	.entry-title {
-		font-family: var(--font-geist-pixel-square);
-		font-weight: 400;
+	p a {
 		color: var(--text-primary);
 		text-decoration: none;
-		letter-spacing: 0.02em;
-		transition: color 0.2s var(--ease-out);
-	}
-
-	a.entry-title {
-		position: relative;
-	}
-
-	/* Animated underline on hover — gated for pointer devices */
-	a.entry-title::after {
-		content: '';
-		position: absolute;
-		left: 0;
-		bottom: -1px;
-		width: 100%;
-		height: 1px;
-		background: currentColor;
-		transform: scaleX(0);
-		transform-origin: left;
-		transition: transform 200ms var(--ease-out);
+		transition: opacity 0.15s ease;
 	}
 
 	@media (hover: hover) and (pointer: fine) {
-		a.entry-title:hover::after {
-			transform: scaleX(1);
+		p a:hover {
+			opacity: 0.5;
 		}
+	}
 
-		a.entry-title:hover {
+	.social-links {
+		display: flex;
+		gap: 1.25rem;
+		margin-top: 0.5rem;
+	}
+
+	.social-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		color: var(--text-secondary);
+		text-decoration: none;
+		font-size: 0.875rem;
+		transition: color 0.15s ease;
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.social-link:hover {
 			color: var(--text-primary);
 		}
 	}
 
-	/* Press feedback on links */
-	a.entry-title:active {
-		opacity: 0.7;
-	}
-
-	.entry-date {
-		font-family: var(--font-geist-mono);
-		font-size: 0.8rem;
-		color: var(--text-secondary);
-		font-variant-numeric: tabular-nums;
-		transition: color 0.3s ease;
-	}
-
-	.entry-role {
-		font-family: var(--font-geist-mono);
-		margin: 0.25rem 0 0 0;
-		font-size: 0.85rem;
-		color: var(--text-secondary);
-		transition: color 0.3s ease;
-	}
-
-	.entry-with-logo {
-		display: flex;
-		align-items: flex-start;
-		gap: 1rem;
-	}
-
-	.entry-with-logo > div {
-		flex: 1;
-	}
-
-	.entry-logo {
-		width: 28px;
-		height: 28px;
-		border-radius: 8px;
-		object-fit: cover;
-		flex-shrink: 0;
-	}
-
-	.project {
-		margin-bottom: 1.5rem;
-	}
-
-	.project-header {
-		display: flex;
-		align-items: flex-start;
-		gap: 1rem;
-	}
-
-	.project-logo {
-		width: 28px;
-		height: 28px;
-		border-radius: 8px;
-		object-fit: cover;
-		flex-shrink: 0;
-	}
-
-	.project-info {
-		flex: 1;
-	}
-
-	.project-title-row {
+	.bottom {
 		display: flex;
 		justify-content: space-between;
-		align-items: baseline;
+		align-items: center;
+		padding-bottom: 2rem;
+		padding-top: 4rem;
 	}
 
-	.project-description {
-		font-family: var(--font-geist-mono);
-		margin: 0.5rem 0 0 0;
-		font-size: 0.85rem;
-		color: var(--text-secondary);
-		line-height: 1.5;
-		transition: color 0.3s ease;
+	.bottom-links {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.bottom-links a {
+		color: var(--text-muted);
+		transition: color 0.15s ease;
+		display: flex;
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.bottom-links a:hover {
+			color: var(--text-secondary);
+		}
+	}
+
+	.theme-toggle {
+		background: none;
+		border: none;
+		padding: 0;
+		cursor: pointer;
+		color: var(--text-muted);
+		display: flex;
+		align-items: center;
+		transition: color 0.15s ease;
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.theme-toggle:hover {
+			color: var(--text-secondary);
+		}
+	}
+
+	.legal-links {
+		display: flex;
+		gap: 1rem;
+	}
+
+	.legal-links a {
+		color: var(--text-muted);
+		text-decoration: none;
+		font-size: 0.75rem;
+		transition: color 0.15s ease;
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.legal-links a:hover {
+			color: var(--text-secondary);
+		}
 	}
 
 	@media (max-width: 480px) {
-		.project-header {
-			flex-direction: column;
-			align-items: flex-start;
+		.main {
+			padding-top: 15vh;
 		}
 	}
 </style>
