@@ -48,7 +48,7 @@
 				<Github size={16} />
 				<span>GitHub</span>
 			</a>
-			<a href="mailto:j_burzinski@proton.me" class="social-link">
+			<a href="mailto:jan@burzinski.de" class="social-link">
 				<Mail size={16} />
 				<span>Mail</span>
 			</a>

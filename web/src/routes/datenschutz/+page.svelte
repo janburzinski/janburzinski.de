@@ -12,7 +12,7 @@
 			Jan Burzinski<br />
 			Burgunder Str. 1<br />
 			14197 Berlin<br />
-			E-Mail: j_burzinski@proton.me
+			E-Mail: jan@burzinski.de
 		</p>
 
 		<h2>2. Hosting & Bereitstellung</h2>
