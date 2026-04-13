@@ -31,7 +31,7 @@
 
 <style>
 	h1 {
-		font-family: var(--font-geist-pixel-square);
+		font-family: var(--font-inter);
 		font-size: 1.75rem;
 		font-weight: 400;
 		margin-bottom: 3rem;
@@ -39,7 +39,7 @@
 	}
 
 	h2 {
-		font-family: var(--font-geist-pixel-square);
+		font-family: var(--font-inter);
 		font-size: 0.8rem;
 		font-weight: 400;
 		text-transform: uppercase;
@@ -63,7 +63,7 @@
 	}
 
 	.meta {
-		font-family: var(--font-geist-mono);
+		font-family: var(--font-inter);
 		margin-top: 4rem;
 		font-size: 0.8rem;
 		color: var(--text-secondary);

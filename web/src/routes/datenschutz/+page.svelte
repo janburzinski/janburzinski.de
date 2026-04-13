@@ -12,13 +12,14 @@
 			Jan Burzinski<br />
 			Burgunder Str. 1<br />
 			14197 Berlin<br />
-			E-Mail: j_burzinski@proton.me
+			E-Mail: jan@burzinski.de
 		</p>
 
 		<h2>2. Hosting & Bereitstellung</h2>
 		<p>
-			Diese Website wird bei Vercel gehostet (Vercel Inc., 440 N Barranca Ave #4133, Covina, CA
-			91723, USA). Vercel speichert technische Daten zur Sicherheit und Stabilität.
+			Diese Website wird bei Cloudflare gehostet (Cloudflare, Inc., 665 3rd St. Suite 200, San
+			Francisco, CA 94107, USA). Cloudflare speichert technische Daten zur Sicherheit und
+			Stabilität. Es werden keine personenbezogenen Daten auf den Servern gespeichert.
 		</p>
 
 		<h2>3. Webanalyse</h2>
@@ -33,13 +34,13 @@
 			gerne per E-Mail.
 		</p>
 
-		<div class="meta">Letztes Update: 01.02.2026</div>
+		<div class="meta">Letztes Update: 13.04.2026</div>
 	</div>
 </section>
 
 <style>
 	h1 {
-		font-family: var(--font-geist-pixel-square);
+		font-family: var(--font-inter);
 		font-size: 1.75rem;
 		font-weight: 400;
 		margin-bottom: 3rem;
@@ -47,7 +48,7 @@
 	}
 
 	h2 {
-		font-family: var(--font-geist-pixel-square);
+		font-family: var(--font-inter);
 		font-size: 0.8rem;
 		font-weight: 400;
 		text-transform: uppercase;
@@ -71,7 +72,7 @@
 	}
 
 	.meta {
-		font-family: var(--font-geist-mono);
+		font-family: var(--font-inter);
 		margin-top: 4rem;
 		font-size: 0.8rem;
 		color: var(--text-secondary);
