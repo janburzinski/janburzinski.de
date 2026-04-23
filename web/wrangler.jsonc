@@ -13,5 +13,8 @@
 		"enabled": true,
 		"head_sampling_rate": 1
 	},
-	"compatibility_flags": ["nodejs_compat"]
+	"compatibility_flags": ["nodejs_compat"],
+	"build": {
+		"command": "bun run build"
+	}
 }

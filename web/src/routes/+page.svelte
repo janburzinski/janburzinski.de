@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Github, Mail, Sun, Moon } from 'lucide-svelte';
 	import { onMount } from 'svelte';
+	import LinkPreview from '$lib/components/LinkPreview.svelte';
 
 	type Theme = 'light' | 'dark' | 'system';
 	let theme: Theme = 'system';
@@ -32,15 +33,15 @@
 		<h1 class="blur-in delay-1 shimmer">Jan Burzinski</h1>
 
 		<p class="blur-in delay-1">
-			Ich baue Software bei <a href="https://bejaniclabs.de" target="_blank" rel="noopener noreferrer">Burzinski & Jaenisch GbR</a>.
+			Ich baue Software bei <LinkPreview href="https://bejaniclabs.de">Burzinski & Jaenisch GbR</LinkPreview>.
 		</p>
 
 		<p class="blur-in delay-2">
-			Informatikstudent im 4. Semester an der <a href="https://tu.berlin" target="_blank" rel="noopener noreferrer">TU Berlin</a>, 21 Jahre alt. Meine Leidenschaft für Software wurde durch Minecraft geweckt. Seitdem baue ich Dinge.
+			Informatikstudent im 4. Semester an der <LinkPreview href="https://tu.berlin">TU Berlin</LinkPreview>, 21 Jahre alt. Meine Leidenschaft für Software wurde durch Minecraft geweckt. Seitdem baue ich Dinge.
 		</p>
 
 		<p class="blur-in delay-2">
-			Aktuell arbeite ich an <a href="https://klarvoice.com" target="_blank" rel="noopener noreferrer">klarvoice</a>. Davor habe ich <a href="https://usedatix.com" target="_blank" rel="noopener noreferrer">Datix</a>, <a href="https://samtly.app" target="_blank" rel="noopener noreferrer">samtly</a> und <a href="https://afora.app" target="_blank" rel="noopener noreferrer">afora</a> gebaut.
+			Aktuell arbeite ich an <LinkPreview href="https://klarvoice.com">klarvoice</LinkPreview>. Davor habe ich <LinkPreview href="https://usedatix.com">Datix</LinkPreview>, <LinkPreview href="https://samtly.app">samtly</LinkPreview> und <LinkPreview href="https://afora.app">afora</LinkPreview> gebaut.
 		</p>
 
 		<div class="social-links blur-in delay-3">
@@ -126,18 +127,6 @@
 		color: var(--text-secondary);
 		margin: 0 0 1rem 0;
 		font-weight: 400;
-	}
-
-	p a {
-		color: var(--text-primary);
-		text-decoration: none;
-		transition: opacity 0.15s ease;
-	}
-
-	@media (hover: hover) and (pointer: fine) {
-		p a:hover {
-			opacity: 0.5;
-		}
 	}
 
 	.social-links {
