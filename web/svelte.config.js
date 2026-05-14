@@ -1,25 +1,25 @@
-import adapter from '@sveltejs/adapter-cloudflare';
+import cloudflareAdapter from '@sveltejs/adapter-cloudflare';
 import nodeAdapter from '@sveltejs/adapter-node';
+import vercelAdapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
-const isNodeBuild = process.env.BUILD_TARGET === 'node';
+const buildTarget = process.env.BUILD_TARGET ?? 'cloudflare';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://svelte.dev/docs/kit/integrations
-	// for more information about preprocessors
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: isNodeBuild
+		adapter: buildTarget === 'node'
 			? nodeAdapter()
-			: adapter({
-				// Keep Cloudflare deploys working unless we explicitly build for Node/Docker.
-				routes: {
-					include: ['/*'],
-					exclude: ['<all>']
-				}
-			})
+			: buildTarget === 'vercel'
+				? vercelAdapter()
+				: cloudflareAdapter({
+					routes: {
+						include: ['/*'],
+						exclude: ['<all>']
+					}
+				})
 	}
 };
 
