@@ -1,0 +1,7 @@
+{
+	"build": {
+		"env": {
+			"BUILD_TARGET": "node"
+		}
+	}
+}
