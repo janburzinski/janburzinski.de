@@ -1,7 +1,1 @@
-{
-	"build": {
-		"env": {
-			"BUILD_TARGET": "vercel"
-		}
-	}
-}
+{}
