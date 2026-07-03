@@ -1,0 +1,22 @@
+web/package.json
+  s_547a5f73e34ea4::t_775852eea4f7f0 7-10,13-14
+  s_547a5f73e34ea4::t_8cf49fc95c4226 38
+web/pnpm-lock.yaml
+  s_547a5f73e34ea4::t_b11490ca6f8b5b 51-53,1822-1827,3546-3547
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "3d2c865494417bf050b5f043aca3427e2c532e3a",
+  "prompts": {},
+  "sessions": {
+    "s_547a5f73e34ea4": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "1422b120-0c51-4859-92fb-8d8f890e021c",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
