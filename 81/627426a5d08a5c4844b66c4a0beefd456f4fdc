@@ -1,0 +1,21 @@
+web/src/routes/+page.svelte
+  s_fb64af072d06d8::t_53f0dd34ddc3e9 15-32
+web/src/routes/+layout.svelte
+  s_fb64af072d06d8::t_d6d87747cf0162 48-72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "81627426a5d08a5c4844b66c4a0beefd456f4fdc",
+  "prompts": {},
+  "sessions": {
+    "s_fb64af072d06d8": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "3d818537-2407-42ba-8ee1-8b1437ef407d",
+        "model": "glm-5.2"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
