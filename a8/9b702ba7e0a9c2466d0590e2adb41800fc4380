@@ -1,0 +1,32 @@
+web/package.json
+  s_907c739772a6d4::t_ea70fa4dc2bca1 6,8
+web/wrangler.jsonc
+  s_907c739772a6d4::t_ea70fa4dc2bca1 18
+web/pnpm-workspace.yaml
+  s_8e76424ded3e78::t_a76c4d07d8a95e 2-4
+  s_8e76424ded3e78::t_127498940bc795 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a89b702ba7e0a9c2466d0590e2adb41800fc4380",
+  "prompts": {},
+  "sessions": {
+    "s_8e76424ded3e78": {
+      "agent_id": {
+        "tool": "amp",
+        "id": "TU-033jBlDQfU38Q59ihLjtt2",
+        "model": "unknown"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    },
+    "s_907c739772a6d4": {
+      "agent_id": {
+        "tool": "amp",
+        "id": "TU-033jBioCXUeM7bzwWA9kvP",
+        "model": "unknown"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
