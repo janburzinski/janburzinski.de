@@ -45,6 +45,31 @@
 			margin: 0;
 			padding: 0;
 		}
+
+		::view-transition-old(root),
+		::view-transition-new(root) {
+			animation: none;
+			mix-blend-mode: normal;
+		}
+
+		::view-transition-new(root) {
+			animation: circle-reveal 0.4s ease-out;
+		}
+
+		@keyframes circle-reveal {
+			from {
+				clip-path: circle(0px at 50% 50%);
+			}
+			to {
+				clip-path: circle(150% at 50% 50%);
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			::view-transition-new(root) {
+				animation: none;
+			}
+		}
 	</style>
 </svelte:head>
 

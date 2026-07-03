@@ -12,10 +12,24 @@
 
 	function toggleTheme() {
 		const root = document.documentElement;
-		theme = theme === 'dark' ? 'light' : 'dark';
-		localStorage.setItem('theme', theme);
-		root.classList.toggle('dark', theme === 'dark');
-		root.classList.toggle('light', theme === 'light');
+		const isDark = theme === 'dark';
+		const newTheme: Theme = isDark ? 'light' : 'dark';
+
+		const applyTheme = () => {
+			theme = newTheme;
+			localStorage.setItem('theme', newTheme);
+			root.classList.toggle('dark', newTheme === 'dark');
+			root.classList.toggle('light', newTheme === 'light');
+		};
+
+		if (!document.startViewTransition) {
+			applyTheme();
+			return;
+		}
+
+		document.startViewTransition(() => {
+			applyTheme();
+		});
 	}
 </script>
 
