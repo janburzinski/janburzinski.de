@@ -1,0 +1,21 @@
+web/src/routes/datenschutz/+page.svelte
+  s_fb64af072d06d8::t_8c085d309afa49 6-48,52,55-93,95-98,102,105-107,110-114,119-120,126-128
+web/src/routes/impressum/+page.svelte
+  s_fb64af072d06d8::t_9c4aaf1832599b 6-37,41,44-82,84-87,91,94-96,99-103,108-109,115-117
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "b5d42c6ee2d3e94ae8e634ad77bcb4153f0487bc",
+  "prompts": {},
+  "sessions": {
+    "s_fb64af072d06d8": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "3d818537-2407-42ba-8ee1-8b1437ef407d",
+        "model": "glm-5.2"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
