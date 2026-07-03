@@ -72,8 +72,8 @@
 
 <style>
 	.content {
-		max-width: 480px;
-		margin: 0 auto;
-		padding: 0 1.5rem;
+		width: 100%;
+		margin: 0;
+		padding: 0;
 	}
 </style>
