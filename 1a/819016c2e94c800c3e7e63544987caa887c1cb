@@ -1,0 +1,39 @@
+web/src/routes/+layout.svelte
+  s_f7ffe29e2f4da2::t_3245f3010407e7 75-77
+web/src/routes/+page.svelte
+  s_fb64af072d06d8::t_592f0f0ca41ea2 5-6,9-10,15-18,46-47,50-51,54-55,58,142-145,150-151,159,168
+  s_fb64af072d06d8::t_4821842759054c 27-43,45,79-82,86,91,94,96-97,100-101,103,107-108,112,115,126,131,156,163,166
+  s_fb64af072d06d8::t_b565371d2b539d 83,132-133
+  s_fb64af072d06d8::t_8e3e48cecebfc9 139-141
+  s_fb64af072d06d8::t_3cfeecb0a1624e 155
+  s_fb64af072d06d8::t_56bbc8240cf749 157-158
+  s_fb64af072d06d8::t_c82e2c3c530946 160-162
+  s_fb64af072d06d8::t_d62d8752c34ae5 164-165
+  s_fb64af072d06d8::t_712032d5bf7a9a 167
+  s_fb64af072d06d8::t_4f1625799d5504 169-171
+  s_fb64af072d06d8::t_aabc799cbc3666 136-138,172
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "1a819016c2e94c800c3e7e63544987caa887c1cb",
+  "prompts": {},
+  "sessions": {
+    "s_f7ffe29e2f4da2": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "7039398b-1af1-494c-94fc-7e5ad53eca06",
+        "model": "minimax-m3"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    },
+    "s_fb64af072d06d8": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "3d818537-2407-42ba-8ee1-8b1437ef407d",
+        "model": "glm-5.2"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
