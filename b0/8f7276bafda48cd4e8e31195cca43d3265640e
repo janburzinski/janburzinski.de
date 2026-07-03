@@ -1,0 +1,19 @@
+web/src/app.html
+  s_fe9bb3ee49527f::t_222824f67c6631 56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "b08f7276bafda48cd4e8e31195cca43d3265640e",
+  "prompts": {},
+  "sessions": {
+    "s_fe9bb3ee49527f": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "739f08d9-3917-4ee5-b88a-a3d51abdb168",
+        "model": "minimax-m3"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
