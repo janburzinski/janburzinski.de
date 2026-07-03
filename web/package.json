@@ -3,7 +3,9 @@
 	"private": true,
 	"version": "1.0.0",
 	"type": "module",
+	"packageManager": "pnpm@11.9.0",
 	"scripts": {
+		"preinstall": "node -e \"const ua=process.env.npm_config_user_agent||''; if(!ua.startsWith('pnpm/')){console.error('Use pnpm to install dependencies.'); process.exit(1)}\"",
 		"dev": "vite dev",
 		"build": "vite build",
 		"start": "node build",
@@ -36,12 +38,6 @@
 		"typescript-eslint": "^8.54.0",
 		"vite": "^7.3.1",
 		"wrangler": "^4.76.0"
-	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"esbuild",
-			"sharp"
-		]
 	},
 	"dependencies": {
 		"@fontsource/inter": "^5.2.8",

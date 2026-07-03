@@ -15,6 +15,6 @@
 	},
 	"compatibility_flags": ["nodejs_compat"],
 	"build": {
-		"command": "bun run build"
+		"command": "pnpm run build"
 	}
 }
