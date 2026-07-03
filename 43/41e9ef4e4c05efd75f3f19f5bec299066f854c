@@ -1,0 +1,29 @@
+web/src/routes/+page.svelte
+  s_fb64af072d06d8::t_d8507dda8facfa 161-162,165,174-177
+  s_fb64af072d06d8::t_9bc8e3e45c878d 163-164
+  s_fb64af072d06d8::t_9205d270dd08e7 51,56
+  s_fb64af072d06d8::t_c826b936529e52 2
+  s_fb64af072d06d8::t_d75d10697239a7 30-31
+  s_fb64af072d06d8::t_0fd93bb407b142 32
+  s_fb64af072d06d8::t_ff38c3fc3f37b1 44
+  s_fb64af072d06d8::t_d18fd4ab651d6f 74
+  s_fb64af072d06d8::t_9d4b7285f3396c 166-167
+  s_fb64af072d06d8::t_98142acc0fcf3b 168-169
+  s_fb64af072d06d8::t_657d6b630a399f 178
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "4341e9ef4e4c05efd75f3f19f5bec299066f854c",
+  "prompts": {},
+  "sessions": {
+    "s_fb64af072d06d8": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "3d818537-2407-42ba-8ee1-8b1437ef407d",
+        "model": "glm-5.2"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
