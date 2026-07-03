@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Github, Mail, Sun, Moon } from 'lucide-svelte';
+	import { Github, Mail, Sun, Moon, ArrowUpRight } from 'lucide-svelte';
 	import { onMount } from 'svelte';
 
 	type Theme = 'light' | 'dark';
@@ -27,12 +27,9 @@
 	<nav class="topbar">
 		<a href="/" class="name">Jan Burzinski</a>
 		<div class="nav-right">
-			<a href="/impressum" class="nav-link">Impressum</a>
-			<a href="/datenschutz" class="nav-link">Datenschutz</a>
-			<a href="https://github.com/janburzinski" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="nav-icon">
-				<Github size={16} />
-			</a>
-			<button class="nav-icon theme-toggle" on:click={toggleTheme} aria-label="Theme wechseln" type="button">
+			<a href="/impressum" class="nav-link">Imprint</a>
+			<a href="/datenschutz" class="nav-link">Privacy</a>
+			<button class="nav-icon theme-toggle" on:click={toggleTheme} aria-label="Toggle theme" type="button">
 				{#if theme === 'light'}
 					<Sun size={16} />
 				{:else}
@@ -44,25 +41,19 @@
 
 	<div class="main">
 		<p>
-			Ich baue Software bei <a href="https://bejaniclabs.de" target="_blank" rel="noopener noreferrer">Burzinski & Jaenisch GbR</a>.
-		</p>
-
-		<p>
-			Informatikstudent im 4. Semester an der <a href="https://tu.berlin" target="_blank" rel="noopener noreferrer">TU Berlin</a>, 21 Jahre alt. Meine Leidenschaft für Software wurde durch Minecraft geweckt. Seitdem baue ich Dinge.
-		</p>
-
-		<p>
-			Aktuell arbeite ich an <a href="https://klarvoice.com" target="_blank" rel="noopener noreferrer">klarvoice</a>. Davor habe ich <a href="https://usedatix.com" target="_blank" rel="noopener noreferrer">Datix</a>, <a href="https://samtly.app" target="_blank" rel="noopener noreferrer">samtly</a> und <a href="https://afora.app" target="_blank" rel="noopener noreferrer">afora</a> gebaut.
+			Computer Science student at <a href="https://tu.berlin" target="_blank" rel="noopener noreferrer">TU Berlin</a>, 21 years old. My passion for software was sparked by Minecraft. I've been building things ever since.
 		</p>
 
 		<div class="social-links">
 			<a href="https://github.com/janburzinski" target="_blank" rel="noopener noreferrer" class="social-link">
 				<Github size={16} />
 				<span>GitHub</span>
+				<ArrowUpRight size={13} class="outbound" />
 			</a>
 			<a href="mailto:jan@burzinski.de" class="social-link">
 				<Mail size={16} />
 				<span>Mail</span>
+				<ArrowUpRight size={13} class="outbound" />
 			</a>
 		</div>
 	</div>
@@ -80,7 +71,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+		padding: 1.5rem 1.5rem 1rem 1.5rem;
 	}
 
 	.name {
@@ -167,9 +158,23 @@
 		font-size: 0.875rem;
 	}
 
+	.social-link :global(.outbound) {
+		opacity: 0;
+		transform: translate(-2px, 2px);
+		margin-left: -4px;
+		transition:
+			opacity 0.12s ease,
+			transform 0.12s ease;
+	}
+
 	@media (hover: hover) and (pointer: fine) {
 		.social-link:hover {
 			color: var(--text-primary);
+		}
+
+		.social-link:hover :global(.outbound) {
+			opacity: 1;
+			transform: translate(0, 0);
 		}
 	}
 </style>
