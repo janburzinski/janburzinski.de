@@ -1,0 +1,21 @@
+web/package.json
+  s_fb64af072d06d8::t_3ca0b20b0c850f 49-50
+web/pnpm-lock.yaml
+  s_fb64af072d06d8::t_1018e06f90b869 11-16,665-670,2491-2494
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "5eff6accc14142fdc63f6f16f12f5b53afdf315a",
+  "prompts": {},
+  "sessions": {
+    "s_fb64af072d06d8": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "3d818537-2407-42ba-8ee1-8b1437ef407d",
+        "model": "unknown"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
