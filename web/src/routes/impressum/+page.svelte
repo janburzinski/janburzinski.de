@@ -47,7 +47,6 @@
 		color: var(--text-secondary);
 		margin-top: 2.5rem;
 		margin-bottom: 1rem;
-		transition: color 0.3s ease;
 	}
 
 	h2:first-of-type {
@@ -59,7 +58,6 @@
 		line-height: 1.6;
 		color: var(--text-secondary);
 		margin: 0;
-		transition: color 0.3s ease;
 	}
 
 	.meta {
@@ -67,6 +65,5 @@
 		margin-top: 4rem;
 		font-size: 0.8rem;
 		color: var(--text-secondary);
-		transition: color 0.3s ease;
 	}
 </style>

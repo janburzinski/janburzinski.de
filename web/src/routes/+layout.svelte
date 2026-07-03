@@ -33,17 +33,9 @@
 
 		:root {
 			--font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-			--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 
 			font-family: var(--font-inter);
 			-webkit-font-smoothing: antialiased;
-			scroll-behavior: auto;
-		}
-
-		:root.theme-ready {
-			transition:
-				color 0.3s ease,
-				background-color 0.3s ease;
 		}
 
 		:root.dark,
@@ -55,7 +47,6 @@
 			--text-secondary: #666;
 			--text-muted: #444;
 			--link-color: #e8e8e8;
-			--link-hover: #fff;
 		}
 
 		:root.light {
@@ -66,49 +57,11 @@
 			--text-secondary: #666;
 			--text-muted: #999;
 			--link-color: #1a1a1a;
-			--link-hover: #000;
 		}
 
 		body {
 			margin: 0;
 			padding: 0;
-		}
-
-		@keyframes blurFadeIn {
-			from {
-				opacity: 0;
-				filter: blur(12px);
-				transform: translateY(4px);
-			}
-			to {
-				opacity: 1;
-				filter: blur(0);
-				transform: translateY(0);
-			}
-		}
-
-		.blur-in {
-			animation: blurFadeIn 800ms var(--ease-out) both;
-		}
-
-		.delay-1 { animation-delay: 0ms; }
-		.delay-2 { animation-delay: 150ms; }
-		.delay-3 { animation-delay: 300ms; }
-		.delay-4 { animation-delay: 450ms; }
-
-		@media (prefers-reduced-motion: reduce) {
-			@keyframes blurFadeIn {
-				from { opacity: 0; }
-				to { opacity: 1; }
-			}
-
-			.blur-in {
-				animation-duration: 200ms;
-			}
-
-			.delay-1, .delay-2, .delay-3, .delay-4 {
-				animation-delay: 0ms;
-			}
 		}
 	</style>
 </svelte:head>
