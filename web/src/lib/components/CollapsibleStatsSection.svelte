@@ -37,7 +37,7 @@
 	</button>
 
 	{#if open}
-		<div transition:expand>
+		<div class="content" transition:expand>
 			<dl class="stats">
 				{#each rows as row (row.label)}
 					<div class="row">
@@ -55,6 +55,10 @@
 </section>
 
 <style>
+	.content {
+		display: flow-root;
+	}
+
 	.toggle {
 		display: inline-flex;
 		align-items: center;
