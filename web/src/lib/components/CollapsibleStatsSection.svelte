@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ChevronDown } from 'lucide-svelte';
+	import { cubicOut } from 'svelte/easing';
 	import type { Snippet } from 'svelte';
-	import { slide } from 'svelte/transition';
 
 	type StatRow = { label: string; value: string };
 
@@ -18,6 +18,16 @@
 	} = $props();
 
 	let open = $state(false);
+
+	function expand(node: HTMLElement) {
+		const height = parseFloat(getComputedStyle(node).height);
+
+		return {
+			duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 200,
+			easing: cubicOut,
+			css: (t: number) => `overflow: hidden; height: ${t * height}px; min-height: 0;`
+		};
+	}
 </script>
 
 <section style:margin-top={marginTop}>
@@ -27,7 +37,7 @@
 	</button>
 
 	{#if open}
-		<div transition:slide={{ duration: 200 }}>
+		<div transition:expand>
 			<dl class="stats">
 				{#each rows as row (row.label)}
 					<div class="row">
