@@ -1,0 +1,25 @@
+web/src/lib/components/ContributionGraph.svelte
+  s_58858c47f07f47::t_734e95b220b45b 139
+  s_58858c47f07f47::t_6c13e48b2a1921 24-26
+  s_58858c47f07f47::t_1cbe75827b6cdf 138
+  s_58858c47f07f47::t_14ae27129a50da 164-165
+  s_58858c47f07f47::t_16f579f9c86dd6 56,65-81
+  s_58858c47f07f47::t_6736c2fcbb39bc 122-134
+  s_58858c47f07f47::t_461c68a494504a 82
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "24abfef095fc1fd057b9c19f6c149c0e734a2649",
+  "prompts": {},
+  "sessions": {
+    "s_58858c47f07f47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e88650c6-fdd8-49a6-a13d-d583dd984156",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
