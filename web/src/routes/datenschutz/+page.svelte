@@ -42,8 +42,8 @@
 		<div class="section">
 			<h2>4. Ihre Rechte</h2>
 			<p>
-				Sie haben das Recht auf Auskunft, Berichtigung oder Löschung Ihrer Daten. Kontaktieren Sie uns
-				gerne per E-Mail.
+				Sie haben das Recht auf Auskunft, Berichtigung oder Löschung Ihrer Daten. Kontaktieren Sie
+				uns gerne per E-Mail.
 			</p>
 		</div>
 

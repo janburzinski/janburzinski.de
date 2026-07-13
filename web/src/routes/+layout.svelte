@@ -29,6 +29,9 @@
 			--text-secondary: #888;
 			--text-muted: #666;
 			--link-color: #e8e8e8;
+			--surface: #1c1c1f;
+			--surface-border: #2c2c30;
+			--surface-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 		}
 
 		:root.light {
@@ -39,6 +42,9 @@
 			--text-secondary: #666;
 			--text-muted: #999;
 			--link-color: #1a1a1a;
+			--surface: #ffffff;
+			--surface-border: #e6e6e6;
+			--surface-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 		}
 
 		body {
