@@ -1,0 +1,133 @@
+web/src/lib/components/UsageSection.svelte
+  s_8d44563686d25e::t_33c6365989fde3 5-6,9-16,21-41,48,51-75,78-79,81-83,86-90,92-94,98-101,104-106,108-110
+  s_72a10c3529b662::t_64abea651b7dc0 1-4,7-8,17-20,42-47,49-50,76-77,80,84-85,91,95-97,102-103,107,111-113
+web/src/lib/github.ts
+  s_d32ef7bcdfcf31::t_066734b0caf0bb 1-23
+web/src/lib/dither/paint.ts
+  s_72a10c3529b662::t_203a30d20a55f4 53
+  s_72a10c3529b662::t_6e845412367688 1-52,54-65,98-100
+  s_d32ef7bcdfcf31::t_00c9bf0afab2dc 66-97
+web/src/routes/+layout.svelte
+  s_8d44563686d25e::t_a6591e2aba4ab4 32-34
+  s_8d44563686d25e::t_18bc1e51849c91 45-47
+web/src/lib/components/LinkPreview.svelte
+  s_72a10c3529b662::t_203a30d20a55f4 76-77,89,158-160,162-164,175-177,180-182
+web/vercel.json
+  s_27d7faf80d4136::t_758aca5980961f 1-3
+web/src/lib/format.ts
+  s_72a10c3529b662::t_f53e7551e16178 33-40
+  s_72a10c3529b662::t_b69e8c0c2898ff 1-2,6-15,21-32,41-54
+  s_72a10c3529b662::t_203a30d20a55f4 16-20
+  s_fb0a6b2dc0ab23::t_f4ad813dfa136b 3-5
+web/src/lib/components/UsageChart.svelte
+  s_72a10c3529b662::t_2a0ba6fe7d82e9 1-66,69-121,123-125,128,130-146,148-151,153-173,175-177,179-181
+  s_8d44563686d25e::t_3fed03bb18d6b2 174,178
+  s_8d44563686d25e::t_0f6ea795557a8f 122,126-127,129
+  s_8d44563686d25e::t_0ff5d6527837fe 147,152
+  s_72a10c3529b662::t_d360369a0c6003 67-68
+web/src/routes/+page.server.ts
+  s_d32ef7bcdfcf31::t_db81c9baa70362 3,5,8-21
+  s_27d7faf80d4136::t_aa2e32feccce9e 2
+  s_72a10c3529b662::t_41fb237b2796fa 1,4,6-7,22
+web/.env.example
+  s_d32ef7bcdfcf31::t_37df3d757d4f50 8-13
+  s_72a10c3529b662::t_75b7fce773c0df 3-6
+  s_27d7faf80d4136::t_4edca537c19ff3 7,14-21
+web/src/lib/server/autumn.ts
+  s_72a10c3529b662::t_b189901a3652d9 1-4,9-12,15,17-22,32-51,53-58,65,76,78-84,94-97,102-104,106-109,113,116,120,122
+  s_fb0a6b2dc0ab23::t_29c761ac3f620f 5-8,13-14,16,23-31,52,59-64,66-75,77,85-93,98-101,105,110-112,114-115,117-119,121
+web/src/lib/usage.ts
+  s_72a10c3529b662::t_f91f078dfa1d6d 1-26
+web/src/lib/server/db/schema.ts
+  s_27d7faf80d4136::t_04d3fadf8b5e35 1-41
+web/src/routes/datenschutz/+page.svelte
+  s_72a10c3529b662::t_203a30d20a55f4 45-46
+web/package.json
+  s_27d7faf80d4136::t_f2508acd8a588d 38-39,58-61
+  s_27d7faf80d4136::t_fa3cd3de8851ff 24-28
+.gitignore
+  s_72a10c3529b662::t_dc1c37244e84ae 1-7
+web/src/lib/server/github.ts
+  s_d32ef7bcdfcf31::t_7ac0a3d56936c7 1-126
+web/src/lib/server/usage.ts
+  s_27d7faf80d4136::t_bdc68beb9f64f3 179-185
+  s_27d7faf80d4136::t_51fa6ea787bb40 1-8,10-106,108-138,140-178,186
+  s_fb0a6b2dc0ab23::t_f4ad813dfa136b 9,107,139
+web/src/lib/server/db/index.ts
+  s_27d7faf80d4136::t_146f7946d1c5c1 1-5
+  s_fb0a6b2dc0ab23::t_f4ad813dfa136b 6-32
+web/src/routes/+page.svelte
+  s_72a10c3529b662::t_203a30d20a55f4 50-55,67-72
+  s_5ba915c528187b::t_4a9864930bfc52 2
+  s_d32ef7bcdfcf31::t_a7880759bf8dc0 5
+  s_d32ef7bcdfcf31::t_aa63977b58b156 106-109
+  s_72a10c3529b662::t_715947fa1da2b0 4,6-7
+  s_5ba915c528187b::t_34a4b3a9d0c652 76-81,86-95,102
+  s_72a10c3529b662::t_605bc34d408839 103-105
+web/drizzle.config.ts
+  s_27d7faf80d4136::t_1697edea9b0a66 1-13
+web/src/routes/api/sync/+server.ts
+  s_27d7faf80d4136::t_0252148eb2cc2c 1-23
+web/src/lib/components/ContributionGraph.svelte
+  s_d32ef7bcdfcf31::t_bcd57ab07357ff 1-146
+web/src/lib/components/ContributionSection.svelte
+  s_d32ef7bcdfcf31::t_1274c29c6fda99 1-158
+web/pnpm-lock.yaml
+  s_27d7faf80d4136::t_f72cccd4de3150 20-25,29-31,41,44,47,50,53-59,95,152-154,158-171,190-201,220-231,250-261,280-291,310-321,340-351,370-381,400-411,430-441,460-471,490-501,520-531,550-561,580-591,610-621,640-651,670-675,694-705,724-729,748-759,778-783,802-813,832-843,862-873,892-903,1567-1569,1632-1650,1656-1659,1727-1729,1807-1902,1910-1919,2006-2009,2054-2060,2092-2095,2133-2136,2140-2142,2197-2203,2265-2268,2272-2275,2280-2283,2317-2350,2396-2411,2447-2449,2489-2491,2500-2514,2576-2580,2707-2718,2740-2742,2774-2775,2781-2793,2803-2808,2818-2823,2833-2838,2848-2853,2863-2868,2878-2883,2893-2898,2908-2913,2923-2928,2938-2943,2953-2958,2968-2973,2983-2988,2998-3003,3013-3018,3028-3033,3043-3045,3055-3060,3070-3072,3082-3087,3097-3099,3109-3114,3124-3129,3139-3144,3154-3159,3583,3586,3590,3595,3598,3600,3608,3612,3625,3629,3631,3634,3638,3640,3645-3646,3659-3664,3759-3773,3793-3798,3855-3856,3908-3920,3925-3978,4164-4175,4209-4214,4244-4245,4277-4278,4281-4282,4326-4329,4380-4383,4386-4389,4399-4400,4428-4462,4495-4504,4524-4525,4637-4638,4647-4657,4733-4738,4756,4770,4781,4783,4785,4832-4842,4863-4864
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "7e445c7be3d61df971e68b628da7525045769e4a",
+  "prompts": {},
+  "sessions": {
+    "s_27d7faf80d4136": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "aa280213-8976-42e9-b833-20a9aab68cf3",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    },
+    "s_5ba915c528187b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "41628e69-1ff2-4b82-a7ba-0ef53bba9c09",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    },
+    "s_72a10c3529b662": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e7bc6712-f1fc-4a51-8b4a-78e6536fa727",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    },
+    "s_8d44563686d25e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "047fe658-a4f2-4368-8767-e93c37c6aa9a",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    },
+    "s_d32ef7bcdfcf31": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "313c076d-ec05-4c6a-a387-92fea2efb907",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    },
+    "s_fb0a6b2dc0ab23": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f5b17-b69b-7332-af5f-d974eec6635c",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
