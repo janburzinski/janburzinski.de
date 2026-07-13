@@ -1,0 +1,21 @@
+web/src/routes/datenschutz/+page.svelte
+  s_ae4b4edc48bbcf::t_573e452acd8f57 26,30-34,38-48,51-57,60-72,76-78,83-93,98,100,108,110,117-119,124-134,209-223
+  s_ae4b4edc48bbcf::t_64b670fc0c2130 28-29,35-37,49-50,58-59,73-75,79-82,101-103,111-113,120-123
+  s_ae4b4edc48bbcf::t_d5a2410f713949 224
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "9edffee5493872d05ddaf0b41b14ac36c2cc1e16",
+  "prompts": {},
+  "sessions": {
+    "s_ae4b4edc48bbcf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f5b6a-6bdb-7a21-bab8-4f29555c07de",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
