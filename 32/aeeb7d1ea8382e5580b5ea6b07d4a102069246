@@ -1,0 +1,107 @@
+web/src/lib/components/ContributionGraph.svelte
+  s_73e4136b262f25::t_a5cd2ef4c215ea 140-141,143,153,159
+  s_c5aca783f4366a::t_91a6fc419e27c2 75-90
+  s_f938ec976e74af::t_97c36dd02eca44 8,25,35
+  s_c5aca783f4366a::t_223e3ef400c92a 28-34,36-40,44,48,50
+web/src/routes/+page.server.ts
+  s_c5aca783f4366a::t_36c166cf2ee26c 8-12,14-15,19,23
+  s_f938ec976e74af::t_813c57ea1bcdf8 7,13
+web/src/lib/server/usage.ts
+  s_81a3ef6fadfa01::t_33ffb17629a14b 118-123,131
+  s_f938ec976e74af::t_5ccd94a70e0d77 62-64
+web/src/lib/components/UsageChart.svelte
+  s_8d44563686d25e::t_3fc27a659aeefe 11-12,14-22,25-41
+  s_c5aca783f4366a::t_f3bd018ba2c90b 57-68,70-74,77-85,87,89-93,95-98
+  s_8d44563686d25e::t_85c8b17187df92 138-142,144-153
+  s_8d44563686d25e::t_a2c418d1b60a1b 143
+  s_c5aca783f4366a::t_2d256d3c737fc9 113-125
+  s_f938ec976e74af::t_97c36dd02eca44 54,69,76
+  s_8d44563686d25e::t_bcc7422d3fcd72 44
+  s_8d44563686d25e::t_0f05164d420cda 86
+  s_8d44563686d25e::t_151cc6cea9faf8 157,163-167
+  s_8d44563686d25e::t_025e731a46eea8 189-225
+  s_8d44563686d25e::t_09dcf15094c3ab 4-5
+  s_8d44563686d25e::t_8209f07171244d 237-247
+  s_a81f693c0119e1::t_b190356712fc49 42,75,168-169
+web/src/lib/dither/paint.ts
+  s_8d44563686d25e::t_82b21f5f437fc4 13
+  s_f938ec976e74af::t_db319fec373d24 1,5,45
+web/src/lib/components/UsageSection.svelte
+  s_81a3ef6fadfa01::t_03cde9ce84df56 4,18-21,24
+web/src/lib/components/CollapsibleStatsSection.svelte
+  s_81a3ef6fadfa01::t_03cde9ce84df56 1-78,81-84,89-106
+  s_8d44563686d25e::t_fad9e65c82e568 79-80,85-88
+web/src/routes/+page.svelte
+  s_c5aca783f4366a::t_1a988208c88b55 103-113
+web/src/lib/format.ts
+  s_f938ec976e74af::t_db319fec373d24 22
+  s_8d44563686d25e::t_f8c0e8bdea4c0d 42-52
+web/src/routes/api/sync/+server.ts
+  s_f938ec976e74af::t_1d535e3c89decf 5
+web/src/lib/components/ContributionSection.svelte
+  s_81a3ef6fadfa01::t_03cde9ce84df56 5,42-50,53
+web/src/lib/server/github.ts
+  s_f938ec976e74af::t_1d535e3c89decf 65
+  s_81a3ef6fadfa01::t_33ffb17629a14b 83,87,89-92,94-106,108-120,122
+web/src/lib/server/db/index.ts
+  s_f938ec976e74af::t_1d535e3c89decf 15
+web/src/lib/server/autumn.ts
+  s_81a3ef6fadfa01::t_33ffb17629a14b 23-27,48-64,76-77,85-89,92-93,104-111
+  s_f938ec976e74af::t_5ccd94a70e0d77 95
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "32aeeb7d1ea8382e5580b5ea6b07d4a102069246",
+  "prompts": {},
+  "sessions": {
+    "s_73e4136b262f25": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f5b35-d8fe-7683-915e-bb99bae73ff4",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    },
+    "s_81a3ef6fadfa01": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f5b38-c016-7431-ade5-3e76481131c5",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    },
+    "s_8d44563686d25e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "047fe658-a4f2-4368-8767-e93c37c6aa9a",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    },
+    "s_a81f693c0119e1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f5b54-e71d-7af3-83d6-727bb88c888a",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    },
+    "s_c5aca783f4366a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4de1720c-3419-45d2-835d-e1c5fc5e0aa5",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    },
+    "s_f938ec976e74af": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f5b5a-8dbc-7871-b2b4-79a1c4521d09",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
