@@ -1,0 +1,19 @@
+.gitignore
+  s_98def09fe4c679::t_3cea93e7a58068 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "7c894a523bacc6bb829c70fab062ebc315ee5cbd",
+  "prompts": {},
+  "sessions": {
+    "s_98def09fe4c679": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f5b2d-dc95-7851-9bf5-6f0c565fd857",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
