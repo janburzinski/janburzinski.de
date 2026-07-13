@@ -9,15 +9,7 @@ import {
 import { getDb } from './db';
 import { syncState, usageDaily } from './db/schema';
 
-// Server-side orchestration for the homepage usage stats. Reads are served entirely from the
-// `usage_daily` rollups (no Autumn call on a page view); the daily cron calls `syncUsage` to pull
-// fresh events from Autumn and replace recent rollups. See the flow in `.context/attachments`.
-
 const DAY_MS = 86_400_000;
-/**
- * Incremental sync recomputes the trailing N UTC days on every run — catches the in-progress day
- * plus any late-arriving events, while everything older is treated as settled and never re-fetched.
- */
 const RECOMPUTE_DAYS = 3;
 
 const dayKey = (ms: number) => new Date(ms).toISOString().slice(0, 10);
@@ -44,7 +36,6 @@ function longestStreak(days: string[]): number {
 
 type UsageRow = typeof usageDaily.$inferSelect;
 
-/** Fold the flat (date, model) rows back into the homepage's UsageStats shape. */
 function buildStats(rows: UsageRow[], updatedAt: number): UsageStats {
 	const byDay = new Map<string, { tokens: number; spendUsd: number; models: UsageRow[] }>();
 	const modelTotals = new Map<string, number>();
@@ -68,9 +59,9 @@ function buildStats(rows: UsageRow[], updatedAt: number): UsageStats {
 		bucket.models.push(row);
 	}
 
-	const days = [...byDay.keys()].sort();
-	const daily: DailyUsage[] = days.map((date) => {
-		const bucket = byDay.get(date)!;
+	const entries = [...byDay.entries()].sort(([a], [b]) => a.localeCompare(b));
+	const days = entries.map(([date]) => date);
+	const daily: DailyUsage[] = entries.map(([date, bucket]) => {
 		return {
 			date,
 			tokens: bucket.tokens,
@@ -97,8 +88,6 @@ function buildStats(rows: UsageRow[], updatedAt: number): UsageStats {
 	};
 }
 
-// Short in-memory cache so bursts of page views on a warm instance share one DB round trip. It
-// doesn't survive cold starts (that's fine — the data only changes once a day via the cron).
 const CACHE_TTL_MS = 60_000;
 let cache: { at: number; stats: UsageStats } | null = null;
 
@@ -120,17 +109,18 @@ export type SyncReport = {
 	customerId: string | null;
 	events: number;
 	rows: number;
-	/** Present on incremental runs — the inclusive UTC start date of the recomputed window. */
 	windowStart?: string;
 };
 
 /**
  * Pull events from Autumn and replace the affected rollups in one transaction.
  *
- * - **Backfill** (forced with `full`, or automatic until the first backfill has run): page over the
- *   entire history uncapped, then `DELETE` every rollup and re-insert. Sets `backfilled_at`.
- * - **Incremental**: fetch only events in the trailing `RECOMPUTE_DAYS` window, then `DELETE` rows
- *   with `date >= windowStart` and re-insert the freshly computed ones. Older days are never touched.
+ * - **Backfill**: only runs when explicitly forced with `full`; it pages over the entire history,
+ *   then `DELETE`s every rollup and re-inserts. Keeping it off the cron path prevents a large initial
+ *   history from becoming an unbounded daily retry loop.
+ * - **Incremental** (including the first scheduled run): fetch only events in the trailing
+ *   `RECOMPUTE_DAYS` window, then `DELETE` rows with `date >= windowStart` and re-insert the freshly
+ *   computed ones. Older days are never touched.
  *
  * Both are recompute-replace (not additive), so a re-run over the same window produces identical
  * rows — idempotent, no double counting.
@@ -138,9 +128,7 @@ export type SyncReport = {
 export async function syncUsage(opts: { full?: boolean } = {}): Promise<SyncReport> {
 	const db = getDb();
 	const now = Date.now();
-	const existing = await db.select().from(syncState).limit(1);
-	const backfilled = existing[0]?.backfilledAt != null;
-	const full = opts.full === true || !backfilled;
+	const full = opts.full === true;
 
 	const customerId = await resolveCustomerId();
 	if (!customerId) {

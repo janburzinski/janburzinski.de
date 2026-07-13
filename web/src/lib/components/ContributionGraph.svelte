@@ -5,9 +5,7 @@
 
 	let { weeks, color = DITHER_GREEN }: { weeks: ContributionDay[][]; color?: Rgb } = $props();
 
-	// Backing-canvas geometry: each day is a CELL_PX square with a GAP_PX gutter, laid out as
-	// columns (weeks) × 7 rows (weekdays). The canvas is drawn at this native resolution and CSS-scaled
-	// to fill the container, so the dither dots stay chunky (image-rendering: pixelated).
+	// Draw at native dither resolution and let CSS scale the canvas.
 	const CELL_PX = 4;
 	const GAP_PX = 1;
 	const ROWS = 7;
@@ -24,27 +22,32 @@
 	let hoverDay = $state<number | null>(null);
 	let pointerX = $state(0);
 
-	// GitHub rows are Sunday-first; getUTCDay() matches (0 = Sunday). Placing by weekday keeps rows
-	// aligned even for the partial first/last weeks GitHub returns.
+	// GitHub weeks and getUTCDay() are both Sunday-first.
 	const weekdayOf = (date: string) => new Date(`${date}T00:00:00Z`).getUTCDay();
 
-	function render() {
+	let ctx: CanvasRenderingContext2D | null = null;
+	let lastHover: { wi: number; day: ContributionDay } | null = null;
+
+	function paintDay(wi: number, day: ContributionDay, intensity: number) {
+		if (!ctx) return;
+		const x0 = wi * STRIDE;
+		const y0 = weekdayOf(day.date) * STRIDE;
+		// Clear first because paintCell uses partial alpha.
+		ctx.clearRect(x0, y0, CELL_PX, CELL_PX);
+		paintCell(ctx, x0, y0, CELL_PX, color, day.level / 4, intensity);
+	}
+
+	function renderBase() {
 		if (!canvas) return;
 		canvas.width = gridW;
 		canvas.height = gridH;
-		const ctx = canvas.getContext('2d');
+		ctx = canvas.getContext('2d');
 		if (!ctx) return;
 		ctx.clearRect(0, 0, gridW, gridH);
-
 		weeks.forEach((week, wi) => {
-			const x0 = wi * STRIDE;
-			for (const day of week) {
-				const wd = weekdayOf(day.date);
-				const y0 = wd * STRIDE;
-				const active = wi === hoverWeek && wd === hoverDay ? 1 : 0;
-				paintCell(ctx, x0, y0, CELL_PX, color, day.level / 4, active);
-			}
+			for (const day of week) paintDay(wi, day, 0);
 		});
+		lastHover = null;
 	}
 
 	function onMove(e: PointerEvent) {
@@ -66,12 +69,25 @@
 			? (weeks[hoverWeek]?.find((d) => weekdayOf(d.date) === hoverDay) ?? null)
 			: null
 	);
-	// Keep the tooltip inside the wrapper.
 	const tipLeft = $derived(Math.max(8, Math.min(Math.max(8, width - 8), pointerX)));
 
 	$effect(() => {
-		// render() reads weeks, color, gridW, hoverWeek, hoverDay — tracked, so this re-runs on hover.
-		render();
+		renderBase();
+	});
+
+	$effect(() => {
+		const hw = hoverWeek;
+		const hd = hoverDay;
+		if (!ctx) return;
+		if (lastHover) paintDay(lastHover.wi, lastHover.day, 0);
+		lastHover = null;
+		if (hw != null && hd != null) {
+			const day = weeks[hw]?.find((d) => weekdayOf(d.date) === hd);
+			if (day) {
+				paintDay(hw, day, 1);
+				lastHover = { wi: hw, day };
+			}
+		}
 	});
 
 	$effect(() => {
@@ -121,10 +137,10 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.15rem;
-		background: #1c1c1f;
-		border: 1px solid #2c2c30;
+		background: var(--surface);
+		border: 1px solid var(--surface-border);
 		border-radius: 10px;
-		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+		box-shadow: var(--surface-shadow);
 		pointer-events: none;
 		z-index: 2;
 	}
@@ -134,13 +150,13 @@
 	}
 
 	.tip-count {
-		color: #f4f4f5;
+		color: var(--text-primary);
 		font-weight: 600;
 		font-size: 0.875rem;
 	}
 
 	.tip-date {
-		color: #8a8a90;
+		color: var(--text-muted);
 		font-size: 0.75rem;
 	}
 </style>

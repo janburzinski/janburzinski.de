@@ -4,9 +4,6 @@ import pg from 'pg';
 import * as schema from './schema';
 
 function createDatabase() {
-	// PlanetScale Postgres. DATABASE_URL is the pooled (PgBouncer / :6432) connection — right for the
-	// short read/write bursts the page and cron do. Validate it here so callers can handle missing
-	// configuration without failing while their route module is being imported.
 	const connectionString = env.DATABASE_URL;
 	if (!connectionString) throw new Error('DATABASE_URL is not set');
 
@@ -15,8 +12,7 @@ function createDatabase() {
 		ssl: { rejectUnauthorized: true }
 	});
 
-	// On Vercel Fluid Compute, drain in-flight queries before the instance is frozen/shut down. Loaded
-	// lazily so the pool still works outside Vercel (local dev, other hosts) where the module is absent.
+	// Drain in-flight queries on Vercel while keeping the pool portable to other hosts.
 	import('@vercel/functions')
 		.then(({ attachDatabasePool }) => attachDatabasePool(pool))
 		.catch(() => {});

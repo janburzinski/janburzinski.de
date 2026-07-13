@@ -100,13 +100,17 @@
 			</a>
 		</div>
 
-		{#if data.usage}
-			<UsageSection stats={data.usage} />
-		{/if}
+		{#await data.usage then usage}
+			{#if usage}
+				<UsageSection stats={usage} />
+			{/if}
+		{/await}
 
-		{#if data.contributions}
-			<ContributionSection stats={data.contributions} />
-		{/if}
+		{#await data.contributions then contributions}
+			{#if contributions}
+				<ContributionSection stats={contributions} />
+			{/if}
+		{/await}
 	</div>
 </div>
 
