@@ -1,6 +1,10 @@
 <script lang="ts">
-	import { Github, Mail, Sun, Moon, ArrowUpRight } from 'lucide-svelte';
+	import { Github, Mail, Linkedin, Sun, Moon, ArrowUpRight } from 'lucide-svelte';
 	import { onMount } from 'svelte';
+	import UsageSection from '$lib/components/UsageSection.svelte';
+	import ContributionSection from '$lib/components/ContributionSection.svelte';
+
+	export let data;
 
 	type Theme = 'light' | 'dark';
 	let theme: Theme = 'dark';
@@ -43,7 +47,12 @@
 		<div class="nav-right">
 			<a href="/impressum" class="nav-link">Imprint</a>
 			<a href="/datenschutz" class="nav-link">Privacy</a>
-			<button class="nav-icon theme-toggle" on:click={toggleTheme} aria-label="Toggle theme" type="button">
+			<button
+				class="nav-icon theme-toggle"
+				on:click={toggleTheme}
+				aria-label="Toggle theme"
+				type="button"
+			>
 				{#if theme === 'light'}
 					<Sun size={16} />
 				{:else}
@@ -55,13 +64,33 @@
 
 	<div class="main">
 		<p>
-			Computer Science student at <a href="https://tu.berlin" target="_blank" rel="noopener noreferrer">TU Berlin</a>, 21 years old. My passion for software was sparked by Minecraft. I've been building things ever since.
+			Computer Science student at <a
+				href="https://tu.berlin"
+				target="_blank"
+				rel="noopener noreferrer">TU Berlin</a
+			>, 21 years old. My passion for software was sparked by Minecraft. I've been building things
+			ever since.
 		</p>
 
 		<div class="social-links">
-			<a href="https://github.com/janburzinski" target="_blank" rel="noopener noreferrer" class="social-link">
+			<a
+				href="https://github.com/janburzinski"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="social-link"
+			>
 				<Github size={16} />
 				<span>GitHub</span>
+				<ArrowUpRight size={13} class="outbound" />
+			</a>
+			<a
+				href="https://www.linkedin.com/in/jan-burzinski-2a76b1333/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="social-link"
+			>
+				<Linkedin size={16} />
+				<span>LinkedIn</span>
 				<ArrowUpRight size={13} class="outbound" />
 			</a>
 			<a href="mailto:jan@burzinski.de" class="social-link">
@@ -70,6 +99,18 @@
 				<ArrowUpRight size={13} class="outbound" />
 			</a>
 		</div>
+
+		{#await data.usage then usage}
+			{#if usage}
+				<UsageSection stats={usage} />
+			{/if}
+		{/await}
+
+		{#await data.contributions then contributions}
+			{#if contributions}
+				<ContributionSection stats={contributions} />
+			{/if}
+		{/await}
 	</div>
 </div>
 

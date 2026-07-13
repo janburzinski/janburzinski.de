@@ -73,8 +73,8 @@
 	on:mouseenter={enter}
 	on:mouseleave={leave}
 	on:focus={enter}
-	on:blur={leave}
-><slot /></a>
+	on:blur={leave}><slot /></a
+>
 
 {#if mounted}
 	<span
@@ -86,12 +86,7 @@
 	>
 		{#if interacted}
 			<span class="skeleton" class:hidden={loaded}></span>
-			<img
-				class:loaded
-				src={previewUrl}
-				alt=""
-				on:load={() => (loaded = true)}
-			/>
+			<img class:loaded src={previewUrl} alt="" on:load={() => (loaded = true)} />
 		{/if}
 	</span>
 {/if}
@@ -160,9 +155,13 @@
 				transparent 100%
 			),
 			color-mix(in srgb, var(--text-primary) 7%, transparent);
-		background-size: 200% 100%, 100% 100%;
+		background-size:
+			200% 100%,
+			100% 100%;
 		background-repeat: no-repeat;
-		background-position: -50% 0, 0 0;
+		background-position:
+			-50% 0,
+			0 0;
 		animation: skeleton-shimmer 1.2s linear infinite;
 		transition: opacity 200ms var(--ease-out);
 	}
@@ -173,10 +172,14 @@
 
 	@keyframes skeleton-shimmer {
 		from {
-			background-position: -50% 0, 0 0;
+			background-position:
+				-50% 0,
+				0 0;
 		}
 		to {
-			background-position: 150% 0, 0 0;
+			background-position:
+				150% 0,
+				0 0;
 		}
 	}
 
