@@ -1,0 +1,19 @@
+web/src/lib/components/CollapsibleStatsSection.svelte
+  s_ae4b4edc48bbcf::t_79dc9b4ad41ed0 40,58-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "a35a0f2cb65d105c60ba3c37692e7b1877441d3a",
+  "prompts": {},
+  "sessions": {
+    "s_ae4b4edc48bbcf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f5b6a-6bdb-7a21-bab8-4f29555c07de",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
