@@ -21,6 +21,9 @@
 	let hoverWeek = $state<number | null>(null);
 	let hoverDay = $state<number | null>(null);
 	let pointerX = $state(0);
+	// On touch there's no hover: a tap sets the active cell and it stays until
+	// the next tap lands outside the graph.
+	let touchActive = $state(false);
 
 	// GitHub weeks and getUTCDay() are both Sunday-first.
 	const weekdayOf = (date: string) => new Date(`${date}T00:00:00Z`).getUTCDay();
@@ -50,13 +53,31 @@
 		lastHover = null;
 	}
 
-	function onMove(e: PointerEvent) {
+	function setCellFromPointer(e: PointerEvent) {
 		const rect = canvas.getBoundingClientRect();
 		pointerX = e.clientX - rect.left;
 		const relX = pointerX / rect.width;
 		const relY = (e.clientY - rect.top) / rect.height;
 		hoverWeek = Math.min(cols - 1, Math.max(0, Math.floor((relX * gridW) / STRIDE)));
 		hoverDay = Math.min(ROWS - 1, Math.max(0, Math.floor((relY * gridH) / STRIDE)));
+	}
+
+	function onMove(e: PointerEvent) {
+		// Mouse hover, or scrubbing a finger across the cells after a tap.
+		if (e.pointerType !== 'touch' || touchActive) setCellFromPointer(e);
+	}
+
+	function onDown(e: PointerEvent) {
+		if (e.pointerType !== 'touch') return;
+		touchActive = true;
+		// Keep receiving moves even if the finger drifts off the canvas.
+		canvas.setPointerCapture?.(e.pointerId);
+		setCellFromPointer(e);
+	}
+
+	function onLeave(e: PointerEvent) {
+		// On touch the tip stays until the next tap outside; only clear for mouse.
+		if (e.pointerType !== 'touch') clearHover();
 	}
 
 	function clearHover() {
@@ -98,10 +119,24 @@
 		ro.observe(wrapper);
 		return () => ro.disconnect();
 	});
+
+	// Dismiss the touch tooltip when the next tap lands outside the graph.
+	$effect(() => {
+		if (!touchActive) return;
+		const onOutside = (e: PointerEvent) => {
+			if (e.pointerType === 'touch' && !wrapper.contains(e.target as Node)) {
+				touchActive = false;
+				clearHover();
+			}
+		};
+		window.addEventListener('pointerdown', onOutside);
+		return () => window.removeEventListener('pointerdown', onOutside);
+	});
 </script>
 
 <div class="graph" bind:this={wrapper}>
-	<canvas bind:this={canvas} onpointermove={onMove} onpointerleave={clearHover}></canvas>
+	<canvas bind:this={canvas} onpointerdown={onDown} onpointermove={onMove} onpointerleave={onLeave}
+	></canvas>
 
 	{#if active}
 		<div class="tip" style="left: {tipLeft}px" class:flip={tipLeft > width / 2}>
@@ -126,6 +161,8 @@
 		height: auto;
 		image-rendering: pixelated;
 		cursor: crosshair;
+		/* Let vertical page scroll pass through, but keep taps/horizontal scrubs. */
+		touch-action: pan-y;
 	}
 
 	.tip {
