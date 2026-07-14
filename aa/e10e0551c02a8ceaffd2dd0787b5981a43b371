@@ -1,0 +1,30 @@
+web/src/routes/+page.svelte
+  s_e7415b2a80add6::t_162578055aa8fd 6,8,53
+  s_e7415b2a80add6::t_f8a0465eea2af5 11
+web/src/lib/server/usage.ts
+  s_e7415b2a80add6::t_f5a99c9cbd7c65 215-218
+web/src/lib/components/LinkPreview.svelte
+  s_e7415b2a80add6::t_d1a2e7611aa4b8 2
+  s_e7415b2a80add6::t_162578055aa8fd 4,6-9,11-12,20-22,26-28,78-81,94
+web/src/routes/+layout.svelte
+  s_e7415b2a80add6::t_595bda7e21b0b7 10
+  s_e7415b2a80add6::t_162578055aa8fd 5,7,9,84
+web/src/routes/api/sync/+server.ts
+  s_e7415b2a80add6::t_f5a99c9cbd7c65 5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.13",
+  "base_commit_sha": "aae10e0551c02a8ceaffd2dd0787b5981a43b371",
+  "prompts": {},
+  "sessions": {
+    "s_e7415b2a80add6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f5efb-8bcb-75c3-b508-abe4a7f14267",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
