@@ -1,0 +1,21 @@
+web/src/routes/api/sync/server.test.ts
+  s_e7415b2a80add6::t_f315fa0df9b36d 52,55-78
+web/src/routes/api/sync/+server.ts
+  s_e7415b2a80add6::t_f315fa0df9b36d 5-10,14-15,23,26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.13",
+  "base_commit_sha": "cea46ddd513036cc399a92cc20c3e06f250c8339",
+  "prompts": {},
+  "sessions": {
+    "s_e7415b2a80add6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f5efb-8bcb-75c3-b508-abe4a7f14267",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
