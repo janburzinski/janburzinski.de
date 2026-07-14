@@ -212,12 +212,10 @@ function assertSafeReplacement(comparison: SyncComparison) {
 /**
  * Pull events from Autumn and replace the affected rollups in one transaction.
  *
- * - **Backfill**: only runs when explicitly forced with `full`; it pages over the entire history,
- *   then `DELETE`s every rollup and re-inserts. Keeping it off the cron path prevents a large initial
- *   history from becoming an unbounded daily retry loop.
- * - **Incremental** (including the first scheduled run): fetch only events in the trailing
- *   `RECOMPUTE_DAYS` window, then `DELETE` rows with `date >= windowStart` and re-insert the freshly
- *   computed ones. Older days are never touched.
+ * - **Backfill**: pages over the entire bounded history, then `DELETE`s every rollup and re-inserts.
+ *   Scheduled Vercel runs use this mode so older corrections are reconciled as well.
+ * - **Incremental**: fetches only events in the trailing `RECOMPUTE_DAYS` window, then `DELETE`s rows
+ *   with `date >= windowStart` and re-inserts the freshly computed ones. Older days are untouched.
  *
  * Both are recompute-replace (not additive), so a re-run over the same window produces identical
  * rows — idempotent, no double counting.

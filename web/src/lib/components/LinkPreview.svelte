@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, type Snippet } from 'svelte';
 
-	export let href: string;
+	let { href, children }: { href: string; children: Snippet } = $props();
 
-	let mounted = false;
-	let hovering = false;
-	let interacted = false;
-	let loaded = false;
+	let mounted = $state(false);
+	let hovering = $state(false);
+	let interacted = $state(false);
+	let loaded = $state(false);
 	let linkEl: HTMLAnchorElement;
-	let popoverLeft = 0;
-	let popoverTop = 0;
+	let popoverLeft = $state(0);
+	let popoverTop = $state(0);
 	let enterTimer: ReturnType<typeof setTimeout> | null = null;
 
 	const POPOVER_WIDTH = 280;
@@ -17,10 +17,15 @@
 	const GAP = 10;
 	const MARGIN = 12;
 
-	$: previewUrl = `https://api.microlink.io/?url=${encodeURIComponent(href)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800&screenshot.type=webp`;
+	const previewUrl = $derived(
+		`https://api.microlink.io/?url=${encodeURIComponent(href)}&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800&screenshot.type=webp`
+	);
 
 	onMount(() => {
 		mounted = true;
+		return () => {
+			if (enterTimer) clearTimeout(enterTimer);
+		};
 	});
 
 	function position() {
@@ -70,10 +75,10 @@
 	{href}
 	target="_blank"
 	rel="noopener noreferrer"
-	on:mouseenter={enter}
-	on:mouseleave={leave}
-	on:focus={enter}
-	on:blur={leave}><slot /></a
+	onmouseenter={enter}
+	onmouseleave={leave}
+	onfocus={enter}
+	onblur={leave}>{@render children()}</a
 >
 
 {#if mounted}
@@ -86,7 +91,7 @@
 	>
 		{#if interacted}
 			<span class="skeleton" class:hidden={loaded}></span>
-			<img class:loaded src={previewUrl} alt="" on:load={() => (loaded = true)} />
+			<img class:loaded src={previewUrl} alt="" onload={() => (loaded = true)} />
 		{/if}
 	</span>
 {/if}

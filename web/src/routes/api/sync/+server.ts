@@ -2,7 +2,7 @@ import { env } from '$env/dynamic/private';
 import { json, type RequestHandler } from '@sveltejs/kit';
 import { syncUsage } from '$lib/server/usage';
 
-// Vercel Cron authenticates this endpoint with CRON_SECRET. Full and dry-run syncs remain explicit.
+// Vercel Cron authenticates this endpoint with CRON_SECRET and always requests a full reconciliation.
 export const GET: RequestHandler = async ({ request, url }) => {
 	const secret = env.CRON_SECRET;
 	if (!secret) return json({ error: 'CRON_SECRET is not set' }, { status: 500 });

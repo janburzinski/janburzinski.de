@@ -2,11 +2,12 @@
 	import '@fontsource/geist/400.css';
 	import '@fontsource/geist/500.css';
 	import '@fontsource/geist/600.css';
+	import type { LayoutProps } from './$types';
 
-	export let data;
+	let { data, children }: LayoutProps = $props();
 
-	$: title = data.title ? `${data.title} - Jan Burzinski` : 'Jan Burzinski';
-	$: description = data.description || 'B.Sc. Informatik Student an der TU Berlin.';
+	const title = $derived(data.title ? `${data.title} - Jan Burzinski` : 'Jan Burzinski');
+	const description = $derived(data.description ?? 'B.Sc. Informatik Student an der TU Berlin.');
 </script>
 
 <svelte:head>
@@ -80,7 +81,7 @@
 </svelte:head>
 
 <main class="content">
-	<slot />
+	{@render children()}
 </main>
 
 <style>

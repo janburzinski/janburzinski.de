@@ -3,11 +3,12 @@
 	import { onMount } from 'svelte';
 	import UsageSection from '$lib/components/UsageSection.svelte';
 	import ContributionSection from '$lib/components/ContributionSection.svelte';
+	import type { PageProps } from './$types';
 
-	export let data;
+	let { data }: PageProps = $props();
 
 	type Theme = 'light' | 'dark';
-	let theme: Theme = 'dark';
+	let theme = $state<Theme>('dark');
 
 	onMount(() => {
 		const isDark = document.documentElement.classList.contains('dark');
@@ -49,7 +50,7 @@
 			<a href="/datenschutz" class="nav-link">Privacy</a>
 			<button
 				class="nav-icon theme-toggle"
-				on:click={toggleTheme}
+				onclick={toggleTheme}
 				aria-label="Toggle theme"
 				type="button"
 			>
