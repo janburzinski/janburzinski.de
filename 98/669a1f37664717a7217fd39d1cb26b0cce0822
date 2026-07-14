@@ -1,0 +1,50 @@
+web/src/routes/api/sync/+server.ts
+  s_e7415b2a80add6::t_eb09365a471e35 5,15,17
+  s_e7415b2a80add6::t_3958552918a14c 13-14
+web/src/lib/server/autumn.ts
+  s_e7415b2a80add6::t_993beca89a16cf 8,83-84,92,95,124-126,130-132,155-167
+  s_e7415b2a80add6::t_1f52062f586262 25-30,88-90,98-100,102-108,112,114-116,120-123,127-129,133-134,142-146,149-150
+  s_e7415b2a80add6::t_6cd9e9dc6577b2 7
+  s_e7415b2a80add6::t_0b4c8ca8b32f90 31-32
+  s_e7415b2a80add6::t_a41253f5f61d95 168-169
+web/src/routes/api/sync/server.test.ts
+  s_e7415b2a80add6::t_aeb11a58087be6 1-54
+web/src/lib/server/autumn.test.ts
+  s_e7415b2a80add6::t_d58b0e42cad907 3-25,30-31,33-57,59-60,63,66-68,88-136
+  s_e7415b2a80add6::t_a86e084b54669b 58
+  s_e7415b2a80add6::t_883d7018e9e45a 1-2,26-29,32
+  s_e7415b2a80add6::t_993beca89a16cf 61-62,64-65,69-87
+web/src/lib/server/usage.test.ts
+  s_e7415b2a80add6::t_cf779097d517d3 32,34-35,41-59,62-78
+  s_e7415b2a80add6::t_affe32b7e0ab39 83,112
+  s_e7415b2a80add6::t_02a2782b2ea144 102-111,113-117
+  s_e7415b2a80add6::t_ce1dbf0a821a2c 1-11,13-31,33,36-40,60-61,79-82,84-101,118-120
+  s_e7415b2a80add6::t_e21bd9505cc88d 12
+web/src/lib/server/usage.ts
+  s_e7415b2a80add6::t_eb09365a471e35 104,109-116,119-122,128-129,139-154,189-196,203,210-211,225-227,231,235-241,247-258,271-278,285-297,309,313-314
+  s_e7415b2a80add6::t_d273cbba8f8776 99
+  s_e7415b2a80add6::t_6cd9e9dc6577b2 6,123-127,130-138,155-188,197-202,204-209,245,259,298
+README.md
+  s_e7415b2a80add6::t_6cd9e9dc6577b2 2,4-7
+web/package.json
+  s_e7415b2a80add6::t_137589182101dd 53
+  s_e7415b2a80add6::t_1f52062f586262 21
+web/pnpm-lock.yaml
+  s_e7415b2a80add6::t_a3ad0521bfa5c4 96-98,1505-1507,1561-1563,1567-1569,1672-1700,1738-1741,1779-1782,1816-1818,1962-1964,2057-2059,2068-2071,2551-2553,2576-2581,2627-2633,2638-2641,2743-2783,2795-2799,3707-3708,3780-3784,3787-3788,3936-3976,4006-4007,4039-4040,4066-4067,4109-4110,4348-4351,4366-4367,4829-4830,4850-4853,4915-4918,4924-4925,4991-5017,5029-5033
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.13",
+  "base_commit_sha": "98669a1f37664717a7217fd39d1cb26b0cce0822",
+  "prompts": {},
+  "sessions": {
+    "s_e7415b2a80add6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f5efb-8bcb-75c3-b508-abe4a7f14267",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Jan Burzinski <156842394+janburzinski@users.noreply.github.com>"
+    }
+  }
+}
