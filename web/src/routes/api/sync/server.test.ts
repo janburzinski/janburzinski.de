@@ -49,6 +49,31 @@ describe('usage sync endpoint', () => {
 		const response = await GET(event as Parameters<typeof GET>[0]);
 
 		expect(response.status).toBe(401);
+		expect(response.headers.get('cache-control')).toBe('private, no-store');
 		expect(mocks.syncUsage).not.toHaveBeenCalled();
+	});
+
+	it('fails closed without revealing whether the server secret is configured', async () => {
+		delete env.CRON_SECRET;
+
+		const response = await GET(
+			requestEvent('http://localhost/api/sync') as Parameters<typeof GET>[0]
+		);
+
+		expect(response.status).toBe(401);
+		expect(await response.json()).toEqual({ error: 'unauthorized' });
+		expect(mocks.syncUsage).not.toHaveBeenCalled();
+	});
+
+	it('does not expose upstream or database errors', async () => {
+		mocks.syncUsage.mockRejectedValue(new Error('sensitive upstream detail'));
+
+		const response = await GET(
+			requestEvent('http://localhost/api/sync') as Parameters<typeof GET>[0]
+		);
+
+		expect(response.status).toBe(500);
+		expect(response.headers.get('cache-control')).toBe('private, no-store');
+		expect(await response.json()).toEqual({ ok: false, error: 'sync failed' });
 	});
 });
