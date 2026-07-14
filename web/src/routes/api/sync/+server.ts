@@ -2,7 +2,7 @@ import { env } from '$env/dynamic/private';
 import { json, type RequestHandler } from '@sveltejs/kit';
 import { syncUsage } from '$lib/server/usage';
 
-// Vercel Cron authenticates this endpoint with CRON_SECRET; full syncs remain explicit.
+// Vercel Cron authenticates this endpoint with CRON_SECRET. Full and dry-run syncs remain explicit.
 export const GET: RequestHandler = async ({ request, url }) => {
 	const secret = env.CRON_SECRET;
 	if (!secret) return json({ error: 'CRON_SECRET is not set' }, { status: 500 });
@@ -10,9 +10,11 @@ export const GET: RequestHandler = async ({ request, url }) => {
 		return json({ error: 'unauthorized' }, { status: 401 });
 	}
 
-	const full = url.searchParams.get('full') === '1';
+	const scheduled = request.headers.has('x-vercel-cron-schedule');
+	const full = scheduled || url.searchParams.get('full') === '1';
+	const dryRun = url.searchParams.get('dry') === '1';
 	try {
-		const report = await syncUsage({ full });
+		const report = await syncUsage({ full, dryRun });
 		return json({ ok: true, ...report });
 	} catch (error) {
 		console.error('[sync] failed:', error);

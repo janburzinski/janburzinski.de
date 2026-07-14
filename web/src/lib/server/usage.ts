@@ -3,6 +3,7 @@ import type { DailyUsage, UsageStats } from '$lib/usage';
 import {
 	eventsToDailyRollups,
 	fetchEventsSince,
+	FULL_SYNC_CAP,
 	resolveCustomerId,
 	type DailyRollup
 } from './autumn';
@@ -88,29 +89,125 @@ function buildStats(rows: UsageRow[], updatedAt: number): UsageStats {
 	};
 }
 
-const CACHE_TTL_MS = 60_000;
-let cache: { at: number; stats: UsageStats } | null = null;
-
 export async function getUsageStats(): Promise<UsageStats> {
-	if (cache && Date.now() - cache.at < CACHE_TTL_MS) return cache.stats;
 	const db = getDb();
 	const [rows, state] = await Promise.all([
 		db.select().from(usageDaily),
 		db.select().from(syncState).limit(1)
 	]);
 	const updatedAt = state[0]?.lastSyncedAt?.getTime() ?? Date.now();
-	const stats = buildStats(rows, updatedAt);
-	cache = { at: Date.now(), stats };
-	return stats;
+	return buildStats(rows, updatedAt);
 }
 
 export type SyncReport = {
 	mode: 'backfill' | 'incremental';
+	dryRun: boolean;
 	customerId: string | null;
 	events: number;
 	rows: number;
 	windowStart?: string;
+	comparison?: SyncComparison;
 };
+
+type SyncTotals = {
+	rows: number;
+	events: number;
+	tokens: number;
+	spendUsd: number;
+};
+
+type SyncComparison = {
+	current: SyncTotals;
+	source: SyncTotals;
+	delta: SyncTotals;
+	matches: boolean;
+	addedRows: number;
+	updatedRows: number;
+	removedRows: number;
+	changes: SyncChange[];
+};
+
+type SyncRow = Pick<UsageRow, 'date' | 'model' | 'tokens' | 'spendUsd' | 'events'>;
+type SyncValues = Pick<SyncRow, 'tokens' | 'spendUsd' | 'events'>;
+
+type SyncChange = {
+	date: string;
+	model: string;
+	before: SyncValues | null;
+	after: SyncValues | null;
+};
+
+const sumSyncRows = (rows: SyncRow[]): SyncTotals => {
+	return rows.reduce<SyncTotals>(
+		(totals, row) => ({
+			rows: totals.rows + 1,
+			events: totals.events + row.events,
+			tokens: totals.tokens + row.tokens,
+			spendUsd: totals.spendUsd + row.spendUsd
+		}),
+		{ rows: 0, events: 0, tokens: 0, spendUsd: 0 }
+	);
+};
+
+export function compareSyncRows(currentRows: SyncRow[], sourceRows: SyncRow[]): SyncComparison {
+	const current = sumSyncRows(currentRows);
+	const source = sumSyncRows(sourceRows);
+	const currentByKey = new Map(currentRows.map((row) => [`${row.date}\0${row.model}`, row]));
+	const sourceByKey = new Map(sourceRows.map((row) => [`${row.date}\0${row.model}`, row]));
+	const keys = [...new Set([...currentByKey.keys(), ...sourceByKey.keys()])].sort();
+	const changes: SyncChange[] = [];
+	let addedRows = 0;
+	let updatedRows = 0;
+	let removedRows = 0;
+
+	for (const key of keys) {
+		const before = currentByKey.get(key);
+		const after = sourceByKey.get(key);
+		if (
+			before &&
+			after &&
+			before.tokens === after.tokens &&
+			before.events === after.events &&
+			before.spendUsd === after.spendUsd
+		) {
+			continue;
+		}
+		if (!before) addedRows += 1;
+		else if (!after) removedRows += 1;
+		else updatedRows += 1;
+		const row = after ?? before!;
+		changes.push({
+			date: row.date,
+			model: row.model,
+			before: before
+				? { tokens: before.tokens, spendUsd: before.spendUsd, events: before.events }
+				: null,
+			after: after ? { tokens: after.tokens, spendUsd: after.spendUsd, events: after.events } : null
+		});
+	}
+
+	return {
+		current,
+		source,
+		delta: {
+			rows: source.rows - current.rows,
+			events: source.events - current.events,
+			tokens: source.tokens - current.tokens,
+			spendUsd: source.spendUsd - current.spendUsd
+		},
+		matches: changes.length === 0,
+		addedRows,
+		updatedRows,
+		removedRows,
+		changes
+	};
+}
+
+function assertSafeReplacement(comparison: SyncComparison) {
+	if (comparison.current.rows > 0 && comparison.source.rows === 0) {
+		throw new Error('Refusing to replace non-empty usage rollups with an empty Autumn result');
+	}
+}
 
 /**
  * Pull events from Autumn and replace the affected rollups in one transaction.
@@ -125,19 +222,41 @@ export type SyncReport = {
  * Both are recompute-replace (not additive), so a re-run over the same window produces identical
  * rows — idempotent, no double counting.
  */
-export async function syncUsage(opts: { full?: boolean } = {}): Promise<SyncReport> {
+export async function syncUsage(
+	opts: { full?: boolean; dryRun?: boolean } = {}
+): Promise<SyncReport> {
 	const db = getDb();
 	const now = Date.now();
 	const full = opts.full === true;
+	const dryRun = opts.dryRun === true;
 
 	const customerId = await resolveCustomerId();
 	if (!customerId) {
-		return { mode: full ? 'backfill' : 'incremental', customerId: null, events: 0, rows: 0 };
+		return {
+			mode: full ? 'backfill' : 'incremental',
+			dryRun,
+			customerId: null,
+			events: 0,
+			rows: 0
+		};
 	}
 
 	if (full) {
-		const events = await fetchEventsSince(customerId, 0, Infinity);
+		const events = await fetchEventsSince(customerId, 0, FULL_SYNC_CAP);
 		const rollups = eventsToDailyRollups(events);
+		const currentRows = await db.select().from(usageDaily);
+		const comparison = compareSyncRows(currentRows, rollups);
+		if (dryRun) {
+			return {
+				mode: 'backfill',
+				dryRun: true,
+				customerId,
+				events: events.length,
+				rows: rollups.length,
+				comparison
+			};
+		}
+		assertSafeReplacement(comparison);
 		await db.transaction(async (tx) => {
 			await tx.delete(usageDaily);
 			if (rollups.length) await tx.insert(usageDaily).values(rollups.map(rollupToRow));
@@ -149,13 +268,34 @@ export async function syncUsage(opts: { full?: boolean } = {}): Promise<SyncRepo
 					set: { backfilledAt: new Date(now), lastSyncedAt: new Date(now) }
 				});
 		});
-		return { mode: 'backfill', customerId, events: events.length, rows: rollups.length };
+		return {
+			mode: 'backfill',
+			dryRun: false,
+			customerId,
+			events: events.length,
+			rows: rollups.length,
+			comparison
+		};
 	}
 
 	const windowStartMs = Date.parse(`${dayKey(now)}T00:00:00Z`) - RECOMPUTE_DAYS * DAY_MS;
 	const windowStart = dayKey(windowStartMs);
 	const events = await fetchEventsSince(customerId, windowStartMs);
 	const rollups = eventsToDailyRollups(events);
+	const currentRows = await db.select().from(usageDaily).where(gte(usageDaily.date, windowStart));
+	const comparison = compareSyncRows(currentRows, rollups);
+	if (dryRun) {
+		return {
+			mode: 'incremental',
+			dryRun: true,
+			customerId,
+			events: events.length,
+			rows: rollups.length,
+			windowStart,
+			comparison
+		};
+	}
+	assertSafeReplacement(comparison);
 	await db.transaction(async (tx) => {
 		await tx.delete(usageDaily).where(gte(usageDaily.date, windowStart));
 		if (rollups.length) await tx.insert(usageDaily).values(rollups.map(rollupToRow));
@@ -166,9 +306,11 @@ export async function syncUsage(opts: { full?: boolean } = {}): Promise<SyncRepo
 	});
 	return {
 		mode: 'incremental',
+		dryRun: false,
 		customerId,
 		events: events.length,
 		rows: rollups.length,
-		windowStart
+		windowStart,
+		comparison
 	};
 }
