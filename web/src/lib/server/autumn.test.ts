@@ -29,7 +29,7 @@ beforeEach(() => {
 
 afterEach(() => {
 	vi.unstubAllGlobals();
-	delete env.AUTUMN_SECRET_KEY;
+	Reflect.deleteProperty(env, 'AUTUMN_SECRET_KEY');
 });
 
 describe('fetchEventsSince', () => {
@@ -95,11 +95,12 @@ describe('fetchEventsSince', () => {
 });
 
 describe('eventsToDailyRollups', () => {
-	it('matches Summer token fields per UTC date and model', () => {
+	it('matches Summer token fields per UTC date, model, and harness', () => {
 		const rollups = eventsToDailyRollups([
 			{
 				...event('a', Date.parse('2026-07-11T23:59:00Z'), {
 					model: 'openai/gpt',
+					harness: 'claude-code',
 					input_tokens: 10,
 					output_tokens: 2,
 					cache_read_tokens: 3,
@@ -110,6 +111,7 @@ describe('eventsToDailyRollups', () => {
 			{
 				...event('b', Date.parse('2026-07-12T00:01:00Z'), {
 					model: 'openai/gpt',
+					harness: 'claude-code',
 					input_tokens: 5
 				}),
 				value: 0.5
@@ -120,6 +122,7 @@ describe('eventsToDailyRollups', () => {
 			{
 				date: '2026-07-11',
 				model: 'openai/gpt',
+				harness: 'claude-code',
 				tokens: 19,
 				spendUsd: 1.25,
 				events: 1
@@ -127,8 +130,64 @@ describe('eventsToDailyRollups', () => {
 			{
 				date: '2026-07-12',
 				model: 'openai/gpt',
+				harness: 'claude-code',
 				tokens: 5,
 				spendUsd: 0.5,
+				events: 1
+			}
+		]);
+	});
+
+	it('splits the same model across harnesses and defaults a missing harness to unknown', () => {
+		const rollups = eventsToDailyRollups([
+			{
+				...event('a', Date.parse('2026-07-11T10:00:00Z'), {
+					model: 'anthropic/opus',
+					harness: 'claude-code',
+					input_tokens: 10
+				}),
+				value: 1
+			},
+			{
+				...event('b', Date.parse('2026-07-11T11:00:00Z'), {
+					model: 'anthropic/opus',
+					harness: 'codex',
+					input_tokens: 4
+				}),
+				value: 0.5
+			},
+			{
+				...event('c', Date.parse('2026-07-11T12:00:00Z'), {
+					model: 'anthropic/opus',
+					input_tokens: 2
+				}),
+				value: 0.25
+			}
+		]);
+
+		expect(rollups).toEqual([
+			{
+				date: '2026-07-11',
+				model: 'anthropic/opus',
+				harness: 'claude-code',
+				tokens: 10,
+				spendUsd: 1,
+				events: 1
+			},
+			{
+				date: '2026-07-11',
+				model: 'anthropic/opus',
+				harness: 'codex',
+				tokens: 4,
+				spendUsd: 0.5,
+				events: 1
+			},
+			{
+				date: '2026-07-11',
+				model: 'anthropic/opus',
+				harness: 'unknown',
+				tokens: 2,
+				spendUsd: 0.25,
 				events: 1
 			}
 		]);

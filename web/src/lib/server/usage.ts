@@ -17,6 +17,7 @@ const dayKey = (ms: number) => new Date(ms).toISOString().slice(0, 10);
 const rollupToRow = (r: DailyRollup) => ({
 	date: r.date,
 	model: r.model,
+	harness: r.harness,
 	tokens: r.tokens,
 	spendUsd: r.spendUsd,
 	events: r.events
@@ -37,9 +38,15 @@ function longestStreak(days: string[]): number {
 
 type UsageRow = typeof usageDaily.$inferSelect;
 
-function buildStats(rows: UsageRow[], updatedAt: number): UsageStats {
-	const byDay = new Map<string, { tokens: number; spendUsd: number; models: UsageRow[] }>();
+export function buildStats(rows: UsageRow[], updatedAt: number): UsageStats {
+	// Rows are keyed by (date, model, harness), so the same model can appear once per harness on a
+	// day. Merge models back together per day for the bar chart, and roll harnesses up all-time.
+	const byDay = new Map<
+		string,
+		{ tokens: number; spendUsd: number; models: Map<string, number> }
+	>();
 	const modelTotals = new Map<string, number>();
+	const harnessTotals = new Map<string, { tokens: number; spendUsd: number; events: number }>();
 	let tokens = 0;
 	let spendUsd = 0;
 	let contributions = 0;
@@ -50,14 +57,20 @@ function buildStats(rows: UsageRow[], updatedAt: number): UsageStats {
 		contributions += row.events;
 		modelTotals.set(row.model, (modelTotals.get(row.model) ?? 0) + row.tokens);
 
+		const harness = harnessTotals.get(row.harness) ?? { tokens: 0, spendUsd: 0, events: 0 };
+		harness.tokens += row.tokens;
+		harness.spendUsd += row.spendUsd;
+		harness.events += row.events;
+		harnessTotals.set(row.harness, harness);
+
 		let bucket = byDay.get(row.date);
 		if (!bucket) {
-			bucket = { tokens: 0, spendUsd: 0, models: [] };
+			bucket = { tokens: 0, spendUsd: 0, models: new Map() };
 			byDay.set(row.date, bucket);
 		}
 		bucket.tokens += row.tokens;
 		bucket.spendUsd += row.spendUsd;
-		bucket.models.push(row);
+		bucket.models.set(row.model, (bucket.models.get(row.model) ?? 0) + row.tokens);
 	}
 
 	const entries = [...byDay.entries()].sort(([a], [b]) => a.localeCompare(b));
@@ -67,13 +80,18 @@ function buildStats(rows: UsageRow[], updatedAt: number): UsageStats {
 			date,
 			tokens: bucket.tokens,
 			spendUsd: bucket.spendUsd,
-			models: bucket.models
-				.map((m) => ({ model: m.model, tokens: m.tokens }))
+			models: [...bucket.models.entries()]
+				.map(([model, t]) => ({ model, tokens: t }))
 				.sort((a, b) => b.tokens - a.tokens)
 		};
 	});
 
 	const topModel = [...modelTotals.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
+	// Ranked by token volume to match the donut's weighting (see HarnessChart).
+	const harnesses = [...harnessTotals.entries()]
+		.map(([harness, v]) => ({ harness, ...v }))
+		.sort((a, b) => b.tokens - a.tokens);
+	const topHarness = harnesses[0]?.harness ?? null;
 
 	return {
 		updatedAt,
@@ -83,9 +101,11 @@ function buildStats(rows: UsageRow[], updatedAt: number): UsageStats {
 			activeDays: days.length,
 			longestStreak: longestStreak(days),
 			spendUsd,
-			topModel
+			topModel,
+			topHarness
 		},
-		daily
+		daily,
+		harnesses
 	};
 }
 
@@ -127,12 +147,13 @@ type SyncComparison = {
 	changes: SyncChange[];
 };
 
-type SyncRow = Pick<UsageRow, 'date' | 'model' | 'tokens' | 'spendUsd' | 'events'>;
+type SyncRow = Pick<UsageRow, 'date' | 'model' | 'harness' | 'tokens' | 'spendUsd' | 'events'>;
 type SyncValues = Pick<SyncRow, 'tokens' | 'spendUsd' | 'events'>;
 
 type SyncChange = {
 	date: string;
 	model: string;
+	harness: string;
 	before: SyncValues | null;
 	after: SyncValues | null;
 };
@@ -152,8 +173,9 @@ const sumSyncRows = (rows: SyncRow[]): SyncTotals => {
 export function compareSyncRows(currentRows: SyncRow[], sourceRows: SyncRow[]): SyncComparison {
 	const current = sumSyncRows(currentRows);
 	const source = sumSyncRows(sourceRows);
-	const currentByKey = new Map(currentRows.map((row) => [`${row.date}\0${row.model}`, row]));
-	const sourceByKey = new Map(sourceRows.map((row) => [`${row.date}\0${row.model}`, row]));
+	const keyOf = (row: SyncRow) => `${row.date}\0${row.model}\0${row.harness}`;
+	const currentByKey = new Map(currentRows.map((row) => [keyOf(row), row]));
+	const sourceByKey = new Map(sourceRows.map((row) => [keyOf(row), row]));
 	const keys = [...new Set([...currentByKey.keys(), ...sourceByKey.keys()])].sort();
 	const changes: SyncChange[] = [];
 	let addedRows = 0;
@@ -179,6 +201,7 @@ export function compareSyncRows(currentRows: SyncRow[], sourceRows: SyncRow[]): 
 		changes.push({
 			date: row.date,
 			model: row.model,
+			harness: row.harness,
 			before: before
 				? { tokens: before.tokens, spendUsd: before.spendUsd, events: before.events }
 				: null,

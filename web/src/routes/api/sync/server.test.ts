@@ -19,7 +19,7 @@ beforeEach(() => {
 
 afterEach(() => {
 	vi.clearAllMocks();
-	delete env.CRON_SECRET;
+	Reflect.deleteProperty(env, 'CRON_SECRET');
 });
 
 describe('usage sync endpoint', () => {
@@ -54,7 +54,7 @@ describe('usage sync endpoint', () => {
 	});
 
 	it('fails closed without revealing whether the server secret is configured', async () => {
-		delete env.CRON_SECRET;
+		Reflect.deleteProperty(env, 'CRON_SECRET');
 
 		const response = await GET(
 			requestEvent('http://localhost/api/sync') as Parameters<typeof GET>[0]

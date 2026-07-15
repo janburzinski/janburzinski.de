@@ -77,3 +77,70 @@ export function paintCell(
 
 export const DITHER_PURPLE: Rgb = [150, 110, 255];
 export const DITHER_GREEN: Rgb = [40, 210, 110];
+
+// Categorical dither palette (dither-kit's hue set), assigned by index. `unknown` pins to grey.
+export const DITHER_PALETTE: Rgb[] = [
+	[150, 110, 255], // purple
+	[40, 210, 110], // green
+	[80, 165, 255], // blue
+	[255, 150, 70], // orange
+	[255, 105, 180], // pink
+	[95, 220, 220], // cyan
+	[235, 95, 95] // red
+];
+export const DITHER_GREY: Rgb = [150, 150, 168];
+
+const TAU = Math.PI * 2;
+
+export type DonutSegment = { color: Rgb; start: number; end: number; intensity?: number };
+
+/**
+ * Paint a dithered donut. Angles run clockwise from 12 o'clock. Each segment's fill is feathered
+ * at the inner and outer edges so the ring reads as a glowing corona — pair it with a blurred bloom
+ * copy for the "sun" look. Gaps between segments are simply pixels no segment claims.
+ */
+export function paintDonut(
+	ctx: CanvasRenderingContext2D,
+	cx: number,
+	cy: number,
+	rOuter: number,
+	rInner: number,
+	segments: DonutSegment[]
+) {
+	const band = rOuter - rInner || 1;
+	const x0 = Math.max(0, Math.floor(cx - rOuter));
+	const x1 = Math.ceil(cx + rOuter);
+	const y0 = Math.max(0, Math.floor(cy - rOuter));
+	const y1 = Math.ceil(cy + rOuter);
+
+	for (let y = y0; y < y1; y++) {
+		for (let x = x0; x < x1; x++) {
+			const dx = x - cx + 0.5;
+			const dy = y - cy + 0.5;
+			const dist = Math.sqrt(dx * dx + dy * dy);
+			if (dist > rOuter || dist < rInner) continue;
+
+			let ang = Math.atan2(dy, dx) + Math.PI / 2; // 0 = top, clockwise
+			if (ang < 0) ang += TAU;
+			if (ang >= TAU) ang -= TAU;
+			const seg = segments.find((s) => ang >= s.start && ang < s.end);
+			if (!seg) continue;
+
+			const intensity = seg.intensity ?? 0;
+			// Brightness envelope: fullest at the middle of the band, fading toward both radial edges.
+			const t = (dist - rInner) / band;
+			const envelope = Math.min(t, 1 - t) * 2;
+			const base = 0.35 + 0.65 * envelope;
+			const lit = base > BAYER[y & 3][x & 3] - 0.12 * intensity;
+			const k = base * (1 + 0.25 * intensity);
+			const alpha = clamp01(lit ? k : k * OFF_TIER);
+			ctx.fillStyle = rgba(seg.color, alpha);
+			ctx.fillRect(x, y, 1, 1);
+		}
+	}
+}
+
+export function harnessColor(harness: string, index: number): Rgb {
+	if (harness === 'unknown') return DITHER_GREY;
+	return DITHER_PALETTE[index % DITHER_PALETTE.length];
+}

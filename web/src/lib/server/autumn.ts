@@ -17,6 +17,7 @@ export type RawEvent = {
 export type DailyRollup = {
 	date: string;
 	model: string;
+	harness: string;
 	tokens: number;
 	spendUsd: number;
 	events: number;
@@ -172,16 +173,17 @@ export function eventsToDailyRollups(events: RawEvent[]): DailyRollup[] {
 	for (const event of events) {
 		const p = event.properties ?? {};
 		const model = typeof p.model === 'string' ? p.model : 'unknown';
+		const harness = typeof p.harness === 'string' && p.harness ? p.harness : 'unknown';
 		const tokens =
 			num(p.input_tokens) +
 			num(p.output_tokens) +
 			num(p.cache_read_tokens) +
 			num(p.cache_write_tokens);
 		const date = dayKey(event.timestamp);
-		const key = `${date}\0${model}`;
+		const key = `${date}\0${model}\0${harness}`;
 		let bucket = byKey.get(key);
 		if (!bucket) {
-			bucket = { date, model, tokens: 0, spendUsd: 0, events: 0 };
+			bucket = { date, model, harness, tokens: 0, spendUsd: 0, events: 0 };
 			byKey.set(key, bucket);
 		}
 		bucket.tokens += tokens;
