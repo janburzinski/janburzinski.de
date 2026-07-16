@@ -5,6 +5,13 @@ export type DailyUsage = {
 	models: Array<{ model: string; tokens: number }>;
 };
 
+export type HarnessUsage = {
+	harness: string;
+	tokens: number;
+	spendUsd: number;
+	events: number;
+};
+
 export type UsageStats = {
 	updatedAt: number;
 	totals: {
@@ -14,6 +21,8 @@ export type UsageStats = {
 		longestStreak: number;
 		spendUsd: number;
 		topModel: string | null;
+		topHarness: string | null;
 	};
 	daily: DailyUsage[];
+	harnesses: HarnessUsage[];
 };

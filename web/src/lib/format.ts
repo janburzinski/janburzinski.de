@@ -28,6 +28,32 @@ export function prettyModel(model: string | null | undefined): string {
 	return `${family} ${version.join('.')}`.trim();
 }
 
+const HARNESS_NAMES: Record<string, string> = {
+	'claude-code': 'claude code',
+	claude_code: 'claude code',
+	claudecode: 'claude code',
+	codex: 'codex',
+	opencode: 'opencode',
+	amp: 'amp',
+	cursor: 'cursor',
+	'gemini-cli': 'gemini cli',
+	gemini: 'gemini',
+	aider: 'aider',
+	cline: 'cline',
+	roo: 'roo code',
+	goose: 'goose',
+	crush: 'crush',
+	droid: 'droid',
+	unknown: 'unknown'
+};
+
+/** "claude-code" → "claude code"; unknown ids fall back to a de-hyphenated lowercase label. */
+export function prettyHarness(harness: string | null | undefined): string {
+	if (!harness) return 'unknown';
+	const key = harness.toLowerCase();
+	return HARNESS_NAMES[key] ?? key.replace(/[-_]+/g, ' ');
+}
+
 export function formatDay(date: string): string {
 	const d = new Date(`${date}T00:00:00Z`);
 	return d
