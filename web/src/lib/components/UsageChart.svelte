@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
 	import type { DailyUsage } from '$lib/usage';
 	import { CELL, DITHER_PURPLE, paintBar, type Rgb } from '$lib/dither/paint';
 	import { formatDay, formatDayShort, formatTokens, prettyModel } from '$lib/format';
@@ -8,8 +9,15 @@
 		daily,
 		color = DITHER_PURPLE,
 		height = 150,
-		windowDays = 14
-	}: { daily: DailyUsage[]; color?: Rgb; height?: number; windowDays?: number } = $props();
+		windowDays = 14,
+		trailing
+	}: {
+		daily: DailyUsage[];
+		color?: Rgb;
+		height?: number;
+		windowDays?: number;
+		trailing?: Snippet;
+	} = $props();
 
 	let offset = $state(0);
 
@@ -57,20 +65,21 @@
 	let ctx: CanvasRenderingContext2D | null = null;
 	let curCols = 0;
 	let curRows = 0;
-	let lastBar: number | null = null;
 
-	function paintOneBar(i: number, intensity: number) {
-		if (!ctx) return;
+	function paintBars() {
+		const c = ctx;
+		if (!c) return;
 		const { slot, barW } = layout(curCols);
-		const x0 = Math.round(i * slot + (slot - barW) / 2);
-		// sqrt keeps quiet days visible next to a spike without lying about the ordering.
-		const h = Math.round(Math.sqrt(data[i].tokens / max) * (curRows - 2));
-		const top = curRows - h;
-		// Clear first because paintBar uses partial alpha.
-		ctx.clearRect(x0, 0, barW, curRows);
-		for (let x = x0; x < x0 + barW && x < curCols; x++) {
-			paintBar(ctx, x, top, curRows, color, intensity);
-		}
+		data.forEach((d, i) => {
+			const x0 = Math.round(i * slot + (slot - barW) / 2);
+			// sqrt keeps quiet days visible next to a spike without lying about the ordering.
+			const h = Math.round(Math.sqrt(d.tokens / max) * (curRows - 2));
+			const top = curRows - h;
+			const intensity = hover === i ? 1 : 0;
+			for (let x = x0; x < x0 + barW && x < curCols; x++) {
+				paintBar(c, x, top, curRows, color, intensity);
+			}
+		});
 	}
 
 	// CSS blurs and additively blends this copy behind the crisp bars.
@@ -84,18 +93,21 @@
 		bctx.drawImage(canvas, 0, 0);
 	}
 
-	function renderBase() {
+	function render() {
 		if (!canvas || !width) return;
-		curCols = Math.max(8, Math.round(width / CELL));
-		curRows = Math.max(8, Math.round(height / CELL));
-		canvas.width = curCols;
-		canvas.height = curRows;
+		const cols = Math.max(8, Math.round(width / CELL));
+		const rows = Math.max(8, Math.round(height / CELL));
+		if (canvas.width !== cols || canvas.height !== rows) {
+			canvas.width = cols;
+			canvas.height = rows;
+		}
+		curCols = cols;
+		curRows = rows;
 		ctx = canvas.getContext('2d');
 		if (!ctx) return;
 		ctx.clearRect(0, 0, curCols, curRows);
-		data.forEach((_, i) => paintOneBar(i, 0));
+		paintBars();
 		syncBloom();
-		lastBar = null;
 	}
 
 	function onMove(e: PointerEvent) {
@@ -109,35 +121,27 @@
 	const active = $derived(hover != null ? data[hover] : null);
 	const tipLeft = $derived(Math.max(8, Math.min(width - 8, pointerX)));
 
+	// Repaint when the data window, size, or hovered day changes.
 	$effect(() => {
-		renderBase();
-	});
-
-	$effect(() => {
-		const h = hover;
-		if (!ctx) return;
-		if (lastBar != null && lastBar < data.length) paintOneBar(lastBar, 0);
-		lastBar = null;
-		if (h != null && h < data.length) {
-			paintOneBar(h, 1);
-			lastBar = h;
-		}
-		syncBloom();
+		void [data, max, hover, width, height];
+		render();
 	});
 
 	$effect(() => {
 		if (!wrapper) return;
-		const ro = new ResizeObserver((entries) => {
-			width = entries[0].contentRect.width;
-		});
+		// Measure immediately so the first paint doesn't depend on the async ResizeObserver callback
+		// firing (which can race the mount and leave `width` at 0 → a blank/partial chart).
+		const measure = () => (width = wrapper.getBoundingClientRect().width);
+		measure();
+		const ro = new ResizeObserver(measure);
 		ro.observe(wrapper);
 		return () => ro.disconnect();
 	});
 </script>
 
-{#if rangeLabel}
-	<div class="head">
-		<span class="range">{rangeLabel}</span>
+<div class="head">
+	{#if rangeLabel}<span class="range">{rangeLabel}</span>{/if}
+	<div class="head-right">
 		{#if canOlder || canNewer}
 			<div class="nav">
 				<button type="button" onclick={older} disabled={!canOlder} aria-label="Show earlier days">
@@ -148,8 +152,9 @@
 				</button>
 			</div>
 		{/if}
+		{#if trailing}{@render trailing()}{/if}
 	</div>
-{/if}
+</div>
 
 <div class="chart" bind:this={wrapper} style="height: {height}px">
 	<canvas
@@ -194,6 +199,13 @@
 		font-size: 0.75rem;
 		color: var(--text-muted);
 		font-variant-numeric: tabular-nums;
+		min-height: 24px;
+	}
+
+	.head-right {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
 	}
 
 	.nav {

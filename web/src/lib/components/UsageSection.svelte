@@ -4,6 +4,7 @@
 	import CollapsibleStatsSection from './CollapsibleStatsSection.svelte';
 	import UsageChart from './UsageChart.svelte';
 	import HarnessChart from './HarnessChart.svelte';
+	import ChartToggle from './ChartToggle.svelte';
 
 	let { stats }: { stats: UsageStats } = $props();
 
@@ -11,6 +12,10 @@
 	const showHarness = $derived(
 		stats.harnesses.some((h) => h.harness !== 'unknown') && stats.harnesses.length > 0
 	);
+	const hasBars = $derived(stats.daily.length > 0);
+	const canToggle = $derived(hasBars && showHarness);
+
+	let view = $state<'bar' | 'pie'>('bar');
 
 	const rows = $derived([
 		{ label: 'tokens', value: formatTokens(stats.totals.tokens) },
@@ -24,16 +29,26 @@
 	]);
 </script>
 
-<CollapsibleStatsSection title="ai usage" {rows} marginTop="2.5rem">
-	{#if stats.daily.length}
-		<div class="chart-wrap">
-			<UsageChart daily={stats.daily} height={110} />
-		</div>
-	{/if}
+{#snippet toggle()}
+	<ChartToggle value={view} onSelect={(v) => (view = v)} />
+{/snippet}
 
-	{#if showHarness}
-		<div class="harness-wrap">
-			<span class="harness-label">harness split · by tokens</span>
+<CollapsibleStatsSection title="ai usage" {rows} marginTop="2.5rem">
+	{#if canToggle && view === 'pie'}
+		<div class="chart-wrap">
+			<div class="pie-head">
+				<span class="chart-label">harness split · by tokens</span>
+				{@render toggle()}
+			</div>
+			<HarnessChart harnesses={stats.harnesses} />
+		</div>
+	{:else if hasBars}
+		<div class="chart-wrap">
+			<UsageChart daily={stats.daily} height={168} trailing={canToggle ? toggle : undefined} />
+		</div>
+	{:else if showHarness}
+		<div class="chart-wrap">
+			<span class="chart-label standalone">harness split · by tokens</span>
 			<HarnessChart harnesses={stats.harnesses} />
 		</div>
 	{/if}
@@ -42,16 +57,26 @@
 <style>
 	.chart-wrap {
 		margin-top: 1.5rem;
+		/* Reserve the taller view's height (the donut) so toggling bar ↔ pie doesn't reflow the page
+		   below it. The donut dominates the pie height regardless of legend rows, so this stays stable. */
+		min-height: 208px;
 	}
 
-	.harness-wrap {
-		margin-top: 2rem;
-	}
-
-	.harness-label {
-		display: block;
+	.pie-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.6rem;
 		margin-bottom: 1rem;
+	}
+
+	.chart-label {
 		font-size: 0.75rem;
 		color: var(--text-muted);
+	}
+
+	.chart-label.standalone {
+		display: block;
+		margin-bottom: 1rem;
 	}
 </style>

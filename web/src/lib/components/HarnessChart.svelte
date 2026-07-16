@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { HarnessUsage } from '$lib/usage';
+	import { Tween } from 'svelte/motion';
+	import { cubicOut } from 'svelte/easing';
 	import { CELL, harnessColor, paintCell, paintDonut, type DonutSegment } from '$lib/dither/paint';
 	import { formatTokens, prettyHarness } from '$lib/format';
 
@@ -43,11 +45,22 @@
 	let canvas = $state<HTMLCanvasElement>();
 	let bloomCanvas = $state<HTMLCanvasElement>();
 
-	function render() {
+	// Per-slice highlight intensity (1 = active, 0 = idle, -1 = dimmed by another slice's hover),
+	// tweened so moving the pointer between slices cross-fades the brighten/dim instead of snapping.
+	const prefersReduced =
+		typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	const intensity = new Tween<number[]>([], {
+		duration: prefersReduced ? 0 : 180,
+		easing: cubicOut
+	});
+
+	function paint(anim: number[]) {
 		if (!canvas) return;
 		const px = Math.round(size / CELL);
-		canvas.width = px;
-		canvas.height = px;
+		if (canvas.width !== px || canvas.height !== px) {
+			canvas.width = px;
+			canvas.height = px;
+		}
 		const ctx = canvas.getContext('2d');
 		if (!ctx) return;
 		ctx.clearRect(0, 0, px, px);
@@ -60,19 +73,35 @@
 			color: s.color,
 			start: s.start,
 			end: s.end,
-			intensity: hover === i ? 1 : hover == null ? 0 : -1
+			intensity: anim[i] ?? 0
 		}));
 		paintDonut(ctx, cx, cy, rOuter, rInner, segments);
 
 		if (bloomCanvas) {
-			bloomCanvas.width = px;
-			bloomCanvas.height = px;
-			bloomCanvas.getContext('2d')?.drawImage(canvas, 0, 0);
+			if (bloomCanvas.width !== px || bloomCanvas.height !== px) {
+				bloomCanvas.width = px;
+				bloomCanvas.height = px;
+			}
+			const bctx = bloomCanvas.getContext('2d');
+			if (bctx) {
+				bctx.clearRect(0, 0, px, px);
+				bctx.drawImage(canvas, 0, 0);
+			}
 		}
 	}
 
+	// Retarget on hover (animate), or snap when the slice set itself changes so counts never mismatch.
 	$effect(() => {
-		render();
+		const targets = slices.map((_, i) => (hover == null ? 0 : hover === i ? 1 : -1));
+		intensity.set(
+			targets,
+			intensity.current.length === targets.length ? undefined : { duration: 0 }
+		);
+	});
+
+	// Repaint on every tween frame (and whenever the slices or size change).
+	$effect(() => {
+		paint(intensity.current);
 	});
 
 	function onMove(e: PointerEvent) {
