@@ -53,6 +53,7 @@
 		duration: prefersReduced ? 0 : 180,
 		easing: cubicOut
 	});
+	let tweenSliceCount = -1;
 
 	function paint(anim: number[]) {
 		if (!canvas) return;
@@ -93,10 +94,9 @@
 	// Retarget on hover (animate), or snap when the slice set itself changes so counts never mismatch.
 	$effect(() => {
 		const targets = slices.map((_, i) => (hover == null ? 0 : hover === i ? 1 : -1));
-		intensity.set(
-			targets,
-			intensity.current.length === targets.length ? undefined : { duration: 0 }
-		);
+		const sliceCountChanged = tweenSliceCount !== targets.length;
+		tweenSliceCount = targets.length;
+		intensity.set(targets, sliceCountChanged ? { duration: 0 } : undefined);
 	});
 
 	// Repaint on every tween frame (and whenever the slices or size change).
