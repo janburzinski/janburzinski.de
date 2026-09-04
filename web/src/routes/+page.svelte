@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Github, Mail, Linkedin, Sun, Moon, ArrowUpRight } from 'lucide-svelte';
 	import { onMount } from 'svelte';
-	import UsageSection from '$lib/components/UsageSection.svelte';
 	import ContributionSection from '$lib/components/ContributionSection.svelte';
 	import type { PageProps } from './$types';
 
@@ -100,12 +99,6 @@
 				<ArrowUpRight size={13} class="outbound" />
 			</a>
 		</div>
-
-		{#await data.usage then usage}
-			{#if usage}
-				<UsageSection stats={usage} />
-			{/if}
-		{/await}
 
 		{#await data.contributions then contributions}
 			{#if contributions}

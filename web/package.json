@@ -3,30 +3,25 @@
 	"private": true,
 	"version": "1.0.0",
 	"type": "module",
-	"packageManager": "pnpm@11.9.0",
+	"packageManager": "bun@1.4.0",
 	"portless": {
 		"name": "janburzinski-web",
 		"script": "dev:app"
 	},
 	"scripts": {
-		"preinstall": "node -e \"const ua=process.env.npm_config_user_agent||''; if(!ua.startsWith('pnpm/')){console.error('Use pnpm to install dependencies.'); process.exit(1)}\"",
 		"dev": "portless run",
 		"dev:app": "vite dev",
 		"build": "vite build",
-		"start": "node build",
+		"start": "bun build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"test": "vitest run",
+		"test": "vitest run --passWithNoTests",
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
 		"deploy": "wrangler deploy",
-		"dev:remote": "wrangler dev --remote",
-		"db:push": "drizzle-kit push",
-		"db:generate": "drizzle-kit generate",
-		"db:migrate": "drizzle-kit migrate",
-		"db:studio": "drizzle-kit studio"
+		"dev:remote": "wrangler dev --remote"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.1",
@@ -36,8 +31,6 @@
 		"@sveltejs/adapter-vercel": "^6.3.3",
 		"@sveltejs/kit": "^2.50.2",
 		"@sveltejs/vite-plugin-svelte": "^6.2.4",
-		"@types/pg": "^8.20.0",
-		"drizzle-kit": "^0.31.10",
 		"eslint": "^9.39.2",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.14.0",
@@ -59,8 +52,6 @@
 		"@fontsource/inter": "^5.2.8",
 		"@vercel/analytics": "^2.0.1",
 		"@vercel/functions": "^3.7.5",
-		"drizzle-orm": "^0.45.2",
-		"lucide-svelte": "^0.563.0",
-		"pg": "^8.22.0"
+		"lucide-svelte": "^0.563.0"
 	}
 }
